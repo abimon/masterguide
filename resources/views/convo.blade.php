@@ -1,7 +1,7 @@
 @extends('layouts.index2',['title'=>'Chat'])
 @section('dashboard')
 <!-- ### $App Screen Content ### -->
-<div class="mt-1 row" style="min-height: 600px;">
+<div class="mt-1 row" >
     <div class="d-flex justify-content-center">
         @foreach($users as $user)
         @if($user->id != Auth()->user()->id)
@@ -38,7 +38,7 @@
 
                     @if($message->sender_id==$user->id)
                     <!-- Chat Conversation -->
-                    <div class="peers fxw-nw">
+                    <div class="peers fxw-nw" style="min-height: 200px;">
                         <div class="peer peer-greed">
                             <div class="layers ai-fs gapY-5">
                                 <div class="layer">
