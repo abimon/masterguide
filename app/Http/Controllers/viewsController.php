@@ -15,7 +15,7 @@ class viewsController extends Controller
     }
     function convo($name){
         $user=User::where(['name'=>$name])->first();
-        $users=User::orderBy('name', 'asc')->get();
+        $users=User::where(['name'=>$name])->orderBy('name', 'asc')->get();
         $messages=Conversation::where(['recepient_id'=>$user->id])->orWhere(['sender_id'=>$user->id])->get();
         return view('convo',['users'=>$users, 'messages'=>$messages]);
     }
