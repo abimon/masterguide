@@ -3,13 +3,12 @@
 <link rel="stylesheet" href="{{asset('storage/css/adminator.css')}}">
 <link rel="stylesheet" href="{{asset('storage/css/app.css')}}">
 <link rel="stylesheet" href="{{asset('storage/css/themify_icons.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 <!-- @App Content -->
 <!-- =================================================== -->
 <div class="row">
   <!-- #Left Sidebar ==================== -->
-  <div class="col-md-2 border-end" id="">
+  <div class="col-md-2" id="">
     <ul class="nav flex-row">
       <li class="nav-item">
         <a class="nav-link" href="/">
@@ -36,7 +35,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/calendar">
+        <a class="nav-link" href="/compose">
           <span class="icon-holder">
             <i class="c-blue-500 bi bi-share mR-10"></i>
           </span>
@@ -74,7 +73,7 @@
   </div>
 
   <!-- #Main ============================ -->
-  <div class="page-container col-10">
+  <div class="col-md-10">
     <!-- ### $Topbar ### -->
 
     <div>

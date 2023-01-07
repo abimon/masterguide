@@ -10,9 +10,13 @@ class viewsController extends Controller
 {
     //
     function chat(){
-        $id=Auth()->user()->id;
         $users=User::orderBy('name', 'asc')->get();
-        $messages=Conversation::where(['recepient_id'=>$id])->orWhere(['sender_id'=>$id])->get();
-        return view('chat',['users'=>$users, 'messages'=>$messages]);
+        return view('chat',['users'=>$users]);
+    }
+    function convo($name){
+        $user=User::where(['name'=>$name])->first();
+        $users=User::orderBy('name', 'asc')->get();
+        $messages=Conversation::where(['recepient_id'=>$user->id])->orWhere(['sender_id'=>$user->id])->get();
+        return view('convo',['users'=>$users, 'messages'=>$messages]);
     }
 }

@@ -17,18 +17,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::middleware(['checkSession'])->group(function(){
+    Route::get('/calendar', function () {
+        return view('calendar');
+    });
+    
+    Route::get('/mail', function () {
+        return view('email');
+    });
+    Route::get('/compose', function () {
+        return view('compose');
+    });
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+    Route::post('/sendMessage/{id}', [dataController::class, 'sendMessage']);
+    Route::get('/chat/{name}', [viewsController::class, 'convo']);
+});
 Route::get('/chat', [viewsController::class,'chat']);
-Route::get('/calendar', function () {
-    return view('calendar');
-});
 
-Route::get('/mail', function () {
-    return view('email');
-});
-Route::get('/compose', function () {
-    return view('compose');
-});
 Route::get('/blog', function () {
     return view('blog');
 });
@@ -50,9 +57,7 @@ Route::get('/resources', function () {
 Route::get('/events', function () {
     return view('events');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
 Route::get('/avatar', function () {
     return view('avatar');
 });
@@ -65,4 +70,3 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
 });
-Route::post('/sendMessage/{id}', [dataController::class, 'sendMessage']);

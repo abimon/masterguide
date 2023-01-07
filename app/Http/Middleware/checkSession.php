@@ -2,13 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 
-class checkOnline
+class checkSession
 {
     /**
      * Handle an incoming request.
@@ -19,10 +17,13 @@ class checkOnline
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
-            $expires=Carbon::now()->addMinutes(1);
-            Cache::put('is-online'.Auth::user()->id, true,$expires);
+        {
+            if(Auth()->user()){
+                return $next($request);
+            }
+            return redirect('/login');
         }
-        return $next($request);
+        
+        
     }
 }
