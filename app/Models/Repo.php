@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Repo extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'user_id',
+        'file_name',
+        'file_path',
+        'category',
+        'isPublic',
+    ];
 }

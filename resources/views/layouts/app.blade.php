@@ -20,9 +20,9 @@
 	<link rel="apple-touch-icon" href="{{asset('storage/images/apple-touch-icon.png')}}">
 
 	<!-- Bootstrap CSS-->
-	
+
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-	
+
 	<!-- Site CSS -->
 	<link rel="stylesheet" href="{{asset('storage/style.css')}}">
 	<!-- ALL VERSION CSS -->
@@ -35,80 +35,80 @@
 	<!-- Modernizer for Portfolio -->
 	<script src="{{asset('storage/js/modernizer.js')}}"></script>
 	<style>
-    #loader {
-      transition: all 0.3s ease-in-out;
-      opacity: 1;
-      visibility: visible;
-      position: fixed;
-      height: 100vh;
-      width: 100%;
-      background: #fff;
-      z-index: 90000;
-    }
+		#loader {
+			transition: all 0.3s ease-in-out;
+			opacity: 1;
+			visibility: visible;
+			position: fixed;
+			height: 100vh;
+			width: 100%;
+			background: #fff;
+			z-index: 90000;
+		}
 
-    #loader.fadeOut {
-      opacity: 0;
-      visibility: hidden;
-    }
+		#loader.fadeOut {
+			opacity: 0;
+			visibility: hidden;
+		}
 
-    .spinner {
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      top: calc(50% - 20px);
-      left: calc(50% - 20px);
-      background-color: #333;
-      border-radius: 100%;
-      -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-      animation: sk-scaleout 1.0s infinite ease-in-out;
-    }
+		.spinner {
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: calc(50% - 20px);
+			left: calc(50% - 20px);
+			background-color: #333;
+			border-radius: 100%;
+			-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+			animation: sk-scaleout 1.0s infinite ease-in-out;
+		}
 
-    @-webkit-keyframes sk-scaleout {
-      0% {
-        -webkit-transform: scale(0)
-      }
+		@-webkit-keyframes sk-scaleout {
+			0% {
+				-webkit-transform: scale(0)
+			}
 
-      100% {
-        -webkit-transform: scale(1.0);
-        opacity: 0;
-      }
-    }
+			100% {
+				-webkit-transform: scale(1.0);
+				opacity: 0;
+			}
+		}
 
-    @keyframes sk-scaleout {
-      0% {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
+		@keyframes sk-scaleout {
+			0% {
+				-webkit-transform: scale(0);
+				transform: scale(0);
+			}
 
-      100% {
-        -webkit-transform: scale(1.0);
-        transform: scale(1.0);
-        opacity: 0;
-      }
-    }
+			100% {
+				-webkit-transform: scale(1.0);
+				transform: scale(1.0);
+				opacity: 0;
+			}
+		}
 
-    a {
-      text-decoration: none;
-    }
+		a {
+			text-decoration: none;
+		}
 
-    a :hover {
-      color: #03F4FC;
-    }
-  </style>
-  <div id='loader'>
-    <div class="spinner"></div>
-  </div>
-  <script>
-    window.addEventListener('load', function load() {
-      const loader = document.getElementById('loader');
-      setTimeout(function () {
-        loader.classList.add('fadeOut');
-      }, 300);
-    });
-  </script>
+		a :hover {
+			color: #03F4FC;
+		}
+	</style>
+	<div id='loader'>
+		<div class="spinner"></div>
+	</div>
+	<script>
+		window.addEventListener('load', function load() {
+			const loader = document.getElementById('loader');
+			setTimeout(function() {
+				loader.classList.add('fadeOut');
+			}, 300);
+		});
+	</script>
 </head>
 
-<body class="bg-info" >
+<body class="bg-info">
 	<div class="bg-light" style="width: 85.7%; float:left;">
 		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -257,7 +257,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="/">
-						<img src="{{asset('storage/images/logo.png')}}" alt="" width="50"/>
+						<img src="{{asset('storage/images/logo.png')}}" alt="" width="50" />
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -285,7 +285,7 @@
 		<div style="min-height: 600px;">
 			@yield('content')
 		</div>
-		
+
 
 		<footer class="footer">
 			<div class="container">
@@ -295,14 +295,12 @@
 							<div class="widget-title">
 								<h3>About US</h3>
 							</div>
-							<p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+							<p>We uphold all the standards of the church as a basis for all our operation. Our sole aim is to learn how to lead young youths between the age of 4yrs to 16yrs to a saving relationship with Jesus Christ. </p>
 							<div class="footer-right">
 								<ul class="footer-links-soi">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-github"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-									<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+									<li><a target='_blank' href="https://www.facebook.com/edimon.ombati.3"><i class="fa fa-facebook"></i></a></li>
+									<li><a target='_blank' href="href="https://twitter.com/EddieAbbie59?t=309BdPr2O3VjcIqROf2OAA&s=09https://twitter.com/EddieAbbie59?t=309BdPr2O3VjcIqROf2OAA&s=09"><i class="fa fa-twitter"></i></a></li>
+									<li><a target='_blank' href="https://wa.me/+254701583807"><i class="fa fa-whatsapp"></i></a></li>
 								</ul><!-- end links -->
 							</div>
 						</div><!-- end clearfix -->
@@ -314,11 +312,23 @@
 								<h3>Information Link</h3>
 							</div>
 							<ul class="footer-links">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Pricing</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
+
+								<li>
+									<a target="_blank" href="https://www.jkusdachurch.org/" style="text-decoration:none;" class="text-light">
+										<p>JKUSDA</p>
+									</a>
+								</li>
+								<li>
+									<a target="_blank" href="https://www.gcyouthministries.org/" style="text-decoration:none;" class="text-light">
+										<p>GC Youth Ministries </p>
+									</a>
+								</li>
+								<li>
+									<a target="_blank" href="https://gc.adventist.org/" style="text-decoration:none;" class="text-light">
+										<p>General Conference</p>
+									</a>
+								</li>
+
 							</ul><!-- end links -->
 						</div><!-- end clearfix -->
 					</div><!-- end col -->
@@ -330,10 +340,9 @@
 							</div>
 
 							<ul class="footer-links">
-								<li><a href="mailto:#">info@yoursite.com</a></li>
-								<li><a href="#">www.yoursite.com</a></li>
-								<li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-								<li>+61 3 8376 6284</li>
+								<li><a href="mailto:#">info@unimasterguide.com</a></li>
+								<li><a href="#">www.unimasterguide.com</a></li>
+								<li>+254 701 583 807</li>
 							</ul><!-- end links -->
 						</div><!-- end clearfix -->
 					</div><!-- end col -->
@@ -356,7 +365,7 @@
 
 	</div>
 	<div style="width:14.3%; float:right;">
-		<img  src="{{asset('storage/images/SDALogo.png')}}" style="width:100%;">
+		<img src="{{asset('storage/images/SDALogo.png')}}" style="width:100%;">
 	</div>
 	<!-- ALL JS FILES -->
 	<script src="{{asset('storage/js/all.js')}}"></script>

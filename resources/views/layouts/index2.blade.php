@@ -59,6 +59,14 @@
           <span class="title">Calendar</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#resources">
+          <span class="icon-holder">
+            <i class="c-deep-orange-500 bi bi-files mR-10"></i>
+          </span>
+          <span class="title">Add Resource</span>
+        </a>
+      </li>
       <hr>
       <li class="nav-item ">
         <a class="nav-link text-danger" href="/logout">
@@ -78,6 +86,71 @@
 
     <div>
       @yield('dashboard')
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="resources" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resources">Add File to resources</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST" action="/uploadresource" enctype="multipart/form-data">
+        <div class="modal-body text-black">
+          @csrf
+          <div class="mb-3">
+            <select class="form-select" name="category">
+              <option selected>Select Category</option>
+              <option class="form-control" value="Adventurers">Adventurers</option>
+              <option class="form-control" value="Pathfinders">Pathfinders</option>
+              <option class="form-control" value="Master Guide">Master Guide</option>
+            </select>
+              @error('category')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="filename" placeholder=" ">
+            <label for="floatingInput">Filename</label>
+            @error('filename')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="row mb-3">
+            <label for="file" class="">{{ __('File') }}</label>
+
+            <div class="">
+              <input id="file" type="file" class="form-control @error('file') is-invalid @enderror" name="file" required autocomplete="">
+
+              @error('file')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6 offset-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="isPublic" value="1" checked>
+                <label class="form-check-label" for="remember">
+                  {{ __('Is Public') }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save file</button>
+        </div>
+        </form>
     </div>
   </div>
 </div>

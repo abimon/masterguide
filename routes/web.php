@@ -28,32 +28,26 @@ Route::middleware(['checkSession'])->group(function(){
     Route::get('/compose', function () {
         return view('compose');
     });
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
     Route::post('/sendMessage/{id}', [dataController::class, 'sendMessage']);
+    Route::post('/uploadresource', [dataController::class, 'uploadresource']);
+
     Route::get('/chat/{name}', [viewsController::class, 'convo']);
+    Route::get('/dashboard', [viewsController::class, 'dashboard']);
 });
 Route::get('/chat', [viewsController::class,'chat']);
-
+Route::get('team', [viewsController::class, 'team']);
+Route::get('resources', [viewsController::class, 'resources']);
 Route::get('/blog', function () {
     return view('blog');
 });
 Route::get('/blogpost', function () {
     return view('blogpost');
 });
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/team', function () {
-    return view('team');
-});
+
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('/resources', function () {
-    return view('course');
-});
+
 Route::get('/events', function () {
     return view('events');
 });
