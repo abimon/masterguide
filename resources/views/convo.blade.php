@@ -1,7 +1,7 @@
 @extends('layouts.index2',['title'=>'Chat'])
 @section('dashboard')
 <!-- ### $App Screen Content ### -->
-<div class="mt-1 row" style="min-height: 400px;">
+<div class="mt-1 row" style="min-height: 600px;">
     <div class="d-flex justify-content-center">
         @foreach($users as $user)
         @if($user->id != Auth()->user()->id)
