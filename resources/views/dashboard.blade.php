@@ -9,40 +9,44 @@
                 <div class="row gap-20">
                     <!-- #Toatl Visits ==================== -->
                     <div class='col-md-3'>
-                        <div class="layers bd bgc-white p-20">
-                            <div class="layer w-100 mB-10">
-                                <h6 class="lh-1"><i class="bi bi-people"></i> Total Users</h6>
-                            </div>
-                            <div class="layer w-100">
-                                <div class="peers ai-sb fxw-nw">
-                                    <div class="peer peer-greed">
-                                        <span id="sparklinedash"></span>
-                                    </div>
-                                    <div class="peer">
-                                        <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{$users->count()}}</span>
+                        <a href="#members">
+                            <div class="layers bd bgc-white p-20">
+                                <div class="layer w-100 mB-10">
+                                    <h6 class="lh-1"><i class="bi bi-people"></i> Total Users</h6>
+                                </div>
+                                <div class="layer w-100">
+                                    <div class="peers ai-sb fxw-nw">
+                                        <div class="peer peer-greed">
+                                            <span id="sparklinedash"></span>
+                                        </div>
+                                        <div class="peer">
+                                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{$users->count()}}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- #Total Page Views ==================== -->
                     <div class='col-md-3'>
-                        <div class="layers bd bgc-white p-20">
-                            <div class="layer w-100 mB-10">
-                                <h6 class="lh-1"><i class="bi bi-files"></i> Total Resource Files</h6>
-                            </div>
-                            <div class="layer w-100">
-                                <div class="peers ai-sb fxw-nw">
-                                    <div class="peer peer-greed">
-                                        <span id="sparklinedash2"></span>
-                                    </div>
-                                    <div class="peer">
-                                        <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{$repos->count()}}</span>
+                        <a href="/resources">
+                            <div class="layers bd bgc-white p-20">
+                                <div class="layer w-100 mB-10">
+                                    <h6 class="lh-1"><i class="bi bi-files"></i> Resource Files</h6>
+                                </div>
+                                <div class="layer w-100">
+                                    <div class="peers ai-sb fxw-nw">
+                                        <div class="peer peer-greed">
+                                            <span id="sparklinedash2"></span>
+                                        </div>
+                                        <div class="peer">
+                                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{$repos->count()}}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- #Unique Visitors ==================== -->
@@ -87,7 +91,7 @@
             <div class="masonry-item col-md-12">
                 <!-- #Sales Report ==================== -->
                 <div class="bd bgc-white">
-                    <div class="layers">
+                    <div class="layers" id="members">
                         <div class="layer w-100 p-20">
                             <h6 class="lh-1">Membership Report</h6>
                         </div>
@@ -96,10 +100,10 @@
                                 <div class="peers ai-c jc-sb gap-40">
                                     <div class="peer peer-greed">
                                         <h5>November 2017</h5>
-                                        <p class="mB-0">Sales Report</p>
+                                        <p class="mB-0">Members Report</p>
                                     </div>
                                     <div class="peer">
-                                        <h3 class="text-right">{{$users->count()}}</h3>
+                                        <h3 class="text-right text-light">{{$users->count()}}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -107,6 +111,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th class=" bdwT-0">#</th>
                                             <th class=" bdwT-0">Name</th>
                                             <th class=" bdwT-0">Institution</th>
                                             <th class=" bdwT-0">Joining Date</th>
@@ -114,58 +119,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($users as $key=>$user)
                                         <tr>
-                                            <td class="fw-600">Item #1 Name</td>
-                                            <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Unavailable</span>
+                                            <th class=" bdwT-0">{{$key+1}}</th>
+                                            <td class="fw-600">{{$user->name}}</td>
+                                            <td>{{$user->institution}}
                                             </td>
-                                            <td>Nov 18</td>
-                                            <td><span class="text-success">$12</span></td>
+                                            <td>{{date_format(($user->created_at),'F jS, Y')}}</td>
+                                            <td><span class="text-success">{{$user->role}}</span></td>
                                         </tr>
-                                        <tr>
-                                            <td class="fw-600">Item #2 Name</td>
-                                            <td><span class="badge bgc-deep-purple-50 c-deep-purple-700 p-10 lh-0 tt-c badge-pill">New</span>
-                                            </td>
-                                            <td>Nov 19</td>
-                                            <td><span class="text-info">$34</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-600">Item #3 Name</td>
-                                            <td><span class="badge bgc-pink-50 c-pink-700 p-10 lh-0 tt-c badge-pill">New</span></td>
-                                            <td>Nov 20</td>
-                                            <td><span class="text-danger">-$45</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-600">Item #4 Name</td>
-                                            <td><span class="badge bgc-green-50 c-green-700 p-10 lh-0 tt-c badge-pill">Unavailable</span></td>
-                                            <td>Nov 21</td>
-                                            <td><span class="text-success">$65</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-600">Item #5 Name</td>
-                                            <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">Used</span></td>
-                                            <td>Nov 22</td>
-                                            <td><span class="text-success">$78</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-600">Item #6 Name</td>
-                                            <td><span class="badge bgc-orange-50 c-orange-700 p-10 lh-0 tt-c badge-pill">Used</span>
-                                            </td>
-                                            <td>Nov 23</td>
-                                            <td><span class="text-danger">-$88</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-600">Item #7 Name</td>
-                                            <td><span class="badge bgc-yellow-50 c-yellow-700 p-10 lh-0 tt-c badge-pill">Old</span></td>
-                                            <td>Nov 22</td>
-                                            <td><span class="text-success">$56</span></td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="ta-c bdT w-100 p-20">
-                        <a href="#">Check all members/a>
+                        <a href="#">Check all members</a>
                     </div>
                 </div>
             </div>

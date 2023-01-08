@@ -37,6 +37,8 @@ Route::middleware(['checkSession'])->group(function(){
 Route::get('/chat', [viewsController::class,'chat']);
 Route::get('team', [viewsController::class, 'team']);
 Route::get('resources', [viewsController::class, 'resources']);
+Route::get('/course/{name}', [viewsController::class, 'course']);
+Route::get('/notes/{name}', [dataController::class, 'generatePDF']);
 Route::get('/blog', function () {
     return view('blog');
 });

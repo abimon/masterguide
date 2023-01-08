@@ -273,7 +273,7 @@
 							<li class="nav-item {{(request()->path())=='events' ? 'active':''}}"><a class="nav-link" href="/events">Events</a></li>
 							<li class="nav-item {{(request()->path())=='contact' ? 'active':''}}"><a class="nav-link" href="/contact">Contact</a></li>
 							@guest
-							<li class="nav-item {{(request()->path())=='register' ? 'active':''}}"><a class="nav-link" href="/register"><span>Join Now!</span></a></li>
+							<li class="nav-item {{(request()->path())=='login' ? 'active':''}}"><a class="nav-link" href="/login"><span>Join Now!</span></a></li>
 							@else
 							<li class="nav-item {{(request()->path())=='dashboard' ? 'active':''}}"><a class="nav-link" href="/dashboard"><span>Panel</span></a></li>
 							@endguest

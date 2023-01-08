@@ -1,7 +1,5 @@
 @extends('layouts.app', ['title'=>'Resources'])
 @section('content')
-
-
 <div id="overviews" class="section wb">
 	<div class="container">
 		<div class="section-title row text-center">
@@ -36,7 +34,7 @@
 					</div>
 					<div class="course-meta-bot">
 						<ul>
-							<li type="button" data-bs-toggle="modal" data-bs-target="#adventurers"><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','Adventurers')->count()}} File(s)</li>
+							<li type="button" data-bs-toggle="modal" data-bs-target="#adventurers"><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','adv')->count()}} File(s)</li>
 						</ul>
 						<!-- Modal -->
 						<div class="modal fade" id="adventurers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -47,7 +45,7 @@
 										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
-										@foreach($repos->where('category','Adventurers') as $repo)
+										@foreach($repos->where('category','adv') as $repo)
 										<div class="alert alert-info d-flex justify-content-between">
 											{{$repo->file_name}}
 											<a href="{{asset('storage/resources/'.$repo['file_path'])}}" target="_blank" fillable style="text-decoration:none;">
@@ -88,9 +86,33 @@
 						</div>
 					</div>
 					<div class="course-meta-bot">
-						<ul>
-							<li><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','Pathfinders')->count()}} File(s)</li>
+					<ul>
+							<li type="button" data-bs-toggle="modal" data-bs-target="#pathfinders"><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','pf')->count()}} File(s)</li>
 						</ul>
+						<!-- Modal -->
+						<div class="modal fade" id="pathfinders" tabindex="-1" aria-labelledby="pathfinders" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Pathfinders</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										@foreach($repos->where('category','pf') as $repo)
+										<div class="alert alert-info d-flex justify-content-between">
+											{{$repo->file_name}}
+											<a href="{{asset('storage/resources/'.$repo['file_path'])}}" target="_blank" fillable style="text-decoration:none;">
+												Read
+											</a>
+											<a target="_blank" href="{{asset('storage/resources/'.$repo['file_path'])}}" download style="text-decoration:none;">
+												Download
+											</a>
+										</div>
+										@endforeach
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div><!-- end col -->
@@ -130,9 +152,33 @@
 						</div>
 					</div>
 					<div class="course-meta-bot">
-						<ul>
-							<li><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','Master Guide')->count()}} File(s)</li>
+					<ul>
+							<li type="button" data-bs-toggle="modal" data-bs-target="#master"><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','mg')->count()}} File(s)</li>
 						</ul>
+						<!-- Modal -->
+						<div class="modal fade" id="master" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Adventurers</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										@foreach($repos->where('category','mg') as $repo)
+										<div class="alert alert-info d-flex justify-content-between">
+											{{$repo->file_name}}
+											<a href="{{asset('storage/resources/'.$repo['file_path'])}}" target="_blank" fillable style="text-decoration:none;">
+												Read
+											</a>
+											<a target="_blank" href="{{asset('storage/resources/'.$repo['file_path'])}}" download style="text-decoration:none;">
+												Download
+											</a>
+										</div>
+										@endforeach
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div><!-- end col -->
@@ -141,6 +187,7 @@
 		<hr class="hr3">
 
 		<div class="row">
+			@foreach($courses as $course)
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="course-item">
 					<div class="image-blog">
@@ -148,22 +195,22 @@
 					</div>
 					<div class="course-br">
 						<div class="course-title">
-							<h2><a href="#" title="">Medical Sciences</a></h2>
+							<h2><a href="#" title="">{{$course->course_name}}</a></h2>
 						</div>
-						<div class="course-desc">
-							<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
+						<div class="course-desc" style="height:150px; overflow: hidden;">
+							<p><?php echo htmlspecialchars_decode($course->requirements); ?></p>
 						</div>
 
 					</div>
 					<div class="course-meta-bot">
 						<ul>
-							<li><i class="fa fa-calendar" aria-hidden="true"></i> 6 Month</li>
-							<li><i class="fa fa-users" aria-hidden="true"></i> 56 Student</li>
-							<li><i class="fa fa-book" aria-hidden="true"></i> 7 Books</li>
+							<li><a href="/course/{{$course->course_name}}">Read More...</a></li>
 						</ul>
 					</div>
 				</div>
-			</div><!-- end col -->
+			</div>
+			@endforeach
+			<!-- end col -->
 		</div><!-- end row -->
 	</div><!-- end container -->
 </div><!-- end section -->
