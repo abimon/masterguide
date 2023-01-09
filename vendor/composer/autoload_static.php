@@ -567,6 +567,7 @@ class ComposerStaticInitbe4f73a74d235aedc1e9c0a24cb50c84
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Conversation' => __DIR__ . '/../..' . '/app/Models/Conversation.php',
         'App\\Models\\Course' => __DIR__ . '/../..' . '/app/Models/Course.php',
+        'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
         'App\\Models\\Note' => __DIR__ . '/../..' . '/app/Models/Note.php',
         'App\\Models\\Portifolio' => __DIR__ . '/../..' . '/app/Models/Portifolio.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',

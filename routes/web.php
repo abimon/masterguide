@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware(['checkSession'])->group(function(){
-    Route::get('/calendar', function () {
-        return view('calendar');
-    });
-    
     Route::get('/mail', function () {
         return view('email');
     });
@@ -30,9 +26,14 @@ Route::middleware(['checkSession'])->group(function(){
     });
     Route::post('/sendMessage/{id}', [dataController::class, 'sendMessage']);
     Route::post('/uploadresource', [dataController::class, 'uploadresource']);
+    Route::post('/addEvent', [dataController::class, 'addEvent']);
+    Route::get('/editEvent/{id}', [dataController::class, 'editEvent']);
+    Route::get('/deleteEvent/{id}', [dataController::class, 'deleteEvent']);
 
     Route::get('/chat/{name}', [viewsController::class, 'convo']);
     Route::get('/dashboard', [viewsController::class, 'dashboard']);
+    Route::get('/calendar', [viewsController::class, 'calendar']);
+
 });
 Route::get('/chat', [viewsController::class,'chat']);
 Route::get('team', [viewsController::class, 'team']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Conversation;
 use App\Models\Course;
+use App\Models\Event;
 use App\Models\Note;
 use App\Models\Repository;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
@@ -81,6 +82,34 @@ class dataController extends Controller
 
         $response = curl_exec($curl);
         curl_close($curl);
+        return redirect()->back();
+    }
+    function addEvent(){
+        Event::create([
+            'user_id'=>Auth()->user()->id,
+            'event_title'=>request()->event_title,
+            'event_description'=>request()->event_description,
+            'event_time'=>request()->event_time,
+            'event_date'=>request()->event_date,
+            'isPublic'=>0,
+            'event_duration'=>request()->event_duration,
+        ]);
+        return redirect()->back();
+    }
+    function editEvent($id){
+        $event=Event::where(['id'=>$id])->first();
+        $event->user_id=Auth()->user()->id;
+        $event->event_title=request()->event_title;
+        $event->event_description=request()->event_description;
+        $event->event_time=request()->event_time;
+        $event->event_date=request()->event_date;
+        $event->isPublic=0;
+        $event->event_duration=request()->event_duration;
+        $event->update();
+        return redirect()->back();
+    }
+    function deleteEvent($id){
+        Event::destroy($id);
         return redirect()->back();
     }
 }

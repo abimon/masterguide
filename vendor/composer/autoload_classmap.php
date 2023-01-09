@@ -32,6 +32,7 @@ return array(
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Conversation' => $baseDir . '/app/Models/Conversation.php',
     'App\\Models\\Course' => $baseDir . '/app/Models/Course.php',
+    'App\\Models\\Event' => $baseDir . '/app/Models/Event.php',
     'App\\Models\\Note' => $baseDir . '/app/Models/Note.php',
     'App\\Models\\Portifolio' => $baseDir . '/app/Models/Portifolio.php',
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',

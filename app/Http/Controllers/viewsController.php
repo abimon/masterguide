@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Conversation;
 use App\Models\Course;
+use App\Models\Event;
 use App\Models\Note;
 use App\Models\Repository;
 use App\Models\User;
@@ -42,6 +43,13 @@ class viewsController extends Controller
         $notes=Note::where('course_id','=',$course->id)->orderBy('chapter', 'asc')->get();
         $courses=Course::where('id','=',$course->id)->get();
         return view('course',['courses'=>$courses,'notes'=>$notes]);
+    }
+    function calendar(){
+        $events=Event::where(['user_id'=>Auth()->user()->id])->get();
+        $data=[
+            'events'=>$events,
+        ];
+        return view('calendar', $data);
     }
     
 }
