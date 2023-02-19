@@ -2,18 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
 use App\Models\Event;
+use App\Models\institution;
+use App\Models\Like;
 use App\Models\Note;
+use App\Models\Portifolio;
+use App\Models\Post;
+use App\Models\register;
 use App\Models\Repository;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-use PDF;
+use Illuminate\Support\Facades\File; 
 use Illuminate\Http\Request;
 
 class dataController extends Controller
 {
-    //
+    function profile_update(){
+        if(request()->isAssociate==1){
+            $ass=1;
+        }
+        else{
+            $ass=0;
+        }
+        if(request()->isInvested==1){
+            $inv=1;
+        }
+        else{
+            $inv=0;
+        }
+        $phone=request()->contact;
+        $code='+254';
+        $first= substr($phone, 0, 1);
+        if($first=='0'){
+            $contact=substr_replace($phone, $code, 0, 1);
+        }
+        else{
+            $contact=$code.$phone;
+        }
+        User::where(['id'=>(Auth()->user()->id)])->update([
+            'name'=>request()->name,
+            'email'=>request()->email,
+            'contact'=>$contact,
+            'institution'=>request()->institution,
+            'isAssociate'=>$ass,
+            'isInvested'=>$inv,
+            'PPNo'=>request()->PPNo,
+            'about'=>request()->about,
+            'birthday'=>request()->birthday,
+        ]);
+        return redirect()->back();
+    }
+    function changeprof(){
+        $filename = Auth()->user()->avatar;
+        request()->file('avatar')->storeAs('public/profile', $filename);
+
+    }
+    function makeRole($role,$id){
+        User::where(['id'=>$id])->update([
+            'role'=>$role
+        ]);
+        return redirect()->back();
+    }
+    function deleteUser($id){
+        User::destroy($id);
+        Comment::where(['user_id'=>$id])->delete();
+        Like::where(['user_id'=>$id])->delete();
+        Conversation::where(['sender_id'=>$id])->orWhere(['recepient_id'=>$id])->delete();
+        Event::where(['user_id'=>$id])->delete();
+        Comment::where(['user_id'=>$id])->delete();
+        Portifolio::where(['user_id'=>$id])->delete();
+        Post::where(['user_id'=>$id])->where(['isPublic',0])->delete();
+        Comment::where(['user_id'=>$id])->delete();
+        Repository::where(['user_id'=>$id])->delete();
+        return redirect()->back();
+
+    }
     public function sendMessage($id){
         Conversation::create([
             'recepient_id'=>$id,
@@ -97,19 +163,109 @@ class dataController extends Controller
         return redirect()->back();
     }
     function editEvent($id){
-        $event=Event::where(['id'=>$id])->first();
-        $event->user_id=Auth()->user()->id;
-        $event->event_title=request()->event_title;
-        $event->event_description=request()->event_description;
-        $event->event_time=request()->event_time;
-        $event->event_date=request()->event_date;
-        $event->isPublic=0;
-        $event->event_duration=request()->event_duration;
-        $event->update();
+        Event::where(['id'=>$id])->update([
+            'event_title'=>request()->event_title,
+            'event_description'=>request()->event_description,
+            'event_time'=>request()->event_time,
+            'event_date'=>request()->event_date,
+            'event_duration'=>request()->event_duration,
+        ]);
         return redirect()->back();
     }
     function deleteEvent($id){
         Event::destroy($id);
+        return redirect()->back();
+    }
+    function createPost(){
+        $user=Auth()->user();
+        if(($user->role)=='Member'){
+            $post=0;
+        }
+        else {
+            $post = 1;
+        }
+        Post::create([
+            'user_id'=> Auth()->user()->id,
+            'category_id'=>request()->category_id,
+            'title'=>request()->title,
+            'post'=>request()->post,
+            'exerpt'=>request()->exerpt,
+            'isPosted'=>$post,
+        ]);
+        return redirect()->back();
+    }
+    function togglePost($id){
+        $post= Post::where(['id'=>$id])->first();
+        if($post->isPosted==1){
+            $value = 0;
+        }
+        else{
+            $value = 1;
+        }
+        $post->update([
+            'isPosted'=>$value,
+        ]);
+        return redirect()->back();
+    }
+    function addPublicEvent(){
+        Event::create([
+            'user_id'=>Auth()->user()->id,
+            'event_title'=>request()->event_title,
+            'event_description'=>request()->event_description,
+            'event_time'=>request()->event_time,
+            'event_date'=>request()->event_date,
+            'venue'=>request()->venue,
+            'charges'=>request()->charges,
+            'isPublic'=>1,
+            'event_duration'=>request()->event_duration,
+        ]);
+        return redirect()->back();
+    }
+    function updateAvatar(){
+        File::delete(Auth()->user()->profile);
+        $extension = request()->file('profile')->getClientOriginalExtension();
+        $avatar = Auth()->user()->profile;
+        request()->file('profile')->storeAs('public/profile', $avatar);
+        return redirect('/dashboard');
+    }
+    function comment($id){
+        if(!Auth()->user()){
+            $user_id=0;
+        }
+        else{
+            $user_id=Auth()->user()->id;
+        }
+        Comment::create([
+            'user_id'=>$user_id,
+            'post_id'=>$id,
+            'comment'=>request()->comment
+        ]);
+        return redirect()->back();
+    }
+    function like($id){
+        $like= Like::where(['post_id'=>$id])->where(['user_id'=> (Auth()->user()->id)])->first();
+        if(!$like){
+            Like::create([
+                'user_id'=>Auth()->user()->id,
+                'post_id'=>$id
+            ]);
+        }
+        else{
+            Like::destroy($like->id);
+        }
+        return redirect()->back();
+    }
+    function markAttendance(){
+        foreach((request()->user_id) as $id){
+            register::create([
+                'user_id'=>$id
+            ]);
+        }
+    }
+    function addInstitution(){
+        institution::create([
+            'institution'=>request()->institution
+        ]);
         return redirect()->back();
     }
 }

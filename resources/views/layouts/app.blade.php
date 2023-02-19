@@ -17,12 +17,7 @@
 
 	<!-- Site Icons -->
 	<link rel="shortcut icon" href="{{asset('storage/images/favicon.png')}}" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="{{asset('storage/images/apple-touch-icon.png')}}">
-
-	<!-- Bootstrap CSS-->
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+	<link rel="apple-touch-icon" href="{{asset('storage/images/favicon.png')}}">
 	<!-- Site CSS -->
 	<link rel="stylesheet" href="{{asset('storage/style.css')}}">
 	<!-- ALL VERSION CSS -->
@@ -31,6 +26,8 @@
 	<link rel="stylesheet" href="{{asset('storage/css/responsive.css')}}">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="{{asset('storage/css/custom.css')}}">
+	<!-- Bootstrap CSS-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
 	<!-- Modernizer for Portfolio -->
 	<script src="{{asset('storage/js/modernizer.js')}}"></script>
@@ -108,7 +105,7 @@
 	</script>
 </head>
 
-<body class="bg-info">
+<body class="bg-info fs-sm-5">
 	<div class="bg-light" style="width: 85.7%; float:left;">
 		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -257,7 +254,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="/">
-						<img src="{{asset('storage/images/logo.png')}}" alt="" width="50" />
+						<img src="{{asset('storage/images/favicon.png')}}" alt="" width="50" />
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -271,7 +268,6 @@
 							<li class="nav-item {{(request()->path())=='blog' ? 'active':''}}"><a class="nav-link" href="/blog">Blog</a></li>
 							<li class="nav-item {{(request()->path())=='team' ? 'active':''}}"><a class="nav-link" href="/team">Team</a></li>
 							<li class="nav-item {{(request()->path())=='events' ? 'active':''}}"><a class="nav-link" href="/events">Events</a></li>
-							<li class="nav-item {{(request()->path())=='contact' ? 'active':''}}"><a class="nav-link" href="/contact">Contact</a></li>
 							@guest
 							<li class="nav-item {{(request()->path())=='login' ? 'active':''}}"><a class="nav-link" href="/login"><span>Join Now!</span></a></li>
 							@else
@@ -299,7 +295,7 @@
 							<div class="footer-right">
 								<ul class="footer-links-soi">
 									<li><a target='_blank' href="https://www.facebook.com/edimon.ombati.3"><i class="fa fa-facebook"></i></a></li>
-									<li><a target='_blank' href="href="https://twitter.com/EddieAbbie59?t=309BdPr2O3VjcIqROf2OAA&s=09https://twitter.com/EddieAbbie59?t=309BdPr2O3VjcIqROf2OAA&s=09"><i class="fa fa-twitter"></i></a></li>
+									<li><a target='_blank' href="https://twitter.com/EddieAbbie59?t=309BdPr2O3VjcIqROf2OAA&s=09https://twitter.com/EddieAbbie59?t=309BdPr2O3VjcIqROf2OAA&s=09"><i class="fa fa-twitter"></i></a></li>
 									<li><a target='_blank' href="https://wa.me/+254701583807"><i class="fa fa-whatsapp"></i></a></li>
 								</ul><!-- end links -->
 							</div>
@@ -333,10 +329,10 @@
 						</div><!-- end clearfix -->
 					</div><!-- end col -->
 
-					<div class="col-lg-4 col-md-4 col-xs-12">
+					<div class="col-lg-4 col-md-4 col-xs-12" id="contactus">
 						<div class="widget clearfix">
 							<div class="widget-title">
-								<h3>Contact Details</h3>
+								<h3 >Contact Details</h3>
 							</div>
 
 							<ul class="footer-links">

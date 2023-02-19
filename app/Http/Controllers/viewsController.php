@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
 use App\Models\Event;
+use App\Models\Like;
 use App\Models\Note;
+use App\Models\Post;
 use App\Models\Repository;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class viewsController extends Controller
 {
@@ -24,13 +26,29 @@ class viewsController extends Controller
         return view('convo',['users'=>$users, 'messages'=>$messages]);
     }
     function team(){
-        $users=User::orderBy('name', 'asc')->get();
-        return view('team',['users'=>$users]);
+        $users=User::where('role','!=','Member')->orderBy('name', 'asc')->get();
+        $data = [
+            'users'=>$users,
+        ];
+        return view('team',$data);
     }
     function dashboard(){
-        $users=User::orderBy('name', 'asc')->get();
+        $users=User::orderBy('name', 'asc')->paginate(20);
         $repos=Repository::all();
-        return view('dashboard',['users'=>$users, 'repos'=>$repos]);
+        $birthdays=collect();
+        $posts=Post::orderBy('id', 'desc')->get();
+        foreach($users as $user){
+            if((date_format(date_create($user->birthday), 'F jS'))==date('F jS')){
+                $birthdays->push($user);
+            }
+        }
+        $data = [
+            'users'=>$users, 
+            'repos'=>$repos,
+            'posts'=>$posts,
+            'birthdays'=>$birthdays
+        ];
+        return view('dashboard',$data);
     }
     function resources(){
         $courses=Course::orderBy('course_name', 'asc')->get();
@@ -45,11 +63,55 @@ class viewsController extends Controller
         return view('course',['courses'=>$courses,'notes'=>$notes]);
     }
     function calendar(){
-        $events=Event::where(['user_id'=>Auth()->user()->id])->get();
+        $events=Event::where(['user_id'=>Auth()->user()->id])->orWhere(['isPublic'=>1])->get();
         $data=[
             'events'=>$events,
         ];
         return view('calendar', $data);
     }
-    
+    function events(){
+        $events=Event::where(['isPublic'=>1])->get();
+        $data = [
+            'events'=>$events,
+        ];
+        return view('events',$data);
+    }
+    function blog(){
+        $posts= Post::where(['isPosted'=>1])->get();
+        $comments= Comment::all();
+        $likes=Like::all();
+        $data=[
+            'posts'=>$posts,
+            'comments'=>$comments,
+            'likes'=>$likes,
+        ];
+        return view('blog', $data);
+    }
+    function blogpost($title){
+        $post= Post::where(['title'=>$title])->first();
+        $user=User::where(['id'=>$post->user_id])->first();
+        $users= User::all();
+        $comments= Comment::where(['post_id'=>$post->id])->get();
+        $likes=Like::where(['post_id'=>$post->id])->get();
+        $data=[
+            'post'=>$post,
+            'user'=>$user,
+            'users'=>$users,
+            'comments'=>$comments,
+            'likes'=>$likes,
+        ];
+        return view('blogpost', $data);
+    }
+    function attendance(){
+        if(Auth()->user()->role=='Coordinatoor'){
+            $users=User::all();
+        }
+        else{
+            $users=User::where(['institution'=>Auth()->user()->institution])->get();
+        }
+        $data=[
+            'users'=>$users,
+        ];
+        return view('attendance', $data);
+    }
 }

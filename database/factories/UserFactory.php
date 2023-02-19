@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Type\Integer;
 
 class UserFactory extends Factory
 {
@@ -17,9 +19,14 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'password' => Hash::make('Password'), // password
+            'contact'=>random_int(0,9),
+            'institution'=>Str::random(4),
+            'isAssociate'=>0,
+            'isInvested'=>0,
+            'about'=>Str::random(200),
+            'birthday'=>date('Y-m-d'),
+            'role'=>'Member'
         ];
     }
 

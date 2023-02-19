@@ -28,25 +28,13 @@
                   <i class="fa fa-fw fa-clock-o c-red-500"></i>
                 </div>
                 <div class="peer">
-                  <span class="fw-600">{{$event->event_title}}</span>
-                  <div class="c-grey-600">
-                    <span class="c-grey-700">{{$event->event_duration}}hr(s) on {{$event->event_date}}</span>
-
-                  </div>
+                  <p>
+                    <span class="fw-600">{{$event->event_date}} {{$event->event_time}}</span>
+                    <span class="c-blue-700 fw-300">{{$event->event_title}} ({{$event->event_duration}}hrs)</span>
+                  </p>
+                  
                 </div>
               </a>
-              <div class="col-md-2">
-                <div class="">
-                  <a href="" class="td-n c-deep-purple-500 cH-blue-500 fsz-md p-5">
-                    <i class="bi bi-pencil"></i>
-                  </a>
-                </div>
-                <div class="">
-                  <a href="" class="td-n c-red-500 cH-blue-500 fsz-md p-5">
-                    <i class="bi bi-trash"></i>
-                  </a>
-                </div>
-              </div>
             </li>
             <div class="modal fade" id="calendar-details{{$event->id}}">
               <div class="modal-dialog" role="document">

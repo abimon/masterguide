@@ -52,7 +52,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'=> ['required', 'string', 'max:255','unique:users'],
+            'fname'=> ['required', 'string', 'max:255'],
+            'lname'=> ['required', 'string', 'max:255'],
             'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact'=> ['required', 'string', 'max:10'],
             'institution'=> ['required', 'string', 'max:255'],
@@ -74,7 +75,7 @@ class RegisterController extends Controller
         //get just ext
         $extension = request()->file('avatar')->getClientOriginalExtension();
         //file name only
-        $filename = request()->name;
+        $filename = request()->fname;
         //File name to store
         $filenametostore = $filename . '.' . $extension;
         //upload
@@ -101,7 +102,7 @@ class RegisterController extends Controller
             $contact=$code.$phone;
         }
         return User::create([
-            'name'=>$data['name'],
+            'name'=>$data['fname'].' '.$data['lname'],
             'email'=>$data['email'],
             'contact'=>$contact,
             'institution'=>$data['institution'],
@@ -115,4 +116,5 @@ class RegisterController extends Controller
         ]);
         
     }
+    
 }

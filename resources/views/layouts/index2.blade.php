@@ -27,30 +27,47 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/chat">
-          <span class="icon-holder">
-            <i class="c-deep-purple-500 bi bi-chat mR-10"></i>
-          </span>
-          <span class="title">Chat</span>
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="/compose">
           <span class="icon-holder">
             <i class="c-blue-500 bi bi-share mR-10"></i>
           </span>
-          <span class="title">Compose</span>
+          <span class="title">Blog</span>
+        </a>
+      </li>
+      @if(Auth()->user()->role != 'Member')
+      <li class="nav-item">
+        <a class="nav-link" href="/attendnce">
+          <span class="icon-holder">
+            <i class="c-brown-500 bi bi-r-square mR-10"></i>
+          </span>
+          <span class="title">Attendance</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/mail">
+        <a class="nav-link" href="" data-bs-target="#event" data-bs-toggle="modal">
           <span class="icon-holder">
-            <i class="c-brown-500 bi bi-envelope mR-10"></i>
+            <i class="c-deep-orange-500 bi bi-pin mR-10"></i>
           </span>
-          <span class="title">Email</span>
+          <span class="title">Events</span>
         </a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#resources">
+          <span class="icon-holder">
+            <i class="c-deep-orange-500 bi bi-files mR-10"></i>
+          </span>
+          <span class="title">Add Resource</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#institution">
+          <span class="icon-holder">
+            <i class="c-deep-black-500 bi bi-files mR-10"></i>
+          </span>
+          <span class="title">Institution</span>
+        </a>
+      </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="/calendar">
           <span class="icon-holder">
@@ -60,11 +77,11 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#resources">
+        <a class="nav-link" href="/chat">
           <span class="icon-holder">
-            <i class="c-deep-orange-500 bi bi-files mR-10"></i>
+            <i class="c-deep-purple-500 bi bi-chat mR-10"></i>
           </span>
-          <span class="title">Add Resource</span>
+          <span class="title">Chat</span>
         </a>
       </li>
       <li class="nav-item">
@@ -168,41 +185,21 @@
         <h5 class="modal-title" id="profile">Update Profile</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="profile_update" method="post" enctype="multipart/form-data">
+      <form action="/profile_update" method="post" enctype="multipart/form-data">
         @csrf
         <div class="border">
           <div class="row m-1">
             <div class="col-md-4 card">
               <div class="card-body">
-                @if(!(Auth()->user()->avatar))
-                <div class="file-upload">
-                  <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" name="profile" />
-                  <div class="drag-text">
-                    <h3>
-                      <button class="btn btn-outline-success" type="button" onclick="$('.file-upload-input').trigger( 'click' )">
-                        <i class="fa fa-plus"></i> Add Image
-                      </button>
-                    </h3>
-                  </div>
-                  <div class="file-upload-content">
-                    <img class="file-upload-image" src="{{asset('storage/profile/'.Auth()->user()->avatar)}}" alt="your image" />
-                    <div class="image-title-wrap">
-                      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                    </div>
-                  </div>
-                </div>
-                @else
                 <img src="{{asset('storage/profile/'.Auth()->user()->avatar)}}" style="width:100% ;">
                 <div class='d-flex justify-content-center mt-2'>
                   <a href="" data-bs-toggle="modal" data-bs-target="#image">Change</a>
                 </div>
-                @endif
               </div>
             </div>
-
             <div class="col-md-8  p-2">
               <div class="form-floating mt-1">
-                <input type="text" name="f_name" class="form-control" id="floatingInput" placeholder=" " value="{{Auth()->user()->name}}">
+                <input type="text" name="name" class="form-control" id="floatingInput" placeholder=" " value="{{Auth()->user()->name}}">
                 <label for="floatingInput">Name</label>
               </div>
               <div class="form-floating mt-1">
@@ -213,9 +210,84 @@
                 <input type="email" name="email" class="form-control" id="floatingInput" placeholder=" " value="{{Auth()->user()->email}}">
                 <label for="floatingInput">Email address</label>
               </div>
-              <div class="form-floating mt-1">
-                <input type="text" name="about" class="form-control" id="floatingInput" placeholder=" " value="{{Auth()->user()->about}}">
-                <label for="floatingInput">About me</label>
+            </div>
+            <div class="col-12">
+              <div class="row mb-3">
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Institution') }}</label>
+
+                <div class="col-md-8">
+                  <input id="institution" type="text" class="form-control @error('institution') is-invalid @enderror" name="institution" value="{{Auth()->user()->institution}}" required autocomplete="name" autofocus>
+
+                  @error('institution')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Birth Date') }}</label>
+
+                <div class="col-md-8">
+                  <input id="name" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{Auth()->user()->birthday}}" required autocomplete="name" autofocus>
+
+                  @error('birthday')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md-8 offset-md-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="isInvested" id="remember" value="1" {{ (Auth()->user()->isInvested) ? 'checked' : '' }} data-bs-toggle="collapse" data-bs-target="#ppno" aria-expanded="false" aria-controls="collapseWidthExample">
+
+                    <label class="form-check-label" for="remember">
+                      {{ __('I am invested') }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="collapse collapse-horizontal" id="ppno">
+                  <div class="row mb-3">
+                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Passbook No.') }}</label>
+                    <div class="col-md-6">
+                      <input type="text" class="form-control @error('PPNo') is-invalid @enderror" name="PPNo" value="{{ old('PPNo') }}" autocomplete="name" autofocus>
+                      @error('PPNo')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 offset-md-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="isAssociate" value="1" id="remember" {{(Auth()->user()->isAssociate) ? 'checked' : '' }}>
+
+                    <label class="form-check-label" for="remember">
+                      {{ __('I am an associate') }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="about" class="col-md-4 col-form-label text-md-end">{{ __('Something about you') }}</label>
+
+                <div class="col-md-8">
+                  <textarea id="about" type="text" class="form-control @error('about') is-invalid @enderror" name="about" required autocomplete="about">{{Auth()->user()->about}}</textarea>
+
+                  @error('about')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
               </div>
             </div>
           </div>
@@ -248,6 +320,231 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="event">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="bd p-15">
+        <h5 class="m-0">Add Event</h5>
+      </div>
+      <div class="modal-body">
+        <form action="/addPublicEvent" method="post">
+          @csrf
+          <div class="form-group">
+            <label class="fw-500">Event title</label>
+            <input type='text' class="form-control bdc-grey-200" name="event_title">
+          </div>
+          <div class="form-group">
+            <label class="fw-500">Event Date</label>
+            <input type="date" class="form-control bdc-grey-200" name="event_date" value={{date('Y-m-d')}}>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="fw-500">Start Time</label>
+              <div class="timepicker-input input-icon form-group">
+                <div class="input-group">
+                  <input type="time" class="form-control bdc-grey-200 start-date" name="event_time">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="fw-500">Duration</label>
+              <div class="timepicker-input input-icon form-group">
+                <div class="input-group">
+                  <input type="number" class="form-control bdc-grey-200 end-date" name="event_duration" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="fw-500">Venue</label>
+            <input type='text' class="form-control bdc-grey-200" name="venue">
+          </div>
+          <div class="form-group">
+            <label class="fw-500">Charges</label>
+            <input type='text' class="form-control bdc-grey-200" name="charges">
+          </div>
+          <div class="form-group">
+            <label class="fw-500">Event Description</label>
+            <textarea class="form-control bdc-grey-200" rows='5' id="post" name="event_description"></textarea>
+          </div>
+          <div class="text-right">
+            <button class="btn btn-primary cur-p" type="submit">Done</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="event">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="bd p-15">
+        <h5 class="m-0">Add Event</h5>
+      </div>
+      <div class="modal-body">
+        <form action="/addInstitution" method="post">
+          @csrf
+          <div class="form-group">
+            <label class="fw-500">Name of Institution/Church</label>
+            <input type='text' class="form-control bdc-grey-200" name="institution">
+          </div>
+          <div class="text-right">
+            <button class="btn btn-primary cur-p" type="submit">Done</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/super-build/ckeditor.js"></script>
+<script>
+  CKEDITOR.ClassicEditor
+    .create(document.getElementById("post"), {
+      toolbar: {
+        items: [
+          'exportPDF', 'exportWord', '|',
+          'findAndReplace', 'selectAll', '|',
+          'heading', '|',
+          'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
+          'bulletedList', 'numberedList', 'todoList', '|',
+          'outdent', 'indent', '|',
+          'undo', 'redo', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
+          'alignment', '|',
+          'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'codeBlock', 'htmlEmbed', '|',
+          'specialCharacters', 'horizontalLine', 'pageBreak', '|',
+          'textPartLanguage', '|',
+          'sourceEditing'
+        ],
+        shouldNotGroupWhenFull: true
+      },
+      list: {
+        properties: {
+          styles: true,
+          startIndex: true,
+          reversed: true
+        }
+      },
+      heading: {
+        options: [{
+            model: 'paragraph',
+            title: 'Paragraph',
+            class: 'ck-heading_paragraph'
+          },
+          {
+            model: 'heading1',
+            view: 'h1',
+            title: 'Heading 1',
+            class: 'ck-heading_heading1'
+          },
+          {
+            model: 'heading2',
+            view: 'h2',
+            title: 'Heading 2',
+            class: 'ck-heading_heading2'
+          },
+          {
+            model: 'heading3',
+            view: 'h3',
+            title: 'Heading 3',
+            class: 'ck-heading_heading3'
+          },
+          {
+            model: 'heading4',
+            view: 'h4',
+            title: 'Heading 4',
+            class: 'ck-heading_heading4'
+          },
+          {
+            model: 'heading5',
+            view: 'h5',
+            title: 'Heading 5',
+            class: 'ck-heading_heading5'
+          },
+          {
+            model: 'heading6',
+            view: 'h6',
+            title: 'Heading 6',
+            class: 'ck-heading_heading6'
+          }
+        ]
+      },
+
+      fontFamily: {
+        options: [
+          'default',
+          'Arial, Helvetica, sans-serif',
+          'Courier New, Courier, monospace',
+          'Georgia, serif',
+          'Lucida Sans Unicode, Lucida Grande, sans-serif',
+          'Tahoma, Geneva, sans-serif',
+          'Times New Roman, Times, serif',
+          'Trebuchet MS, Helvetica, sans-serif',
+          'Verdana, Geneva, sans-serif'
+        ],
+        supportAllValues: true
+      },
+      fontSize: {
+        options: [10, 12, 14, 'default', 18, 20, 22],
+        supportAllValues: true
+      },
+      htmlSupport: {
+        allow: [{
+          name: /.*/,
+          attributes: true,
+          classes: true,
+          styles: true
+        }]
+      },
+      htmlEmbed: {
+        showPreviews: true
+      },
+      link: {
+        decorators: {
+          addTargetToExternalLinks: true,
+          defaultProtocol: 'https://',
+          toggleDownloadable: {
+            mode: 'manual',
+            label: 'Downloadable',
+            attributes: {
+              download: 'file'
+            }
+          }
+        }
+      },
+      mention: {
+        feeds: [{
+          marker: '@',
+          feed: [
+            '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
+            '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
+            '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
+            '@sugar', '@sweet', '@topping', '@wafer'
+          ],
+          minimumCharacters: 1
+        }]
+      },
+      removePlugins: [
+        'CKBox',
+        'CKFinder',
+        'EasyImage',
+        'RealTimeCollaborativeComments',
+        'RealTimeCollaborativeTrackChanges',
+        'RealTimeCollaborativeRevisionHistory',
+        'PresenceList',
+        'Comments',
+        'TrackChanges',
+        'TrackChangesData',
+        'RevisionHistory',
+        'Pagination',
+        'WProofreader',
+        'MathType'
+      ]
+    }).then(editor => {
+      editor.editing.view.change(writer => {
+        writer.setStyle('min-height', '400px', editor.editing.view.document.getRoot());
+      });
+    });
+</script>
 <script src="{{asset('storage/js/adminator.js')}}"></script>
 <script src="{{asset('storage/js/imageUpload.js')}}"></script>
 <script src="{{asset('storage/js/app.js')}}"></script>

@@ -13,10 +13,13 @@
 						<img src="{{asset('storage/profile/'.$user->avatar)}}" style="width: 250px; height: 300px;">
 						<div class="social">
 							<ul>
+								<!--
 								<li><a href="#" class="fa fa-facebook"></a></li>
 								<li><a href="#" class="fa fa-twitter"></a></li>
 								<li><a href="#" class="fa fa-linkedin"></a></li>
 								<li><a href="#" class="fa fa-skype"></a></li>
+							-->
+								<li><a href="https://wa.me/{{$user->contact}}" target='_blank' class="fa fa-whatsapp"></a></li>
 							</ul>
 						</div>
 					</div>
@@ -37,10 +40,13 @@
 						<img src="{{asset('storage/profile/'.$user->avatar)}}" style="width: 250px; height: 300px;">
 						<div class="social">
 							<ul>
+								<!--
 								<li><a href="#" class="fa fa-facebook"></a></li>
 								<li><a href="#" class="fa fa-twitter"></a></li>
 								<li><a href="#" class="fa fa-linkedin"></a></li>
 								<li><a href="#" class="fa fa-skype"></a></li>
+							-->
+								<li><a href="https://wa.me/{{$user->contact}}" target='_blank' class="fa fa-whatsapp"></a></li>
 							</ul>
 						</div>
 					</div>
@@ -58,10 +64,13 @@
 						<img src="{{asset('storage/profile/'.$user->avatar)}}" style="width: 250px; height: 300px;">
 						<div class="social">
 							<ul>
+								<!--
 								<li><a href="#" class="fa fa-facebook"></a></li>
 								<li><a href="#" class="fa fa-twitter"></a></li>
 								<li><a href="#" class="fa fa-linkedin"></a></li>
 								<li><a href="#" class="fa fa-skype"></a></li>
+							-->
+								<li><a href="https://wa.me/{{$user->contact}}" target='_blank' class="fa fa-whatsapp"></a></li>
 							</ul>
 						</div>
 					</div>
@@ -82,10 +91,13 @@
 						<img src="{{asset('storage/profile/'.$user->avatar)}}" style="width: 250px; height: 300px;">
 						<div class="social">
 							<ul>
+								<!--
 								<li><a href="#" class="fa fa-facebook"></a></li>
 								<li><a href="#" class="fa fa-twitter"></a></li>
 								<li><a href="#" class="fa fa-linkedin"></a></li>
 								<li><a href="#" class="fa fa-skype"></a></li>
+							-->
+								<li><a href="https://wa.me/{{$user->contact}}" target='_blank' class="fa fa-whatsapp"></a></li>
 							</ul>
 						</div>
 					</div>

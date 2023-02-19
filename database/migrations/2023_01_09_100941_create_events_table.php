@@ -18,6 +18,8 @@ class CreateEventsTable extends Migration
             $table->integer('user_id');
             $table->string('event_title');
             $table->string('event_description');
+            $table->string('venue')->nullable();
+            $table->integer('charges')->default(0);
             $table->time('event_time');
             $table->date('event_date');
             $table->integer('event_duration');
