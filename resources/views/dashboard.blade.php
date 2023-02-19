@@ -180,7 +180,9 @@
                                     <th class=" bdwT-0">Institution</th>
                                     <th class=" bdwT-0">Joining Date</th>
                                     <th class=" bdwT-0">Role</th>
+                                    @if(Auth()->user()->role !='Member')
                                     <th class="bdwT-0">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -191,6 +193,7 @@
                                     <td>{{$user->institution}}</td>
                                     <td>{{date_format(($user->created_at),'F jS, Y')}}</td>
                                     <td><span class="text-success">{{$user->role}}</span></td>
+                                    @if(Auth()->user()->role !='Member')
                                     <td>
                                         <div class="btn-group">
                                             <div class="dropdown">
@@ -205,11 +208,12 @@
                                                     @endif
                                                     @endforeach
                                                     <li><hr class="dropdown-divider"></li>
-                                                    <li><a class="dropdown-item" href="/delete">Delete</a></li>
+                                                    <li><a class="dropdown-item" href="/delete/{{$user->id}}">Delete</a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>
