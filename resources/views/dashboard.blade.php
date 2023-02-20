@@ -1,5 +1,69 @@
 @extends('layouts.index2',['title'=>'Dashboard'])
 @section('dashboard')
+<style>
+    /* The switch - the box around the slider */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 20px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .checked+.slider {
+        background-color: #2196F3;
+    }
+
+    .slider:focus {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    .checked+.slider:before {
+        -webkit-transform: translateX(10px);
+        -ms-transform: translateX(10px);
+        transform: translateX(10px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+</style>
 <div>
     <div class="masonry-item  w-100">
         <div class="row gap-20">
@@ -124,26 +188,28 @@
                                     <td>{{date_format(($post->created_at),'F jS, Y')}}</td>
                                     <td>
                                         <span class="text-success">
-                                            <form action="togglePost/{{$post->id}}" id="myForm" method="post">
-                                                @csrf
-                                                <div class="custom-control custom-switch">
-                                                    @if(($post->isPosted)==1)
-                                                    <input type="checkbox" class="custom-control-input" onclick="sub()" id="customSwitches" checked>
-                                                    <label class="custom-control-label" for="customSwitches">Posted</label>
-                                                    @else
-                                                    <input type="checkbox" class="custom-control-input" onclick="sub()" id="customSwitches">
-                                                    <label class="custom-control-label text-secondary" for="customSwitches">Not Posted</label>
-                                                    @endif
-                                                </div>
-                                            </form>
-                                            <script>
-                                                function sub() {
-                                                    document.getElementById("myForm").submit();
-                                                }
-                                            </script>
+                                            <div class="">
+                                                @if(($post->isPosted)==1)
+                                                <a href="togglePost/{{$post->id}}">
+                                                    <label class="switch">
+                                                        <i type="button" class="checked"></i>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </a>
+                                                @else
+                                                <a href="togglePost/{{$post->id}}">
+                                                    <label class="switch">
+                                                        <i class=""></i>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </a>
+                                                @endif
+
+                                            </div>
                                         </span>
                                     </td>
                                 </tr>
+
                                 @endforeach
                             </tbody>
                         </table>
@@ -201,13 +267,15 @@
                                                     Action
                                                 </a>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <?php $roles = ['Coordinator', 'Training Coordinator', 'Secretary', 'Director', 'Member']; ?>
+                                                    <?php $roles = ['Coordinator', 'Training Coordinator', 'Secretary', 'Director', 'Member']; ?>
                                                     @foreach($roles as $role)
                                                     @if($role!=$user->role)
                                                     <li><a class="dropdown-item text-primary" href="/make/{{$role}}/{{$user->id}}">Make {{$role}}</a></li>
                                                     @endif
                                                     @endforeach
-                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li>
+                                                        <hr class="dropdown-divider">
+                                                    </li>
                                                     <li><a class="dropdown-item" href="/delete/{{$user->id}}">Delete</a></li>
                                                 </ul>
                                             </div>

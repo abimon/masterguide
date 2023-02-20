@@ -34,7 +34,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::post('/addInstitution', [dataController::class, 'addInstitution']);
     Route::post('/createPost', [dataController::class, 'createPost']);
     Route::get('/like/{id}',[dataController::class, 'like']);
-    Route::post('/togglePost/{id}',[dataController::class, 'togglePost']);
+    Route::get('/togglePost/{id}',[dataController::class, 'togglePost']);
     Route::post('/markAttendance',[dataController::class, 'markAttendance']);
     Route::get('/make/{role}/{id}',[dataController::class, 'makeRole']);
     Route::post('/deleteUser/{id}',[dataController::class, 'deleteUser']);

@@ -56,8 +56,8 @@
 			left: calc(50% - 20px);
 			background-color: #333;
 			border-radius: 100%;
-			-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-			animation: sk-scaleout 1.0s infinite ease-in-out;
+			-webkit-animation: sk-scaleout 0.5s infinite ease-in-out;
+			animation: sk-scaleout 0.5s infinite ease-in-out;
 		}
 
 		@-webkit-keyframes sk-scaleout {
@@ -100,7 +100,7 @@
 			const loader = document.getElementById('loader');
 			setTimeout(function() {
 				loader.classList.add('fadeOut');
-			}, 300);
+			}, 10);
 		});
 	</script>
 </head>
