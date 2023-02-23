@@ -71,11 +71,8 @@ Route::get('/contact', function () {
 Route::get('/avatar', function () {
     return view('avatar');
 });
-Route::post('/avatarUpdate', [RegisterController::class, 'avatarUpdate']);
 Auth::routes();
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/',[viewsController::class, 'index']);
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');

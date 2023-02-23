@@ -11,11 +11,21 @@ use App\Models\Like;
 use App\Models\Note;
 use App\Models\Post;
 use App\Models\Repository;
+use App\Models\testimonials;
 use App\Models\User;
 
 class viewsController extends Controller
 {
     //
+    function index(){
+        $user=User::all();
+        $tests= testimonials::all();
+        $data=[
+            'users'=>$user,
+            'testimonials'=>$tests,
+        ];
+        return view('index', $data);
+    }
     function chat(){
         $users=User::orderBy('name', 'asc')->get();
         return view('chat',['users'=>$users]);
