@@ -186,6 +186,7 @@
 		</div>
 	</div>
 </section>
+							-->
 <div class="section cl">
 	<div class="container">
 		<div class="row text-left stat-wrap">
@@ -209,6 +210,7 @@
 		</div>
 	</div>
 </div>
+<!--
 <div class="hmv-box">
 	<div class="container">
 		<div class="row">
@@ -253,10 +255,12 @@ end section -->
 			<div class="col-md-12 col-sm-12">
 				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
-						<div class="carousel-item active">
+						@foreach($testimonial as $key=>$test)
+						<div class="carousel-item {{($key+1) ==1 ? 'active': ''}}">
 							<div class="testimonial clearfix">
+								@foreach($users as $user)
 								<div class="testi-meta">
-									<img src="{{asset('storage/images/testi_01.png')}}" alt="" class="img-fluid">
+									<img src="{{asset('storage/profile/'.$user->avatar)}}" alt="" class="img-fluid">
 									<h4>James Fernando </h4>
 								</div>
 								<div class="desc">
@@ -266,32 +270,7 @@ end section -->
 								<!-- end testi-meta -->
 							</div>
 						</div>
-						<div class="carousel-item">
-							<div class="testimonial clearfix">
-								<div class="testi-meta">
-									<img src="{{asset('storage/images/testi_03.png')}}" alt="" class="img-fluid ">
-									<h4>Venanda Mercy </h4>
-								</div>
-								<div class="desc">
-									<h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-									<p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-								</div>
-								<!-- end testi-meta -->
-							</div>
-						</div>
-						<div class="carousel-item">
-							<div class="testimonial clearfix">
-								<div class="testi-meta">
-									<img src="{{asset('storage/images/testi_01.png')}}" alt="" class="img-fluid">
-									<h4>James Fernando </h4>
-								</div>
-								<div class="desc">
-									<h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
-									<p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-								</div>
-								<!-- end testi-meta -->
-							</div>
-						</div>
+						@endforeach
 					</div>
 				</div>
 			</div><!-- end col -->

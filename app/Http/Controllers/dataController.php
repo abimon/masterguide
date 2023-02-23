@@ -7,12 +7,14 @@ use App\Models\Conversation;
 use App\Models\Course;
 use App\Models\Event;
 use App\Models\institution;
+use App\Models\Lesson;
 use App\Models\Like;
 use App\Models\Note;
 use App\Models\Portifolio;
 use App\Models\Post;
 use App\Models\register;
 use App\Models\Repository;
+use App\Models\testimonials;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Support\Facades\File; 
@@ -88,7 +90,6 @@ class dataController extends Controller
         ]);
         return redirect()->back();
     }
-
     public function uploadresource(Request $data){
         //get just ext
         $extension = request()->file('file')->getClientOriginalExtension();
@@ -266,6 +267,54 @@ class dataController extends Controller
         institution::create([
             'institution'=>request()->institution
         ]);
+        return redirect()->back();
+    }
+    function addLesson(){
+        Lesson::create([
+            'title'=>request()->title,
+            'date'=>request()->date,
+            'facilitator'=>request()->facilitator,
+            'objectives'=>request()->objectives,
+            'comments'=>request()->comments,
+        ]);
+        return  redirect()->back();
+    }
+    function editLesson($id){
+        Lesson::where(['id'=>$id])->update([
+            'title'=>request()->title,
+            'date'=>request()->date,
+            'facilitator'=>request()->faciliator,
+            'objectives'=>request()->objectives,
+            'comments'=>request()->comments,
+        ]);
+        return  redirect()->back();
+    }
+    function commentLesson($id){
+        Lesson::where(['id'=>$id])->update([
+            'comments'=>request()->comments,
+        ]);
+        return  redirect()->back();
+    }
+    function deleteLesson($id){
+        Lesson::destroy($id);
+        return  redirect()->back();
+    }
+    function addtestimony(){
+        testimonials::create([
+            'user_id'=>request()->user_id,
+            'testimony'=>request()->testimony,
+        ]);
+        return  redirect()->back();
+    }
+    function updatetestimony($id){
+        testimonials::where(['id'=>$id])->update([
+            'user_id'=>request()->user_id,
+            'testimony'=>request()->testimony,
+        ]);
+        return  redirect()->back();
+    }
+    function deletetestimony($id){
+        testimonials::destroy($id);
         return redirect()->back();
     }
 }

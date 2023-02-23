@@ -38,11 +38,20 @@ Route::middleware(['checkSession'])->group(function(){
     Route::post('/markAttendance',[dataController::class, 'markAttendance']);
     Route::get('/make/{role}/{id}',[dataController::class, 'makeRole']);
     Route::post('/deleteUser/{id}',[dataController::class, 'deleteUser']);
+    Route::post('/addLesson',[dataController::class, 'addLesson']);
+    Route::get('/deleteLesson/{id}',[dataController::class, 'deleteLesson']);
+    Route::post('/updateLesson/{id}',[dataController::class, 'updateLesson']);
+    Route::post('/commentLesson/{id}',[dataController::class, 'commentLesson']);
+    Route::post('/testimony',[dataController::class, 'addtestimony']);
+    Route::get('/deletetestimony/{id}',[dataController::class, 'deletetestimony']);
+    Route::post('/updatetestimony/{id}',[dataController::class, 'updatetestimony']);
 
     Route::get('/chat/{name}', [viewsController::class, 'convo']);
     Route::get('/attendance', [viewsController::class, 'attendance']);
     Route::get('/dashboard', [viewsController::class, 'dashboard']);
     Route::get('/calendar', [viewsController::class, 'calendar']);
+    
+    Route::get('/lesson', [viewsController::class, 'lesson']);
 
 });
 Route::get('/chat', [viewsController::class,'chat']);

@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
 use App\Models\Event;
+use App\Models\Lesson;
 use App\Models\Like;
 use App\Models\Note;
 use App\Models\Post;
@@ -113,5 +114,12 @@ class viewsController extends Controller
             'users'=>$users,
         ];
         return view('attendance', $data);
+    }
+    function lesson(){
+        $lessons=Lesson::all();
+        $data=[
+            'lessons'=>$lessons,
+        ];
+        return view('lesson', $data);
     }
 }

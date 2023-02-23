@@ -67,7 +67,23 @@
           <span class="title">Institution</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#less">
+          <span class="icon-holder">
+            <i class="c-black bi bi-card-list mR-10"></i>
+          </span>
+          <span class="title">Add Lessons</span>
+        </a>
+      </li>
       @endif
+      <li class="nav-item">
+        <a class="nav-link" href="/lesson">
+          <span class="icon-holder">
+            <i class="c-red bi bi-card-list mR-10"></i>
+          </span>
+          <span class="title">Lessons</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/calendar">
           <span class="icon-holder">
@@ -375,11 +391,50 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="event">
+<div class="modal fade" id="less">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="bd p-15">
-        <h5 class="m-0">Add Event</h5>
+        <h5 class="m-0">Add Lesson</h5>
+      </div>
+      <div class="modal-body">
+        <form action="/addLesson" method="post">
+          @csrf
+          <div class="form-group">
+            <label class="fw-500">Lesson title</label>
+            <input type='text' class="form-control bdc-grey-200" name="title">
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="fw-500">Date</label>
+                <input type="date" class="form-control bdc-grey-200" name="date" value={{date('Y-m-d')}}>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="fw-500">Facilitator</label>
+                <input type="text" class="form-control bdc-grey-200 end-date" name="facilitator">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="fw-500">Lesson Objectives</label>
+            <textarea class="form-control bdc-grey-200" rows='5' id="objectives" name="objectives"></textarea>
+          </div>
+          <div class="text-right">
+            <button class="btn btn-primary cur-p" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="institution">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="bd p-15">
+        <h5 class="m-0">Add Institution</h5>
       </div>
       <div class="modal-body">
         <form action="/addInstitution" method="post">
@@ -541,7 +596,153 @@
       ]
     }).then(editor => {
       editor.editing.view.change(writer => {
-        writer.setStyle('min-height', '400px', editor.editing.view.document.getRoot());
+        writer.setStyle('min-height', '350px', editor.editing.view.document.getRoot());
+      });
+    });
+    CKEDITOR.ClassicEditor
+    .create(document.getElementById("objectives"), {
+      toolbar: {
+        items: [
+          'exportPDF', 'exportWord', '|',
+          'findAndReplace', 'selectAll', '|',
+          'heading', '|',
+          'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
+          'bulletedList', 'numberedList', 'todoList', '|',
+          'outdent', 'indent', '|',
+          'undo', 'redo', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
+          'alignment', '|',
+          'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'codeBlock', 'htmlEmbed', '|',
+          'specialCharacters', 'horizontalLine', 'pageBreak', '|',
+          'textPartLanguage', '|',
+          'sourceEditing'
+        ],
+        shouldNotGroupWhenFull: true
+      },
+      list: {
+        properties: {
+          styles: true,
+          startIndex: true,
+          reversed: true
+        }
+      },
+      heading: {
+        options: [{
+            model: 'paragraph',
+            title: 'Paragraph',
+            class: 'ck-heading_paragraph'
+          },
+          {
+            model: 'heading1',
+            view: 'h1',
+            title: 'Heading 1',
+            class: 'ck-heading_heading1'
+          },
+          {
+            model: 'heading2',
+            view: 'h2',
+            title: 'Heading 2',
+            class: 'ck-heading_heading2'
+          },
+          {
+            model: 'heading3',
+            view: 'h3',
+            title: 'Heading 3',
+            class: 'ck-heading_heading3'
+          },
+          {
+            model: 'heading4',
+            view: 'h4',
+            title: 'Heading 4',
+            class: 'ck-heading_heading4'
+          },
+          {
+            model: 'heading5',
+            view: 'h5',
+            title: 'Heading 5',
+            class: 'ck-heading_heading5'
+          },
+          {
+            model: 'heading6',
+            view: 'h6',
+            title: 'Heading 6',
+            class: 'ck-heading_heading6'
+          }
+        ]
+      },
+
+      fontFamily: {
+        options: [
+          'default',
+          'Arial, Helvetica, sans-serif',
+          'Courier New, Courier, monospace',
+          'Georgia, serif',
+          'Lucida Sans Unicode, Lucida Grande, sans-serif',
+          'Tahoma, Geneva, sans-serif',
+          'Times New Roman, Times, serif',
+          'Trebuchet MS, Helvetica, sans-serif',
+          'Verdana, Geneva, sans-serif'
+        ],
+        supportAllValues: true
+      },
+      fontSize: {
+        options: [10, 12, 14, 'default', 18, 20, 22],
+        supportAllValues: true
+      },
+      htmlSupport: {
+        allow: [{
+          name: /.*/,
+          attributes: true,
+          classes: true,
+          styles: true
+        }]
+      },
+      htmlEmbed: {
+        showPreviews: true
+      },
+      link: {
+        decorators: {
+          addTargetToExternalLinks: true,
+          defaultProtocol: 'https://',
+          toggleDownloadable: {
+            mode: 'manual',
+            label: 'Downloadable',
+            attributes: {
+              download: 'file'
+            }
+          }
+        }
+      },
+      mention: {
+        feeds: [{
+          marker: '@',
+          feed: [
+            '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
+            '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
+            '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
+            '@sugar', '@sweet', '@topping', '@wafer'
+          ],
+          minimumCharacters: 1
+        }]
+      },
+      removePlugins: [
+        'CKBox',
+        'CKFinder',
+        'EasyImage',
+        'RealTimeCollaborativeComments',
+        'RealTimeCollaborativeTrackChanges',
+        'RealTimeCollaborativeRevisionHistory',
+        'PresenceList',
+        'Comments',
+        'TrackChanges',
+        'TrackChangesData',
+        'RevisionHistory',
+        'Pagination',
+        'WProofreader',
+        'MathType'
+      ]
+    }).then(editor => {
+      editor.editing.view.change(writer => {
+        writer.setStyle('min-height', '250px', editor.editing.view.document.getRoot());
       });
     });
 </script>
