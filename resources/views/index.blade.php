@@ -255,7 +255,7 @@ end section -->
 			<div class="col-md-12 col-sm-12">
 				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
-						@foreach($testimonial as $key=>$test)
+						@foreach($testimonials as $key=>$test)
 						<div class="carousel-item {{($key+1) ==1 ? 'active': ''}}">
 							<div class="testimonial clearfix">
 								@foreach($users->where('id',$test->user_id) as $user)
