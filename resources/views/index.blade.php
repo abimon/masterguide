@@ -258,7 +258,7 @@ end section -->
 						@foreach($testimonial as $key=>$test)
 						<div class="carousel-item {{($key+1) ==1 ? 'active': ''}}">
 							<div class="testimonial clearfix">
-								@foreach($users as $user)
+								@foreach($users->where('id',$test->user_id) as $user)
 								<div class="testi-meta">
 									<img src="{{asset('storage/profile/'.$user->avatar)}}" alt="" class="img-fluid">
 									<h4>James Fernando </h4>
@@ -267,6 +267,7 @@ end section -->
 									<h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
 									<p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
 								</div>
+								@endforeach
 								<!-- end testi-meta -->
 							</div>
 						</div>
