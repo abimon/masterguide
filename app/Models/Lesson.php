@@ -13,6 +13,7 @@ class Lesson extends Model
         'title',
         'date',
         'facilitator',
+        'institution',
         'objectives',
         'comments',
     ];

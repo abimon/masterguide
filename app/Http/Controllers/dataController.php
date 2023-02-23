@@ -284,6 +284,7 @@ class dataController extends Controller
             'title'=>request()->title,
             'date'=>request()->date,
             'facilitator'=>request()->faciliator,
+            'institution'=>Auth()->user()->institution,
             'objectives'=>request()->objectives,
             'comments'=>request()->comments,
         ]);
