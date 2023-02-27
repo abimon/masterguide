@@ -143,13 +143,13 @@
           <div class="mb-3">
             <select class="form-select" name="category">
               <option selected>Select Category</option>
-              <option class="form-control" value="Adventurers">Adventurers</option>
-              <option class="form-control" value="Pathfinders">Pathfinders</option>
-              <option class="form-control" value="Master Guide">Master Guide</option>
+              <option class="form-control" value="adv">Adventurers</option>
+              <option class="form-control" value="pf">Pathfinders</option>
+              <option class="form-control" value="mg">Master Guide</option>
             </select>
             @error('category')
             <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
+              <strong>{{$message }}</strong>
             </span>
             @enderror
           </div>

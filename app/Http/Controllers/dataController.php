@@ -90,7 +90,7 @@ class dataController extends Controller
         ]);
         return redirect()->back();
     }
-    public function uploadresource(Request $data){
+    public function uploadresource(){
         //get just ext
         $extension = request()->file('file')->getClientOriginalExtension();
         //file name only
@@ -107,9 +107,9 @@ class dataController extends Controller
         }
         Repository::create([
             'user_id'=>Auth()->user()->id,
-            'file_name'=>$data['filename'],
+            'file_name'=>request()->filename,
             'file_path'=>$filenametostore,
-            'category'=>$data['category'],
+            'category'=>request()->category,
             'isPublic'=>$sp,
         ]);
         return redirect()->back();
