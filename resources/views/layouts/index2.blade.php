@@ -36,7 +36,7 @@
       </li>
       @if(Auth()->user()->role != 'Member')
       <li class="nav-item">
-        <a class="nav-link" href="/attendnce">
+        <a class="nav-link" href="/attendance">
           <span class="icon-holder">
             <i class="c-brown-500 bi bi-r-square mR-10"></i>
           </span>

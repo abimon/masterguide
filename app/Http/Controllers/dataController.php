@@ -60,7 +60,7 @@ class dataController extends Controller
     function changeprof(){
         $filename = Auth()->user()->avatar;
         request()->file('avatar')->storeAs('public/profile', $filename);
-
+        return redirect()->back();
     }
     function makeRole($role,$id){
         User::where(['id'=>$id])->update([
