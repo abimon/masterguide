@@ -273,7 +273,7 @@ class dataController extends Controller
         Lesson::create([
             'title'=>request()->title,
             'date'=>request()->date,
-            'facilitator'=>request()->faciliator,
+            'facilitator'=>request()->facilitator,
             'institution'=>Auth()->user()->institution,
             'objectives'=>request()->objectives,
         ]);
@@ -283,7 +283,7 @@ class dataController extends Controller
         Lesson::where(['id'=>$id])->update([
             'title'=>request()->title,
             'date'=>request()->date,
-            'facilitator'=>request()->faciliator,
+            'facilitator'=>request()->facilitator,
             'institution'=>Auth()->user()->institution,
             'objectives'=>request()->objectives,
             'comments'=>request()->comments,
