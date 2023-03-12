@@ -273,14 +273,13 @@ class dataController extends Controller
         Lesson::create([
             'title'=>request()->title,
             'date'=>request()->date,
-            'facilitator'=>request()->facilitator,
+            'facilitator'=>request()->faciliator,
+            'institution'=>Auth()->user()->institution,
             'objectives'=>request()->objectives,
-            'comments'=>request()->comments,
         ]);
         return  redirect()->back();
     }
     function editLesson($id){
-        return Auth()->user()->institution;
         Lesson::where(['id'=>$id])->update([
             'title'=>request()->title,
             'date'=>request()->date,
