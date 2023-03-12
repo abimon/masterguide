@@ -34,8 +34,9 @@
                                 <h5>Comments</h5>
                                 <hr>
                                 <div><?php echo html_entity_decode($lesson['Comments']); ?></div>
-                                @if((Auth()->user()->role=='Director')||(Auth()->user()->role=='Coordinator'))
-                                <button class="btn btn-outline-info" data-bs-target="#EditLesson{{$lesson->id}}" data-bs-toggle="modal">Comment</button>
+                                @if(((Auth()->user()->role=='Director')&&(Auth()->user()->institution=$lesson->institution))||(Auth()->user()->role=='Coordinator'))
+                                <button class="btn btn-outline-info" data-bs-target="#CommentLesson{{$lesson->id}}" data-bs-toggle="modal">Comment</button>
+                                <button data-bs-target="#EditLesson{{$lesson->id}}" data-bs-toggle="modal">Edit</button>
                                 @endif
                             </div>
                         </div>
@@ -44,6 +45,49 @@
                                 <div class="modal-content">
                                     <div class="bd p-15">
                                         <h5 class="m-0">Edit Lesson</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/updateLesson/{{$lesson->id}}" method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label class="fw-500">Lesson title</label>
+                                                <input type='text' class="form-control bdc-grey-200" name="title" value="{{$lesson->title}}">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="fw-500">Date</label>
+                                                        <input type="date" class="form-control bdc-grey-200" name="date" value={{$lesson->date}}>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="fw-500">Facilitator</label>
+                                                        <input type="text" class="form-control bdc-grey-200 end-date" name="facilitator" value="{{$lesson->facilitator}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="fw-500">Lesson Objectives</label>
+                                                <textarea class="form-control bdc-grey-200" rows='5' id="objectives" name="objectives">{{$lesson->objectives}}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="fw-500">Lesson Comments</label>
+                                                <textarea class="form-control bdc-grey-200" rows='5' id="post" name="comments">{{$lesson->comments}}</textarea>
+                                            </div>
+                                            <div class="text-right">
+                                                <button class="btn btn-outline-primary cur-p" type="submit">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="Comment{{$lesson->id}}">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="bd p-15">
+                                        <h5 class="m-0">Comment Lesson</h5>
                                     </div>
                                     <div class="modal-body">
                                         <form action="/commentLesson/{{$lesson->id}}" method="post">
