@@ -280,6 +280,7 @@ class dataController extends Controller
         return  redirect()->back();
     }
     function editLesson($id){
+        return Auth()->user()->institution;
         Lesson::where(['id'=>$id])->update([
             'title'=>request()->title,
             'date'=>request()->date,
