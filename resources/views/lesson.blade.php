@@ -35,8 +35,11 @@
                                 <hr>
                                 <div><?php echo html_entity_decode($lesson['Comments']); ?></div>
                                 @if(((Auth()->user()->role=='Director')&&(Auth()->user()->institution=$lesson->institution))||(Auth()->user()->role=='Coordinator'))
-                                <button class="btn btn-outline-info" data-bs-target="#CommentLesson{{$lesson->id}}" data-bs-toggle="modal">Comment</button>
-                                <button class="btn btn-outline-success" data-bs-target="#EditLesson{{$lesson->id}}" data-bs-toggle="modal">Edit</button>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-outline-info" data-bs-target="#CommentLesson{{$lesson->id}}" data-bs-toggle="modal">Comment</button>
+                                    <button class="btn btn-outline-success ms-2" data-bs-target="#EditLesson{{$lesson->id}}" data-bs-toggle="modal">Edit</button>
+                                </div>
+
                                 @endif
                             </div>
                         </div>
