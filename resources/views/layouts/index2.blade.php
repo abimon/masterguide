@@ -60,7 +60,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#institution">
+        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#inst">
           <span class="icon-holder">
             <i class="c-deep-black-500 bi bi-files mR-10"></i>
           </span>
@@ -339,8 +339,9 @@
 <div class="modal fade" id="event">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="bd p-15">
+      <div class="bd p-15 d-flex justify-content-between">
         <h5 class="m-0">Add Event</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/addPublicEvent" method="post">
@@ -394,8 +395,9 @@
 <div class="modal fade" id="less">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="bd p-15">
+      <div class="bd p-15 d-flex justify-content-between">
         <h5 class="m-0">Add Lesson</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/addLesson" method="post">
@@ -430,21 +432,22 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="institution">
+<div class="modal fade" id="inst">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="bd p-15">
-        <h5 class="m-0">Add Institution</h5>
+      <div class="bd p-15 d-flex justify-content-between">
+        <h5 class="m-0">Add Shurch/Institution</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/addInstitution" method="post">
           @csrf
           <div class="form-group">
-            <label class="fw-500">Name of Institution/Church</label>
-            <input type='text' class="form-control bdc-grey-200" name="institution">
+            <label class="fw-500">Institution/Church</label>
+            <input type='text' class="form-control bdc-grey-200" name="institution" placeholder="Eg. Marejeleo SDA">
           </div>
           <div class="text-right">
-            <button class="btn btn-primary cur-p" type="submit">Done</button>
+            <button class="btn btn-primary cur-p" type="submit">Save</button>
           </div>
         </form>
       </div>
