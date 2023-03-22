@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">{{$title}}</div>
+                <div class="card-header text-center">{{$event_title}}</div>
 
                 <div class="card-body">
                     <form method="POST" action="activityreg" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="event" id="" class="form-control mb-3" value="{{$title}}" disabled>
+                        <input type="text" name="event" id="" class="form-control mb-3" value="{{$event_title}}" disabled>
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
 
