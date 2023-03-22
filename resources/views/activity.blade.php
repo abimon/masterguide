@@ -8,7 +8,7 @@
                 <div class="card-header text-center"><h3><b>{{$event_title}} Registration</b></h3></div>
 
                 <div class="card-body">
-                    <form method="POST" action="activityreg" enctype="multipart/form-data">
+                    <form method="POST" action="/activityreg" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Event Title') }}</label>

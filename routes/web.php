@@ -65,6 +65,7 @@ Route::get('/events', [viewsController::class, 'events']);
 Route::get('/blog',[viewsController::class, 'blog']);
 Route::get('/blogpost/{title}',[viewsController::class, 'blogpost']);
 Route::post('/comment/{id}',[dataController::class, 'comment']);
+Route::post('/activityreg',[dataController::class, 'event_reg']);
 Route::get('/contact', function () {
     return view('contact');
 });
