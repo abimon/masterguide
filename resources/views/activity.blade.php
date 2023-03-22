@@ -1,16 +1,23 @@
-@extends('layouts.app', ['title'=>'Event Registration'])
+@extends('layouts.app', ['title'=>$event_title.' Registration'])
 
 @section('content')
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">{{$event_title}}</div>
+                <div class="card-header text-center"><h3><b>{{$event_title}} Registration</b></h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="activityreg" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="event" id="" class="form-control mb-3" value="{{$event_title}}" disabled>
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Event Title') }}</label>
+
+                            <div class="col-md-6">
+                            <input type="text" name="event" id="" class="form-control mb-3" value="{{$event_title}}" disabled>
+                            </div>
+                        </div>
+                        
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
 
@@ -54,7 +61,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required no-autocomplete>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -85,7 +92,7 @@
                             <label for="idno" class="col-md-4 col-form-label text-md-end">{{ __('ID/PP No.') }}</label>
 
                             <div class="col-md-6">
-                                <input id="idno" type="password" class="form-control" name="idno" required autocomplete="idno">
+                                <input id="idno" type="number" class="form-control" name="idno" required autocomplete="idno">
                             </div>
                         </div>
 
