@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
 use App\Models\Event;
+use App\Models\institution;
 use App\Models\Lesson;
 use App\Models\Like;
 use App\Models\Note;
@@ -131,5 +132,13 @@ class viewsController extends Controller
             'lessons'=>$lessons,
         ];
         return view('lesson', $data);
+    }
+    function activity($title){
+        $insts=institution::all();
+        $data=[
+            'event_title'=>$title,
+            'insts'=>$insts
+        ];
+        return view('activity',$data);
     }
 }

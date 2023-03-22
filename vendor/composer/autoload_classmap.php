@@ -41,6 +41,7 @@ return array(
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',
     'App\\Models\\Repository' => $baseDir . '/app/Models/Repository.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\activity' => $baseDir . '/app/Models/activity.php',
     'App\\Models\\institution' => $baseDir . '/app/Models/institution.php',
     'App\\Models\\register' => $baseDir . '/app/Models/register.php',
     'App\\Models\\testimonials' => $baseDir . '/app/Models/testimonials.php',

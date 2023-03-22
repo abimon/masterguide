@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\activity;
 use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
@@ -317,5 +318,15 @@ class dataController extends Controller
     function deletetestimony($id){
         testimonials::destroy($id);
         return redirect()->back();
+    }
+    function event_reg(){
+        activity::create([
+            'event_title'=>request()->event_title,
+            'attendee'=>request()->attendee,
+            'contact'=>request()->contact,
+            'email'=>request()->email,
+            'institution'=>request()->institution,
+            'idno'=>request()->idno
+        ]);
     }
 }

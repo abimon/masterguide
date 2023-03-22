@@ -21,10 +21,10 @@
                         <div class="pricingContent" style="height: 150px; overflow:hidden;">
                             <div style="font-size: small;"><?php html_entity_decode($event['description']);?></div>
                         </div><!-- /  CONTENT BOX-->
-                        <!-- 
+                       
                         <div class="pricingTable-sign-up">
-                            <a href="#" class="hover-btn-new orange"><span>sign up</span></a>
-                        </div>BUTTON BOX-->
+                            <a href="/reg/{{$event->event_title}}" class="hover-btn-new orange"><span>sign up</span></a>
+                        </div>
                     </div>
                 </div>
                 @endforeach

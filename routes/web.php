@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\dataController;
 use App\Http\Controllers\viewsController;
 use Illuminate\Auth\Events\Logout;
+use Illuminate\Routing\ViewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::get('/lesson', [viewsController::class, 'lesson']);
 
 });
+Route::get('/reg/{title}',[ViewController::class, 'activity']);
 Route::get('/chat', [viewsController::class,'chat']);
 Route::get('team', [viewsController::class, 'team']);
 Route::get('resources', [viewsController::class, 'resources']);
