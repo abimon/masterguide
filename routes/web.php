@@ -55,7 +55,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::get('/lesson', [viewsController::class, 'lesson']);
 
 });
-Route::get('/reg/{title}',[ViewController::class, 'activity']);
+Route::get('/reg/{title}',[viewsController::class, 'activity']);
 Route::get('/chat', [viewsController::class,'chat']);
 Route::get('team', [viewsController::class, 'team']);
 Route::get('resources', [viewsController::class, 'resources']);
