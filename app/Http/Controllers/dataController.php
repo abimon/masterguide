@@ -320,7 +320,6 @@ class dataController extends Controller
         return redirect()->back();
     }
     function event_reg(){
-        dd(request());
         activity::create([
             'event_title'=>request()->event,
             'attendee'=>(request()->fname).(request()->lname),
