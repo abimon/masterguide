@@ -321,7 +321,7 @@ class dataController extends Controller
     }
     function event_reg(){
         activity::create([
-            'event_title'=>request()->event_title,
+            'event_title'=>request()->event,
             'attendee'=>(request()->fname).(request()->lname),
             'contact'=>request()->contact,
             'email'=>request()->email,
