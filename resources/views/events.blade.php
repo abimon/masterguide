@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="pricingContent" style="height: 150px; overflow:hidden;">
-                            <div style="font-size: small;"><?php html_entity_decode($event['event_description']);?></div>
+                            <div style="font-size: small;"><?php echo html_entity_decode($event['event_description']);?></div>
                         </div><!-- /  CONTENT BOX-->
                        
                         <div class="pricingTable-sign-up">
