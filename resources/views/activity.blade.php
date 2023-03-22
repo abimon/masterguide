@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="/activityreg" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="event" id="" class="form-control mb-3" value="{{$event_title}}" disabled>
+                        <input type="hidden" name="event" id="" class="form-control mb-3" value="{{$event_title}}">
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
 
