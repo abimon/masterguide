@@ -328,5 +328,6 @@ class dataController extends Controller
             'institution'=>request()->institution,
             'idno'=>request()->idno
         ]);
+        return redirect('/');
     }
 }

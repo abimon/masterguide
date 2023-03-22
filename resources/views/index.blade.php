@@ -192,19 +192,19 @@
 		<div class="row text-left stat-wrap">
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-study"></i></span>
-				<p class="stat_count">120</p>
+				<p class="stat_count">1</p>
 				<h3>Students</h3>
 			</div>
 
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-online"></i></span>
-				<p class="stat_count">240</p>
+				<p class="stat_count">2</p>
 				<h3>Courses</h3>
 			</div>
 
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-years"></i></span>
-				<p class="stat_count">55</p>
+				<p class="stat_count">10</p>
 				<h3>Years Completed</h3>
 			</div>
 		</div>
@@ -245,11 +245,12 @@
 </div>
 end section -->
 <?php $img = asset('storage/images/parallax_04.jpg'); ?>
+<!--
 <div id="testimonials" class="parallax section db parallax-off" style="background-image:url({{$img}});">
 	<div class="container">
 		<div class="section-title text-center">
 			<h3>Testimonials</h3>
-		</div><!-- end title -->
+		</div>
 
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
@@ -268,15 +269,14 @@ end section -->
 									<p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
 								</div>
 								@endforeach
-								<!-- end testi-meta -->
 							</div>
 						</div>
 						@endforeach
 					</div>
 				</div>
-			</div><!-- end col -->
-		</div><!-- end row -->
-	</div><!-- end container -->
-</div><!-- end section -->
+			</div>
+		</div>
+	</div>
+</div> -->
 
 @endsection
