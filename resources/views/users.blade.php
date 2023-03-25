@@ -1,16 +1,17 @@
 <link rel="stylesheet" href="{{asset('storage/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('storage/css/adminator.css')}}">
 <div style="text-align: center;">
     <img src="{{asset('storage/images/favicon.png')}}" alt="" width="100">
 </div>
 <div style="text-align: center;">
-    <h3 style="font-family: cursive;">University Region</h3>
+    <h3 style="font-family: cursive;"><i>University Region</i></h3>
 </div>
 <div class="p-5">
     <!-- #Members Report ==================== -->
     <div class="bd bg-white">
         <div class="layers" id="members">
             <div class="layer w-100">
-                <div class="bg-info c-white p-5">
+                <div class="bg-info c-white p-2">
                     <div class="peers ai-c jc-sb gap-4 text-center">
                         <div class="peer peer-greed">
                             <h5>{{date('F jS, Y')}}</h5>
