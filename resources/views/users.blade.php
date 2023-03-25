@@ -30,8 +30,6 @@
                                 <th class=" bdwT-0">Avatar</th>
                                 <th class=" bdwT-0">Name</th>
                                 <th class=" bdwT-0">Institution</th>
-                                <th class=" bdwT-0">Joining Date</th>
-                                <th class=" bdwT-0">Role</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,8 +39,6 @@
                                 <th><img src="{{asset('storage/profile/'.$user->avatar)}}" alt="" width="40" height="40" class="rounded"></th>
                                 <td class="fw-600">{{$user->name}}</td>
                                 <td>{{$user->institution}}</td>
-                                <td>{{date_format(($user->created_at),'F jS, Y')}}</td>
-                                <td><span class="text-success">{{$user->role}}</span></td>
                             </tr>
                             @endforeach
                         </tbody>
