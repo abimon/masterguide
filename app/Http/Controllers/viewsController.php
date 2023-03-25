@@ -14,6 +14,7 @@ use App\Models\Post;
 use App\Models\Repository;
 use App\Models\testimonials;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class viewsController extends Controller
 {
@@ -115,7 +116,7 @@ class viewsController extends Controller
         return view('blogpost', $data);
     }
     function attendance(){
-        if(Auth()->user()->role=='Coordinatoor'){
+        if(Auth()->user()->role=='Coordinator'){
             $users=User::all();
         }
         else{
@@ -140,5 +141,14 @@ class viewsController extends Controller
             'insts'=>$insts
         ];
         return view('activity',$data);
+    }
+    function generatelist(){
+        $users=array();
+        foreach((request()->user_id) as $id){
+            $user=User::where(['id'=>$id])->first();
+            array_push($users,$user);
+        }
+        $pdf = FacadePdf::loadView('users', ['users'=>$users]);
+        return $pdf->download('Members.pdf');
     }
 }

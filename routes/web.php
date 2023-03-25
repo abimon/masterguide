@@ -49,6 +49,7 @@ Route::middleware(['checkSession'])->group(function(){
 
     Route::get('/chat/{name}', [viewsController::class, 'convo']);
     Route::get('/attendance', [viewsController::class, 'attendance']);
+    Route::post('/selectmem',[viewsController::class, 'generatelist']);
     Route::get('/dashboard', [viewsController::class, 'dashboard']);
     Route::get('/calendar', [viewsController::class, 'calendar']);
     

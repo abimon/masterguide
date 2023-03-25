@@ -1,4 +1,4 @@
-@extends('layouts.index2',['title'=>'Attendance'])
+@extends('layouts.index2',['title'=>'Members'])
 @section('dashboard')
 <!-- #Sales Report ==================== -->
 <div class="bd bgc-white">
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="table-responsive p-20">
-                <form action="/markAttendance" method="post">
+                <form action="" method="post">
                     @csrf
                     <table class="table">
                         <thead>
@@ -54,12 +54,15 @@
                         </tbody>
                     </table>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-info">Submit</button>
+                        <button type="submit" formaction="/selectmem" class="btn btn-outline-warning">Select</button>
+                        <button type="submit" formaction="/markAttendance" class="btn btn-outline-info">Submit Attendance</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
 
+</script>
 @endsection

@@ -118,10 +118,14 @@ class dataController extends Controller
     function generatePDF($name){
         $course=Course::where(['course_name'=>$name])->first();
         $notes=Note::where('course_id','=',$course->id)->orderBy('chapter', 'asc')->get();
-        $data=['notes'=>$notes, 'course'=>$course];
+        $data=[
+            'notes'=>$notes, 
+            'course'=>$course
+        ];
         $pdf = FacadePdf::loadView('notes', $data);
         return $pdf->download($name.'.pdf');
     }
+    
     function text($message, $phone){
         $curl = curl_init();
         $data= json_encode(array(

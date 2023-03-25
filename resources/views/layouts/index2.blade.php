@@ -40,7 +40,7 @@
           <span class="icon-holder">
             <i class="c-brown-500 bi bi-r-square mR-10"></i>
           </span>
-          <span class="title">Attendance</span>
+          <span class="title">Members</span>
         </a>
       </li>
       <li class="nav-item">
