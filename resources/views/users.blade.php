@@ -17,9 +17,6 @@
                             <h5>{{date('F jS, Y')}}</h5>
                             <h3 class="mB-0">Members Report</h3>
                         </div>
-                        <div class="peer">
-                            <h3 style="text-align: end;">{{count($users)}}</h3>
-                        </div>
                     </div>
                 </div>
                 <div style="table-layout: auto;">
