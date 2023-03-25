@@ -44,7 +44,6 @@
                                             <input class="form-check-input" type="checkbox" value="{{$user->id}}"
                                                 name="user_id[]" id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
-
                                             </label>
                                         </div>
                                     </span>
@@ -54,7 +53,7 @@
                         </tbody>
                     </table>
                     <div class="modal-footer">
-                        <button type="submit" formaction="/selectmem" class="btn btn-outline-warning">Select</button>
+                        <button type="submit" formaction="/selectmem" class="btn btn-outline-dark">Select</button>
                         <button type="submit" formaction="/markAttendance" class="btn btn-outline-info">Submit Attendance</button>
                     </div>
                 </form>
