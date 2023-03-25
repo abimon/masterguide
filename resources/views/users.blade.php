@@ -1,7 +1,8 @@
+<link rel="stylesheet" href="{{asset('storage/css/bootstrap.min.css')}}">
 <div style="text-align: center;">
     <img src="{{asset('storage/images/favicon.png')}}" alt="" width="100">
 </div>
-<div class="d-flex justify-content-center">
+<div style="text-align: center;">
     <h3 style="font-family: cursive;">University Region</h3>
 </div>
 <div class="p-5">
@@ -16,12 +17,12 @@
                             <h3 class="mB-0">Members Report</h3>
                         </div>
                         <div class="peer">
-                            <h3 class="text-right text-dark">{{count($users)}}</h3>
+                            <h3 style="text-align: end;">{{count($users)}}</h3>
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive p-20">
-                    <table class="table">
+                <div style="table-layout: auto;">
+                    <table style="width: 100%;">
                         <thead>
                             <tr>
                                 <th class=" bdwT-0">#</th>
