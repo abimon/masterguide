@@ -214,7 +214,6 @@ class dataController extends Controller
         return redirect()->back();
     }
     function addPublicEvent(){
-        dd(request());
         Event::create([
             'user_id'=>Auth()->user()->id,
             'event_title'=>request()->event_title,
