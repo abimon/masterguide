@@ -151,4 +151,5 @@ class viewsController extends Controller
         $pdf = FacadePdf::loadView('users', ['users'=>$users]);
         return $pdf->download('Members.pdf');
     }
+    
 }

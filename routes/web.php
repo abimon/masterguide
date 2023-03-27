@@ -70,8 +70,6 @@ Route::post('/activityreg',[dataController::class, 'event_reg']);
 Route::get('/contact', function () {
     return view('contact');
 });
-
-
 Route::get('/avatar', function () {
     return view('avatar');
 });
