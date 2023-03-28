@@ -348,7 +348,7 @@ class dataController extends Controller
         $data =[
             'users'=>$users
         ];
-        $pdf = FacadePdf::loadView('eventatend', ['users'=>$users]);
+        $pdf = FacadePdf::loadView('eventattend', ['users'=>$users]);
         return $pdf->download('Event_Attendance.pdf');
     }
 }
