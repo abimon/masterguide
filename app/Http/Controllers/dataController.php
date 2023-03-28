@@ -326,7 +326,7 @@ class dataController extends Controller
     function event_reg(){
         activity::create([
             'event_title'=>request()->event,
-            'attendee'=>(request()->fname).(request()->lname),
+            'attendee'=>(request()->fname).' '.(request()->lname),
             'contact'=>request()->contact,
             'email'=>request()->email,
             'institution'=>request()->institution,
@@ -334,4 +334,5 @@ class dataController extends Controller
         ]);
         return redirect('/');
     }
+    
 }

@@ -1,4 +1,4 @@
-@extends('layouts.index2',['title'=>'Members'])
+@extends('layouts.index2',['title'=>$title])
 @section('dashboard')
 <!-- #Sales Report ==================== -->
 <div class="bd bgc-white">
@@ -8,7 +8,7 @@
                 <div class="peers ai-c jc-sb gap-40">
                     <div class="peer peer-greed">
                         <h5>{{date('F j, Y')}}</h5>
-                        <p class="mB-0">Members Attendance</p>
+                        <p class="mB-0">Event Attendance</p>
                     </div>
                     <div class="peer">
                         <h3 class="text-right text-light">{{$users->count()}}</h3>
@@ -22,36 +22,28 @@
                         <thead>
                             <tr>
                                 <th class=" bdwT-0">#</th>
-                                <th class=" bdwT-0">Avatar</th>
                                 <th class=" bdwT-0">Name</th>
+                                <th class="bdwT-0">Phone No.</th>
+                                <th class="bdwT-0">Email</th>
                                 <th class=" bdwT-0">Institution</th>
-                                <th class=" bdwT-0">Select</th>
+                                <th class=" bdwT-0">ID</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $key=>$user)
                             <tr>
-                                <th class=" bdwT-0">{{$key+1}}</th>
-                                <td class="fw-600"><img src="{{asset('storage/profile/'.$user->avatar)}}"
-                                        class='rounded-circle' alt="" width='40' height=40></td>
-                                <td>{{$user->name}}</td>
+                                <th>{{$key+1}}</th>
+                                <td>{{$user->attendee}}</td>
+                                <td>{{$user->contact}}</td>
+                                <td>{{$user->email}}</td>
                                 <td>{{$user->institution}}</td>
-                                <td><span class="">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{$user->id}}"
-                                                name="user_id[]" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                            </label>
-                                        </div>
-                                    </span>
-                                </td>
+                                <td>{{$user->idno}}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="modal-footer">
-                        <button type="submit" formaction="/selectmem" class="btn btn-outline-dark">Select</button>
-                        <button type="submit" formaction="/markAttendance" class="btn btn-outline-info">Submit Attendance</button>
+                        <button type="submit" formaction="/print/{{$title}}" class="btn btn-outline-info">Print</button>
                     </div>
                 </form>
             </div>

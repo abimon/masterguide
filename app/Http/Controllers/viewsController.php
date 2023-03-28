@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\activity;
 use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
@@ -150,6 +151,22 @@ class viewsController extends Controller
         }
         $pdf = FacadePdf::loadView('users', ['users'=>$users]);
         return $pdf->download('Members.pdf');
+    }
+    function eventatt($title){
+        $users=activity::where(['event_title'=>$title])->orderBy('attendee','desc')->get();
+        $data =[
+            'users'=>$users
+        ];
+        $pdf = FacadePdf::loadView('eventatend', ['users'=>$users]);
+        return $pdf->download('Event_Attendance.pdf');
+    }
+    function event_attendance($title){
+        $users=activity::where(['event_title'=>$title])->orderBy('attendee','desc')->get();
+        $data =[
+            'title'=>$title,
+            'users'=>$users
+        ];
+        return view('attendee',$data);
     }
     
 }

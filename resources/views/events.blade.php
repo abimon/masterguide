@@ -24,6 +24,9 @@
                        
                         <div class="pricingTable-sign-up">
                             <a href="/reg/{{$event->event_title}}" class="hover-btn-new orange"><span>sign up</span></a>
+                            @if(Auth()->user()->role!='Member')
+                            <a href="/reg/{{$event->event_title}}" class="hover-btn-new orange"><span>Registered</span></a>
+                            @endif
                         </div>
                     </div>
                 </div>
