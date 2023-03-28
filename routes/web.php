@@ -46,12 +46,12 @@ Route::middleware(['checkSession'])->group(function(){
     Route::post('/testimony',[dataController::class, 'addtestimony']);
     Route::get('/deletetestimony/{id}',[dataController::class, 'deletetestimony']);
     Route::post('/updatetestimony/{id}',[dataController::class, 'updatetestimony']);
+    Route::post('/selectmem',[dataController::class, 'generatelist']);
     Route::post('/print/{title}',[dataController::class, 'eventatt']);
 
     Route::get('/chat/{name}', [viewsController::class, 'convo']);
     Route::get('/attend/{title}', [viewsController::class, 'event_attendance']);
     Route::get('/attendance', [viewsController::class, 'attendance']);
-    Route::post('/selectmem',[viewsController::class, 'generatelist']);
     Route::get('/dashboard', [viewsController::class, 'dashboard']);
     Route::get('/calendar', [viewsController::class, 'calendar']);
     

@@ -334,5 +334,21 @@ class dataController extends Controller
         ]);
         return redirect('/');
     }
-    
+    function generatelist(){
+        $users=array();
+        foreach((request()->user_id) as $id){
+            $user=User::where(['id'=>$id])->first();
+            array_push($users,$user);
+        }
+        $pdf = FacadePdf::loadView('users', ['users'=>$users]);
+        return $pdf->download('Members.pdf');
+    }
+    function eventatt($title){
+        $users=activity::where(['event_title'=>$title])->orderBy('attendee','desc')->get();
+        $data =[
+            'users'=>$users
+        ];
+        $pdf = FacadePdf::loadView('eventatend', ['users'=>$users]);
+        return $pdf->download('Event_Attendance.pdf');
+    }
 }
