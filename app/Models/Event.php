@@ -15,6 +15,8 @@ class Event extends Model
         'event_date',
         'event_duration',
         'isPublic',
-        'user_id'
+        'user_id',
+        'venue',
+        'charges'
     ];
 }

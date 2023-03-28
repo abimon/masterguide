@@ -83,7 +83,7 @@ class viewsController extends Controller
         return view('calendar', $data);
     }
     function events(){
-        $events=Event::where(['isPublic'=>1])->get();
+        $events=Event::where(['isPublic'=>1])->orderBy('event_date','asc')->get();
         $data = [
             'events'=>$events,
         ];
