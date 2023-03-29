@@ -324,23 +324,7 @@ class dataController extends Controller
         return redirect()->back();
     }
     function event_reg(){
-        Validator::make(request(), [
-            'fname'=> ['required', 'string', 'max:255'],
-            'lname'=> ['required', 'string', 'max:255'],
-            'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'contact'=> ['required', 'string', 'max:10'],
-            'institution'=> ['required', 'string', 'max:255'],
-            'avatar' => ['image'],
-            'about'=>['string', 'max:255'],
-            'birthday'=> ['required', 'date', 'max:255'],
-            'password'=> ['required', 'string', 'min:8', 'confirmed'],
-            
-            'attendee'=>['required', 'string', 'max:255'],
-            'contact'=>['required', 'integer', 'max:13'],
-            'email'=>['required', 'string', 'email', 'max:255', 'unique:users'],
-            'institution'=>['required', 'string', 'max:255'],
-            'idno'=>['required', 'integer', 'max:8', 'unique:users']
-        ]);
+        
         activity::create([
             'event_title'=>request()->event,
             'attendee'=>(request()->fname).' '.(request()->lname),
