@@ -19,7 +19,7 @@ use App\Models\testimonials;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Support\Facades\File; 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class dataController extends Controller
 {
@@ -324,6 +324,23 @@ class dataController extends Controller
         return redirect()->back();
     }
     function event_reg(){
+        Validator::make(request(), [
+            'fname'=> ['required', 'string', 'max:255'],
+            'lname'=> ['required', 'string', 'max:255'],
+            'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'contact'=> ['required', 'string', 'max:10'],
+            'institution'=> ['required', 'string', 'max:255'],
+            'avatar' => ['image'],
+            'about'=>['string', 'max:255'],
+            'birthday'=> ['required', 'date', 'max:255'],
+            'password'=> ['required', 'string', 'min:8', 'confirmed'],
+            
+            'attendee'=>['required', 'string', 'max:255'],
+            'contact'=>['required', 'integer', 'max:13'],
+            'email'=>['required', 'string', 'email', 'max:255', 'unique:users'],
+            'institution'=>['required', 'string', 'max:255'],
+            'idno'=>['required', 'integer', 'max:8', 'unique:users']
+        ]);
         activity::create([
             'event_title'=>request()->event,
             'attendee'=>(request()->fname).' '.(request()->lname),
@@ -333,6 +350,14 @@ class dataController extends Controller
             'idno'=>request()->idno
         ]);
         return redirect('/');
+    }
+    function bulk(){
+        $users=activity::all();
+        foreach($users as $user){
+            $message='Hello '.($user->attendee).'! Thank you for registering to attend the Master Guide Joint Sabbath. We humbly request that you send KSHs 150 to facilitate your entrance and lunch on that day before Thursday 30th March 2023 12:00pm. Thank you. Regards University Region.';
+            $this->sms($message, $user->contact);
+        }
+        
     }
     function generatelist(){
         $users=array();
@@ -350,5 +375,36 @@ class dataController extends Controller
         ];
         $pdf = FacadePdf::loadView('eventattend', ['users'=>$users]);
         return $pdf->download('Event_Attendance.pdf');
+    }
+    function sms($message, $phone){
+        $curl = curl_init();
+        $data= json_encode(array(
+        "mobile"=>$phone,
+        "response_type"=> "json",
+        "sender_name"=> "23107",
+        "service_id"=> 0,
+        "message"=>$message));
+        curl_setopt_array(
+            $curl, array(
+                CURLOPT_URL => 'https://api.mobitechtechnologies.com/sms/sendsms',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 15,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data),
+                CURLOPT_HTTPHEADER => array(
+                    'h_api_key: b123e31006efde04f74addb39db9604ebcf9e3f972743e1d47df0d4ef52b1078',
+                    'Content-Type: application/json'
+                ),
+            )
+        );
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        return redirect()->back();
+        
     }
 }

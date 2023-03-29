@@ -48,6 +48,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::post('/updatetestimony/{id}',[dataController::class, 'updatetestimony']);
     Route::post('/selectmem',[dataController::class, 'generatelist']);
     Route::post('/print/{title}',[dataController::class, 'eventatt']);
+    Route::get('/bulk',[dataController::class, 'bulk']);
 
     Route::get('/chat/{name}', [viewsController::class, 'convo']);
     Route::get('/attend/{title}', [viewsController::class, 'event_attendance']);

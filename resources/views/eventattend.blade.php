@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive p-20">
+                <div class="table-responsive p-2">
                     @csrf
                     <table class="table">
                         <thead>
