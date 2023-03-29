@@ -357,6 +357,7 @@ class dataController extends Controller
             $message='Hello '.($user->attendee).'! Thank you for registering to attend the Master Guide Joint Sabbath. We humbly request that you send KSHs 150 to +254714298174 to facilitate your entrance and lunch on that day before Thursday 30th March 2023 12:00pm. Thank you. Regards University Region.';
             $this->sms($message, $user->contact);
         }
+        return redirect('dashboard');
         
     }
     function generatelist(){
