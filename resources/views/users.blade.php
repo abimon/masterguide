@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('storage/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('storage/css/adminator.css')}}">
 <div style="text-align: center;">
-    <img src="{{asset('storage/images/favicon.png')}}" alt="" width="100">
+    <img src="{{asset('storage/images/favicon.png')}}" alt="" width="100" height="70">
 </div>
 <div style="text-align: center;">
     <h3 style="font-family: cursive;"><i>University Region</i></h3>
