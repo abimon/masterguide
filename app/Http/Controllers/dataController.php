@@ -354,9 +354,9 @@ class dataController extends Controller
             array_push($users,$user);
         }
         $data = ['users'=>$users];
-        return view('users', $data);
-        //$pdf = FacadePdf::loadView('users', $data);
-        //return $pdf->download('Members.pdf');
+        //return view('users', $data);
+        $pdf = FacadePdf::loadView('users', $data);
+        return $pdf->download('Members.pdf');
     }
     function eventatt($title){
         $users=activity::where(['event_title'=>$title])->orderBy('attendee','desc')->get();
