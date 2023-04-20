@@ -19,27 +19,18 @@
                         </div>
                     </div>
                 </div>
-                <div style="table-layout: auto;">
-                    <table style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th class=" bdwT-0">#</th>
-                                <th class=" bdwT-0">Avatar</th>
-                                <th class=" bdwT-0">Name</th>
-                                <th class=" bdwT-0">Institution</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($users as $key=>$user)
-                            <tr>
-                                <th class=" bdwT-0">{{$key+1}}</th>
-                                <th><img src="{{asset('storage/profile/'.$user->avatar)}}" alt="" width="40" height="40" class="rounded"></th>
-                                <td class="fw-600">{{$user->name}}</td>
-                                <td>{{$user->institution}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="row">
+                    @foreach($users as $key=>$user)
+                    <div class="col-4">
+                    <div class="card">
+                        <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{$user->name}}</h5>
+                            <p class="card-text">{{$user->institution}}</p>
+                        </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
