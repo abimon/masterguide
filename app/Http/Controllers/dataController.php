@@ -62,8 +62,8 @@ class dataController extends Controller
     function changeprof(){
         $filename = Auth()->user()->avatar;
         Storage::delete('/profile/'.$filename);
-        request()->file('passport')->storeAs('public/profile', $filename.date('Hms'));
-        User::where(['id'=>Auth()->user()->id])->update(['avatar'=>$filename.date('Hms')]);
+        request()->file('passport')->storeAs('public/profile', $filename);
+        User::where(['id'=>Auth()->user()->id])->update(['avatar'=>$filename]);
         return redirect()->back();
     }
     function makeRole($role,$id){
