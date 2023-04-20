@@ -49,7 +49,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::post('/selectmem',[dataController::class, 'generatelist']);
     Route::post('/print/{title}',[dataController::class, 'eventatt']);
     Route::get('/bulk',[dataController::class, 'bulk']);
-    Route::get('/changeprof',[dataController::class, 'changeprof']);
+    Route::post('/changeprof',[dataController::class, 'changeprof']);
     
 
     Route::get('/chat/{name}', [viewsController::class, 'convo']);
