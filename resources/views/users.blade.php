@@ -21,7 +21,7 @@
                 </div>
                 <div class="row">
                     @foreach($users as $key=>$user)
-                    <div class="col-4">
+                    <div class="col-3 p-2">
                         <div class="card">
                             <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:210px;height:300px;" >
                             <div class="card-body text-center">
