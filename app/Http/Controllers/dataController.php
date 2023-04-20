@@ -18,7 +18,8 @@ use App\Models\Repository;
 use App\Models\testimonials;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class dataController extends Controller
@@ -60,8 +61,9 @@ class dataController extends Controller
     }
     function changeprof(){
         $filename = Auth()->user()->avatar;
-        
-        request()->file('passport')->storeAs('public/profile', $filename);
+        Storage::delete('/profile/'.$filename);
+        request()->file('passport')->storeAs('public/profile', $filename.date('Hms'));
+        User::where(['id'=>Auth()->user()->id])->update(['avatar'=>$filename.date('Hms')]);
         return redirect()->back();
     }
     function makeRole($role,$id){
