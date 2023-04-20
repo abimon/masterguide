@@ -8,7 +8,7 @@
 </div>
 <div class="p-5 bg-info">
     <!-- #Members Report ==================== -->
-    <div class="bd bg-transparent">
+    <div class="bg-transparent">
         <div class="layers" id="members">
             <div class="layer w-100">
                 <div class="bg-info c-white p-2">
@@ -19,11 +19,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div style="margin:0;">
                     @foreach($users as $key=>$user)
-                    <div class="col-3 p-2">
-                        <div class="card bg-transparent d-flex justify-content-center">
-                            <div class="d-flex justify-content-center">
+                    <div style="width:30%; padding:3px;">
+                        <div style="align-content: center;">
+                            <div style="align-content: center;">
                                 <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:100px;height:150px;" >
                             </div>
                             <div class="card-body text-center text-light">
