@@ -6,7 +6,7 @@
 <div style="text-align: center;">
     <h3 style="font-family: cursive;"><i>University Region</i></h3>
 </div>
-<div class="p-5">
+<div class="p-5 bg-info">
     <!-- #Members Report ==================== -->
     <div class="bd bg-white">
         <div class="layers" id="members">
@@ -22,12 +22,12 @@
                 <div class="row">
                     @foreach($users as $key=>$user)
                     <div class="col-4">
-                    <div class="card">
-                        <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{$user->name}}</h5>
-                            <p class="card-text">{{$user->institution}}</p>
-                        </div>
+                        <div class="card">
+                            <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" width>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{$user->name}}</h5>
+                                <p class="card-text">{{$user->institution}}</p>
+                            </div>
                         </div>
                     </div>
                     @endforeach
