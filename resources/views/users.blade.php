@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('storage/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('storage/css/adminator.css')}}">
 <div style="text-align: center;">
-    <img src="{{asset('storage/images/favicon.png')}}" alt="">
+    <img src="{{asset('storage/images/favicon.png')}}" alt="" width="100">
 </div>
 <div style="text-align: center;">
     <h3 style="font-family: cursive;"><i>University Region</i></h3>
@@ -23,7 +23,7 @@
                     @foreach($users as $key=>$user)
                     <div class="col-4">
                         <div class="card">
-                            <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:70px;height:100px;" >
+                            <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:210px;height:300px;" >
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{$user->name}}</h5>
                                 <p class="card-text">{{$user->institution}}</p>
