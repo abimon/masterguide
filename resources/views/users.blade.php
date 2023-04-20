@@ -8,7 +8,7 @@
 </div>
 <div class="p-5 bg-info">
     <!-- #Members Report ==================== -->
-    <div class="bd bg-white">
+    <div class="bd bg-transparent">
         <div class="layers" id="members">
             <div class="layer w-100">
                 <div class="bg-info c-white p-2">
