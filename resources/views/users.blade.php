@@ -24,7 +24,7 @@
                     <div class="col-3 p-2">
                         <div class="card bg-transparent d-flex justify-content-center">
                             <div class="d-flex justify-content-center">
-                                <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:270px;height:300px;" >
+                                <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:100px;height:150px;" >
                             </div>
                             <div class="card-body text-center text-light">
                                 <h5 class="card-title">{{$user->name}}</h5>
