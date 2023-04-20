@@ -23,7 +23,9 @@
                     @foreach($users as $key=>$user)
                     <div class="col-3 p-2">
                         <div class="card d-flex justify-content-center">
-                            <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:210px;height:300px;" >
+                            <div class="d-flex justify-content-center">
+                                <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:210px;height:300px;" >
+                            </div>
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{$user->name}}</h5>
                                 <p class="card-text">{{$user->institution}}</p>
