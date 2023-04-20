@@ -21,7 +21,7 @@
                 </div>
                 <div style="margin:0; display:inline-block">
                     @foreach($users as $key=>$user)
-                    <div style="width:30%; margin:5px;">
+                    <div style="width:30%; margin:5px; float:left;">
                         <div style="align-content: center;">
                             <div style="align-content: center;">
                                 <img src="{{asset('storage/profile/'.$user->avatar)}}" class="card-img-top" style="width:100px;height:150px;" >
