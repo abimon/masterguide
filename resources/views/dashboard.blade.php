@@ -66,10 +66,10 @@
 </style>
 <div>
     <div class="d-flex justify-content-end mb-2">
-        <div class="btn btn-outline-secondary">
+        <div class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#category">
             <i class="fa fa-plus"></i> Category
         </div>
-        <div class="btn btn-outline-secondary ms-2">
+        <div class="btn btn-outline-secondary ms-2" data-bs-toggle="modal" data-bs-target="#course">
             <i class="fa fa-plus"></i> Course
         </div>
         <div class="btn btn-outline-secondary ms-2">
