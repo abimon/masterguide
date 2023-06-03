@@ -10,7 +10,7 @@
 			<div class="col-lg-3 col-md-6 col-12">
 				<div class="our-team">
 					<div class="team-img">
-						<img src="{{asset('storage/profile/'.$user->avatar)}}" style="width: 250px; height: 300px;">
+						<img src="{{asset('storage/profile/'.$user['avatar'])}}" style="width: 250px; height: 300px;">
 						<div class="social">
 							<ul>
 								<!--
