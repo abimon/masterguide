@@ -146,7 +146,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mt-2">
         <!-- #posts Report ==================== -->
         <div class="bd bgc-white">
             <div class="layers" id="members">
@@ -218,7 +218,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mt-2">
         <!-- #Members Report ==================== -->
         <div class="bd bgc-white">
             <div class="layers" id="members">
@@ -292,10 +292,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mt-2">
         <!-- #Members Report ==================== -->
         <div class="bd bgc-white">
-            <div class="layers" id="members">
+            <div class="layers">
 
                 <div class="layer w-100">
                     <div class="bgc-light-blue-500 c-white p-20">
