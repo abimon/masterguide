@@ -124,7 +124,7 @@
   <div class="col-md-10">
     <!-- ### $Topbar ### -->
 
-    <div>
+    <div class="m-2">
       @yield('dashboard')
     </div>
   </div>

@@ -37,25 +37,11 @@ class dataController extends Controller
         else{
             $inv=0;
         }
-        $phone=request()->contact;
-        $code='+254';
-        $first= substr($phone, 0, 1);
-        if($first=='0'){
-            $contact=substr_replace($phone, $code, 0, 1);
-        }
-        else{
-            $contact=$code.$phone;
-        }
         User::where(['id'=>(Auth()->user()->id)])->update([
-            'name'=>request()->name,
-            'email'=>request()->email,
-            'contact'=>$contact,
-            'institution'=>request()->institution,
             'isAssociate'=>$ass,
             'isInvested'=>$inv,
             'PPNo'=>request()->PPNo,
             'about'=>request()->about,
-            'birthday'=>request()->birthday,
         ]);
         return redirect()->back();
     }
