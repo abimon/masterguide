@@ -57,7 +57,7 @@ class viewsController extends Controller
         return view('team',$data);
     }
     function dashboard(){
-        $users=User::orderBy('name', 'asc')->paginate(20);
+        $users=User::orderBy('name', 'asc')->get();
         $repos=Repository::all();
         $birthdays=collect();
         $posts=Post::orderBy('id', 'desc')->get();
@@ -163,7 +163,6 @@ class viewsController extends Controller
         ];
         return view('activity',$data);
     }
-    
     function event_attendance($title){
         $users=activity::where(['event_title'=>$title])->orderBy('attendee','desc')->get();
         $data =[
