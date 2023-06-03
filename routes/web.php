@@ -22,9 +22,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::get('/mail', function () {
         return view('email');
     });
-    Route::get('/compose', function () {
-        return view('compose');
-    });
+    Route::get('/compose', [viewsController::class,'compose']);
     Route::post('/profile_update', [dataController::class, 'profile_update']);
     Route::post('/sendMessage/{id}', [dataController::class, 'sendMessage']);
     Route::post('/uploadresource', [dataController::class, 'uploadresource']);

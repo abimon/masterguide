@@ -171,5 +171,9 @@ class viewsController extends Controller
         ];
         return view('attendee',$data);
     }
-    
+    function compose(){
+        $messages=Conversation::where(['recepient_id'=>Auth()->user()->id])->where('isRead','!=',1)->get();
+        $data=['messages'=>$messages];
+        return view('compose',$data);
+    }
 }
