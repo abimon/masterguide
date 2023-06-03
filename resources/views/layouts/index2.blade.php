@@ -97,7 +97,7 @@
           <span class="icon-holder">
             <i class="c-deep-purple-500 bi bi-chat mR-10"></i>
           </span>
-          <span class="title">Chat</span><span class="badge bg-danger">4</span>
+          <span class="title">Chat </span><span class="badge bg-danger">4</span>
         </a>
       </li>
       <li class="nav-item">
