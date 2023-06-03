@@ -72,7 +72,7 @@
                 <a href="#members">
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1"><i class="bi bi-people"></i> Total Members</h6>
+                            <h6 class="lh-1"><i class="bi bi-people"></i></h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
@@ -92,7 +92,7 @@
                 <a href="/resources">
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1"><i class="bi bi-files"></i> Resource Files</h6>
+                            <h6 class="lh-1"><i class="bi bi-files"></i></h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">

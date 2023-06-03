@@ -37,6 +37,11 @@ class viewsController extends Controller
         $user=User::where(['name'=>$name])->first();
         $users=User::where(['name'=>$name])->orderBy('name', 'asc')->get();
         $messages=Conversation::where(['recepient_id'=>$user->id])->orWhere(['sender_id'=>$user->id])->get();
+        $mess=Conversation::where(['recepient_id'=>Auth()->user()->id])->where(['sender_id'=>$user->id])->get();
+        foreach($mess as $message){
+            $message->isRead=1;
+            $message->update();
+        }
         return view('convo',['users'=>$users, 'messages'=>$messages]);
     }
     function team(){
@@ -51,6 +56,7 @@ class viewsController extends Controller
         $repos=Repository::all();
         $birthdays=collect();
         $posts=Post::orderBy('id', 'desc')->get();
+        $messages=Conversation::where(['recepient_id'=>Auth()->user()->id])->where('isRead','!=',1)->get();
         foreach($users as $user){
             if((date_format(date_create($user->birthday), 'F jS'))==date('F jS')){
                 $birthdays->push($user);
@@ -60,7 +66,8 @@ class viewsController extends Controller
             'users'=>$users, 
             'repos'=>$repos,
             'posts'=>$posts,
-            'birthdays'=>$birthdays
+            'birthdays'=>$birthdays,
+            'messages'=>$messages
         ];
         return view('dashboard',$data);
     }
@@ -78,8 +85,10 @@ class viewsController extends Controller
     }
     function calendar(){
         $events=Event::where(['user_id'=>Auth()->user()->id])->orWhere(['isPublic'=>1])->get();
+        $messages=Conversation::where(['recepient_id'=>Auth()->user()->id])->where('isRead','!=',1)->get();
         $data=[
             'events'=>$events,
+            'messages'=>$messages
         ];
         return view('calendar', $data);
     }
@@ -94,10 +103,12 @@ class viewsController extends Controller
         $posts= Post::where(['isPosted'=>1])->get();
         $comments= Comment::all();
         $likes=Like::all();
+        $messages=Conversation::where(['recepient_id'=>Auth()->user()->id])->where('isRead','!=',1)->get();
         $data=[
             'posts'=>$posts,
             'comments'=>$comments,
             'likes'=>$likes,
+            'messages'=>$messages
         ];
         return view('blog', $data);
     }
@@ -123,8 +134,10 @@ class viewsController extends Controller
         else{
             $users=User::where(['institution'=>Auth()->user()->institution])->get();
         }
+        $messages=Conversation::where(['recepient_id'=>Auth()->user()->id])->where('isRead','!=',1)->get();
         $data=[
             'users'=>$users,
+            'messages'=>$messages
         ];
         return view('attendance', $data);
     }

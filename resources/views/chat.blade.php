@@ -8,6 +8,7 @@
     </div>
     <div class="col-md-8">
       @foreach($users as $user)
+      
       @if($user->id != Auth()->user()->id)
       <div class="row alert">
         <div class="col-3">
@@ -22,6 +23,7 @@
               <i class="bi bi-bell-fill text-secondary"></i>
               @endif
               {{$user->name}}
+              <span class="badge bg-secondary">{{$messages->where('sender_id',$user->id)->orWhere('recepient_id',$user->id)->count()}}</span>\
             </a>
           </p>
         </div>
