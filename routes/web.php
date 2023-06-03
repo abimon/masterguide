@@ -48,6 +48,8 @@ Route::middleware(['checkSession'])->group(function(){
     Route::post('/print/{title}',[dataController::class, 'eventatt']);
     Route::get('/bulk',[dataController::class, 'bulk']);
     Route::post('/changeprof',[dataController::class, 'changeprof']);
+    Route::post('/createCategory',[dataController::class, 'createCategory']);
+    Route::post('/createCourse',[dataController::class, 'createCourse']);
     
 
     Route::get('/chat/{name}', [viewsController::class, 'convo']);

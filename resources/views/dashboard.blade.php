@@ -65,12 +65,15 @@
     }
 </style>
 <div>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end mb-2">
         <div class="btn btn-outline-secondary">
             <i class="fa fa-plus"></i> Category
         </div>
         <div class="btn btn-outline-secondary ms-2">
             <i class="fa fa-plus"></i> Course
+        </div>
+        <div class="btn btn-outline-secondary ms-2">
+            <i class="fa fa-pen"></i> Course
         </div>
     </div>
     <div class="masonry-item  w-100">
@@ -353,5 +356,54 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="category">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="bd p-15 d-flex justify-content-between">
+                <h5 class="m-0">Add Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/createCategory" method="post">
+                    @csrf
+                    <div class="form-floating">
+                        <input type='text' class="form-control bdc-grey-200" name="category" placeholder=" ">
+                        <label class="fw-500">Category</label>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary cur-p" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="course">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="bd p-15 d-flex justify-content-between">
+                <h5 class="m-0">Add Course</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/createCourse" method="post">
+                    @csrf
+                    <select class="form-select" aria-label="" name="course">
+                        <option selected disabled>Select Category</option>
+                        @foreach($categories as $category)
+                        <option value="{{category->id}}">{{category->category_title}}</option>
+                        @endforeach
+                    </select>
+                    <div class="form-floating">
+                        <input type='text' class="form-control bdc-grey-200" name="course" placeholder=" ">
+                        <label class="fw-500">Course</label>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary cur-p" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

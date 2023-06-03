@@ -384,7 +384,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="bd p-15 d-flex justify-content-between">
-        <h5 class="m-0">Add Shurch/Institution</h5>
+        <h5 class="m-0">Add Church/Institution</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
