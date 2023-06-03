@@ -92,7 +92,7 @@
                 <a href="/resources">
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1"><i class="bi bi-files"></i> Posts</h6>
+                            <h6 class="lh-1"><i class="bi bi-files"></i> Resources</h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
