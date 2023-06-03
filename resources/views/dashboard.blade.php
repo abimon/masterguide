@@ -66,15 +66,19 @@
 </style>
 <div>
     <div class="d-flex justify-content-end mb-2">
+        @if(Auth()->user()->role=='Coordinator')
         <div class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#category">
             <i class="fa fa-plus"></i> Category
         </div>
+        @endif
+        @if(Auth()->user()->role!='Member')
         <div class="btn btn-outline-secondary ms-2" data-bs-toggle="modal" data-bs-target="#course">
             <i class="fa fa-plus"></i> Course
         </div>
         <div class="btn btn-outline-secondary ms-2">
             <i class="fa fa-pen"></i> Course
         </div>
+        @endif
     </div>
     <div class="masonry-item  w-100">
         <div class="row gap-20">
