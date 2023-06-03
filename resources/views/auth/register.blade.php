@@ -99,27 +99,22 @@
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="isInvested" id="remember" value="1" {{ old('isInvested') ? 'checked' : '' }} data-bs-toggle="collapse" data-bs-target="#ppno" aria-expanded="false" aria-controls="collapseWidthExample">
-
+                                    <input class="form-check-input" type="checkbox" name="isInvested" id="remember" value="1" {{ old('isInvested') ? 'checked' : '' }} >
                                     <label class="form-check-label" for="remember">
                                         {{ __('I am invested') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="collapse collapse-horizontal" id="ppno">
-                                <div class="row mb-3">
-                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Passbook No.') }}</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control @error('PPNo') is-invalid @enderror" name="PPNo" value="{{ old('PPNo') }}" autocomplete="name" autofocus>
-                                        @error('PPNo')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Passbook No.') }}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('PPNo') is-invalid @enderror" name="PPNo" value="{{ old('PPNo') }}" autocomplete="name" autofocus>
+                                @error('PPNo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
