@@ -30,8 +30,13 @@ class viewsController extends Controller
         return view('index', $data);
     }
     function chat(){
+        $messages=Conversation::where(['recepient_id'=>Auth()->user()->id])->where('isRead','!=',1)->get();
         $users=User::orderBy('name', 'asc')->get();
-        return view('chat',['users'=>$users]);
+        $data=[
+            'users'=>$users,
+            'messages'=>$messages
+        ];
+        return view('chat',$data);
     }
     function convo($name){
         $user=User::where(['name'=>$name])->first();
@@ -143,8 +148,10 @@ class viewsController extends Controller
     }
     function lesson(){
         $lessons=Lesson::all();
+        $messages=Conversation::where(['recepient_id'=>Auth()->user()->id])->where('isRead','!=',1)->get();
         $data=[
             'lessons'=>$lessons,
+            'messages'=>$messages
         ];
         return view('lesson', $data);
     }
