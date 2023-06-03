@@ -11,7 +11,7 @@
 				<div class="our-team">
 					<div class="team-img">
 						<div style="width: 250px; height: 300px;">
-							<img src="{{asset('storage/profile/'.$user['avatar'])}}" style="width: 100%;">
+							<img src="{{asset('storage/profile/'.$user['avatar'])}}" style="size: 100%; ">
 						</div>
 						<div class="social">
 							<ul>
