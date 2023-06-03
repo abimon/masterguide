@@ -205,7 +205,7 @@
         @csrf
         <div class="border">
           <div class="row m-1">
-            <div class="col-md-4 card">
+            <div class="col-md-6 card">
               <div class="card-body">
                 <img src="{{asset('storage/profile/'.Auth()->user()->avatar)}}" style="width:100% ;">
                 <div class='d-flex justify-content-center mt-2'>
@@ -213,48 +213,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-8  p-2">
-              <div class="form-floating mt-1">
-                <input type="text" name="name" class="form-control" id="floatingInput" placeholder=" " value="{{Auth()->user()->name}}">
-                <label for="floatingInput">Name</label>
-              </div>
-              <div class="form-floating mt-1">
-                <input type="tel" name="contact" class="form-control" id="floatingPassword" placeholder=" " value="{{Auth()->user()->contact}}">
-                <label for="floatingPassword">Contact</label>
-              </div>
-              <div class="form-floating mt-1">
-                <input type="email" name="email" class="form-control" id="floatingInput" placeholder=" " value="{{Auth()->user()->email}}">
-                <label for="floatingInput">Email address</label>
-              </div>
-            </div>
             <div class="col-12">
-              <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Institution') }}</label>
-
-                <div class="col-md-8">
-                  <input id="institution" type="text" class="form-control @error('institution') is-invalid @enderror" name="institution" value="{{Auth()->user()->institution}}" required autocomplete="name" autofocus>
-
-                  @error('institution')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Birth Date') }}</label>
-
-                <div class="col-md-8">
-                  <input id="name" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{Auth()->user()->birthday}}" required autocomplete="name" autofocus>
-
-                  @error('birthday')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </div>
-
               <div class="row mb-3">
                 <div class="col-md-8 offset-md-4">
                   <div class="form-check">
@@ -267,17 +226,15 @@
                 </div>
               </div>
               <div>
-                <div class="collapse collapse-horizontal" id="ppno">
-                  <div class="row mb-3">
-                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Passbook No.') }}</label>
-                    <div class="col-md-6">
-                      <input type="text" class="form-control @error('PPNo') is-invalid @enderror" name="PPNo" value="{{ old('PPNo') }}" autocomplete="name" autofocus>
-                      @error('PPNo')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-                    </div>
+                <div class="row mb-3">
+                  <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Passbook No.') }}</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control @error('PPNo') is-invalid @enderror" name="PPNo" value="{{ old('PPNo') }}" autocomplete="name" autofocus>
+                    @error('PPNo')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                 </div>
               </div>
@@ -602,7 +559,7 @@
         writer.setStyle('min-height', '350px', editor.editing.view.document.getRoot());
       });
     });
-    CKEDITOR.ClassicEditor
+  CKEDITOR.ClassicEditor
     .create(document.getElementById("objectives"), {
       toolbar: {
         items: [
