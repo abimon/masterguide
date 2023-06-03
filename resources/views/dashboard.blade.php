@@ -127,22 +127,25 @@
             </div>
             <!-- #Bounce Rate ==================== -->
             <div class='col-md-3 col-6'>
-                <div class="layers bd bgc-white p-20">
-                    <div class="layer w-100 mB-10">
-                        <h6 class="lh-1"><i class="bi bi-baloon-heart text-danger"></i>Birthdays Today</h6>
-                    </div>
-                    <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                            <div class="peer peer-greed">
-                                <span id="sparklinedash4"></span>
-                            </div>
-                            <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">
-                                    {{count($birthdays)}}</span>
+                <a href="#birthday">
+                    <div class="layers bd bgc-white p-20">
+                        <div class="layer w-100 mB-10">
+                            <h6 class="lh-1"><i class="bi bi-baloon-heart text-danger"></i>Birthdays Today</h6>
+                        </div>
+                        <div class="layer w-100">
+                            <div class="peers ai-sb fxw-nw">
+                                <div class="peer peer-greed">
+                                    <span id="sparklinedash4"></span>
+                                </div>
+                                <div class="peer">
+                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">
+                                        {{count($birthdays)}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+
             </div>
         </div>
     </div>
@@ -293,7 +296,7 @@
     </div>
     <div class="col-md-12 mt-2">
         <!-- #Members Report ==================== -->
-        <div class="bd bgc-white">
+        <div class="bd bgc-white" id='birthday'>
             <div class="layers">
 
                 <div class="layer w-100">
