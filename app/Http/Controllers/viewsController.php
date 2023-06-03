@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\activity;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
@@ -23,9 +24,11 @@ class viewsController extends Controller
     function index(){
         $user=User::all();
         $tests= testimonials::all();
+        $categories=Category::all();
         $data=[
             'users'=>$user,
             'testimonials'=>$tests,
+            'categories'=>$categories
         ];
         return view('index', $data);
     }
