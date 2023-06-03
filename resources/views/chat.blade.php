@@ -23,7 +23,7 @@
               <i class="bi bi-bell-fill text-secondary"></i>
               @endif
               {{$user->name}}
-              <span class="badge bg-secondary">{{$messages->where('sender_id',$user->id)->count()}}</span>
+              <span class="badge {{($messages->where('sender_id',$user->id)->count())>0?'bg-danger':'bg-secondary'}}">{{$messages->where('sender_id',$user->id)->count()}}</span>
             </a>
           </p>
         </div>
