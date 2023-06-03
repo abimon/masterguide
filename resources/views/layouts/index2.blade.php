@@ -204,8 +204,8 @@
       <form action="/profile_update" method="post" enctype="multipart/form-data">
         @csrf
         <div class="border">
-          <div class="row m-1">
-            <div class="col-md-6 card">
+          <div class="m-1">
+            <div class="card">
               <div class="card-body">
                 <img src="{{asset('storage/profile/'.Auth()->user()->avatar)}}" style="width:100% ;">
                 <div class='d-flex justify-content-center mt-2'>
