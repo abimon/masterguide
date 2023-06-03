@@ -69,7 +69,7 @@
         <div class="btn btn-outline-secondary">
             <i class="fa fa-plus"></i> Category
         </div>
-        <div class="btn btn-outline-secondary">
+        <div class="btn btn-outline-secondary ms-2">
             <i class="fa fa-plus"></i> Course
         </div>
     </div>
