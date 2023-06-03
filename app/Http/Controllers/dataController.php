@@ -375,5 +375,6 @@ class dataController extends Controller
         Category::create([
             'category_name'=>request()->category
         ]);
+        return redirect()->back();
     }
 }
