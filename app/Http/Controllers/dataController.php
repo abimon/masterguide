@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\activity;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Conversation;
 use App\Models\Course;
@@ -113,37 +114,6 @@ class dataController extends Controller
         ];
         $pdf = FacadePdf::loadView('notes', $data);
         return $pdf->download($name.'.pdf');
-    }
-    
-    function text($message, $phone){
-        $curl = curl_init();
-        $data= json_encode(array(
-        "mobile"=>$phone,
-        "response_type"=> "json",
-        "sender_name"=> "23107",
-        "service_id"=> 0,
-        "message"=>$message));
-        curl_setopt_array(
-            $curl, array(
-                CURLOPT_URL => 'https://api.mobitechtechnologies.com/sms/sendsms',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 15,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $data),
-                CURLOPT_HTTPHEADER => array(
-                    'h_api_key: b123e31006efde04f74addb39db9604ebcf9e3f972743e1d47df0d4ef52b1078',
-                    'Content-Type: application/json'
-                ),
-            )
-        );
-
-        $response = curl_exec($curl);
-        curl_close($curl);
-        return redirect()->back();
     }
     function addEvent(){
         Event::create([
@@ -324,15 +294,6 @@ class dataController extends Controller
         ]);
         return redirect('/');
     }
-    function bulk(){
-        $users=activity::all();
-        foreach($users as $user){
-            $message='Hello '.($user->attendee).'! Thank you for registering to attend the Master Guide Joint Sabbath. We humbly request that you send KSHs 150 to +254714298174 to facilitate your entrance and lunch on that day before Thursday 30th March 2023 12:00pm. Thank you. Regards University Region.';
-            $this->sms($message, $user->contact);
-        }
-        return redirect('dashboard');
-        
-    }
     function generatelist(){
         $users=array();
         foreach((request()->user_id) as $id){
@@ -382,5 +343,37 @@ class dataController extends Controller
         curl_close($curl);
         return redirect()->back();
         
+    }
+    function createNotes(){
+        $user=Auth()->user();
+        if((($user->role)!='Coordinator')||($user->role)!='Training Coordinator'){
+            $post=0;
+        }
+        else {
+            $post = 1;
+        }
+        Note::create([
+            'fac_id'=> Auth()->user()->id,
+            'course_id'=>request()->course_id,
+            'content'=>request()->content,
+            'isPosted'=>$post,
+        ]);
+        return redirect()->back();
+    }
+    function updateNotes($id){
+        Note::where('id',$id)->update([
+            'content'=>request()->content,
+        ]);
+        return redirect()->back();
+    }
+    function destroyNotes($id){
+        Note::destroy($id);
+        return redirect()->back();
+    }
+    
+    function createCategory(){
+        Category::create([
+            'category_title'=>request()->category
+        ]);
     }
 }

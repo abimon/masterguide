@@ -65,6 +65,14 @@
     }
 </style>
 <div>
+    <div class="d-flex justify-content-end">
+        <div class="btn btn-outline-secondary">
+            <i class="fa fa-plus"></i> Category
+        </div>
+        <div class="btn btn-outline-secondary">
+            <i class="fa fa-plus"></i> Course
+        </div>
+    </div>
     <div class="masonry-item  w-100">
         <div class="row gap-20">
             <!-- #Toatl Visits ==================== -->
@@ -111,7 +119,7 @@
             <div class='col-md-3 col-6'>
                 <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Posts</h6>
+                        <h6 class="lh-1"><i class="bi bi-chat"></i> Unread Messages</h6>
                     </div>
                     <div class="layer w-100">
                         <div class="peers ai-sb fxw-nw">
@@ -119,7 +127,7 @@
                                 <span id="sparklinedash3"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">@if(Auth()->user()->role=='Member') {{$posts->where('isPosted',1)->count()}} @else {{$posts->count()}} @endif</span>
+                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{$messages->count()}}</span>
                             </div>
                         </div>
                     </div>
@@ -149,7 +157,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 mt-2">
+    @if(Auth()->user()->role!='Member')
+    <div class="col-md-12 mt-2 w-100">
         <!-- #posts Report ==================== -->
         <div class="bd bgc-white">
             <div class="layers" id="members">
@@ -221,7 +230,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 mt-2">
+    <div class="col-md-12 mt-2 w-100">
         <!-- #Members Report ==================== -->
         <div class="bd bgc-white">
             <div class="layers" id="members">
@@ -294,7 +303,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 mt-2">
+    @endif
+    <div class="col-md-12 mt-2 w-100">
         <!-- #Members Report ==================== -->
         <div class="bd bgc-white" id='birthday'>
             <div class="layers">

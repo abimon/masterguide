@@ -93,14 +93,6 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/chat">
-          <span class="icon-holder">
-            <i class="c-deep-purple-500 bi bi-chat mR-10"></i>
-          </span>
-          <span class="title">Chat </span><span class="badge bg-danger">{{$messages->count()}}</span>
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#profile">
           <span class="icon-holder">
             <i class="c-deep-blue-500 bi bi-person-badge mR-10"></i>
