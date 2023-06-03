@@ -95,12 +95,6 @@
 								<h3>Information Link</h3>
 							</div>
 							<ul class="footer-links">
-
-								<li>
-									<a target="_blank" href="https://www.jkusdachurch.org/" style="text-decoration:none;" class="text-light">
-										<p>JKUSDA</p>
-									</a>
-								</li>
 								<li>
 									<a target="_blank" href="https://www.gcyouthministries.org/" style="text-decoration:none;" class="text-light">
 										<p>GC Youth Ministries </p>
@@ -123,9 +117,9 @@
 							</div>
 
 							<ul class="footer-links">
-								<li><a href="mailto:#">info@unimasterguide.com</a></li>
-								<li><a href="#">www.unimasterguide.com</a></li>
-								<li>+254 701 583 807</li>
+								<li><a href="mailto:info@emasterguide.top">info@emasterguide.top</a></li>
+								<li><a href="www.emasterguide.top">www.emasterguide.top</a></li>
+								<li><a href="tel:+254701583807">+254 701 583 807</a></li>
 							</ul><!-- end links -->
 						</div><!-- end clearfix -->
 					</div><!-- end col -->
