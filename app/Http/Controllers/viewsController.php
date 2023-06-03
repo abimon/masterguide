@@ -72,7 +72,7 @@ class viewsController extends Controller
                 $birthdays->push($user);
             }
         }
-        $categories=Category::orderBy('category_name', 'desc')->get();
+        $categories=Category::orderBy('category_name', 'asc')->get();
         $data = [
             'users'=>$users, 
             'repos'=>$repos,
