@@ -391,7 +391,7 @@
                     <select class="form-select" aria-label="" name="course">
                         <option selected disabled>Select Category</option>
                         @foreach($categories as $category)
-                        <option value="{{category->id}}">{{category->category_title}}</option>
+                        <option value="{{$category->id}}">{{category->category_title}}</option>
                         @endforeach
                     </select>
                     <div class="form-floating">
