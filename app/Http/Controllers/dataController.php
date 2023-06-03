@@ -370,10 +370,10 @@ class dataController extends Controller
         Note::destroy($id);
         return redirect()->back();
     }
-    
+
     function createCategory(){
         Category::create([
-            'category_title'=>request()->category
+            'category_name'=>request()->category
         ]);
     }
 }

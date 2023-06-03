@@ -366,7 +366,7 @@
             <div class="modal-body">
                 <form action="/createCategory" method="post">
                     @csrf
-                    <div class="form-floating">
+                    <div class="form-floating mb-1">
                         <input type='text' class="form-control bdc-grey-200" name="category" placeholder=" ">
                         <label class="fw-500">Category</label>
                     </div>
@@ -388,13 +388,13 @@
             <div class="modal-body">
                 <form action="/createCourse" method="post">
                     @csrf
-                    <select class="form-select" aria-label="" name="course">
+                    <select class="form-select mb-1" aria-label="" name="course">
                         <option selected disabled>Select Category</option>
                         @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->category_title}}</option>
                         @endforeach
                     </select>
-                    <div class="form-floating">
+                    <div class="form-floating mb-1">
                         <input type='text' class="form-control bdc-grey-200" name="course" placeholder=" ">
                         <label class="fw-500">Course</label>
                     </div>

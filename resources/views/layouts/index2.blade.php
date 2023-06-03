@@ -392,7 +392,7 @@
           @csrf
           <div class="form-group">
             <label class="fw-500">Institution/Church</label>
-            <input type='text' class="form-control bdc-grey-200" name="institution" placeholder="Eg. Marejeleo SDA">
+            <input type='text' class="form-control bdc-grey-200 mb-1" name="institution" placeholder="Eg. Marejeleo SDA">
           </div>
           <div class="text-right">
             <button class="btn btn-primary cur-p" type="submit">Save</button>
