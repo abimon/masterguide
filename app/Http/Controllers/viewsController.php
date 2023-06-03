@@ -24,11 +24,9 @@ class viewsController extends Controller
     function index(){
         $user=User::all();
         $tests= testimonials::all();
-        $categories=Category::all();
         $data=[
             'users'=>$user,
             'testimonials'=>$tests,
-            'categories'=>$categories
         ];
         return view('index', $data);
     }
@@ -74,12 +72,14 @@ class viewsController extends Controller
                 $birthdays->push($user);
             }
         }
+        $categories=Category::all();
         $data = [
             'users'=>$users, 
             'repos'=>$repos,
             'posts'=>$posts,
             'birthdays'=>$birthdays,
-            'messages'=>$messages
+            'messages'=>$messages,
+            'categories'=>$categories
         ];
         return view('dashboard',$data);
     }
