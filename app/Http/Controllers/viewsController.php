@@ -84,10 +84,17 @@ class viewsController extends Controller
         return view('dashboard',$data);
     }
     function resources(){
-        $courses=Course::orderBy('course_name', 'asc')->get();
+        $courses=Course::orderBy('title', 'asc')->get();
         $repos=Repository::where(['isPublic'=>true])->get();
+        $notes=Note::all();
         $users=User::all();
-        return view('resources',['repos'=>$repos, 'courses'=>$courses,'users'=>$users]);
+        $data=[
+            'repos'=>$repos, 
+            'courses'=>$courses,
+            'users'=>$users,
+            'notes'=>$notes
+        ];
+        return view('resources',$data);
     }
     function course($name){
         $course=Course::where(['course_name'=>$name])->first();

@@ -86,7 +86,7 @@
 						</div>
 					</div>
 					<div class="course-meta-bot">
-					<ul>
+						<ul>
 							<li type="button" data-bs-toggle="modal" data-bs-target="#pathfinders"><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','pf')->count()}} File(s)</li>
 						</ul>
 						<!-- Modal -->
@@ -152,7 +152,7 @@
 						</div>
 					</div>
 					<div class="course-meta-bot">
-					<ul>
+						<ul>
 							<li type="button" data-bs-toggle="modal" data-bs-target="#master"><i class="fa fa-book" aria-hidden="true"></i> {{$repos->where('category','mg')->count()}} File(s)</li>
 						</ul>
 						<!-- Modal -->
@@ -187,26 +187,33 @@
 		<hr class="hr3">
 
 		<div class="row">
-			@foreach($courses as $course)
+			@foreach($notes as $note)
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="course-item">
+
+					@foreach($courses->where('id',$note->course_id) as $course)
 					<div class="image-blog">
-						<img src="images/blog_4.jpg" alt="" class="img-fluid">
+						<img src="{{assets('storage/images/blog_4.jpg')}}" alt="" class="img-fluid">
 					</div>
 					<div class="course-br">
 						<div class="course-title">
 							<h2><a href="#" title="">{{$course->course_name}}</a></h2>
 						</div>
 						<div class="course-desc" style="height:150px; overflow: hidden;">
-							<p><?php echo htmlspecialchars_decode($course->requirements); ?></p>
+							@foreach($categories->where('id',$course->category_id) as $category)
+							<p>Category: {{$category->category_name}}</p>
+							@endforeach
+							@foreach($users->where('id',$note->fac_id) as $user)
+							<p>Facilitator: {{$user->name}}</p>
+							@endforeach
 						</div>
-
 					</div>
 					<div class="course-meta-bot">
 						<ul>
 							<li><a href="/course/{{$course->course_name}}">Read More...</a></li>
 						</ul>
 					</div>
+					@endforeach
 				</div>
 			</div>
 			@endforeach
