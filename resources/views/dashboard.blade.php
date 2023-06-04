@@ -83,6 +83,7 @@
     <div class="masonry-item  w-100">
         <div class="row gap-20">
             <!-- #Toatl Visits ==================== -->
+            @if(Auth()->user()->role!='Member')
             <div class='col-md-3 col-6'>
                 <a href="#members">
                     <div class="layers bd bgc-white p-20">
@@ -102,6 +103,7 @@
                     </div>
                 </a>
             </div>
+            @endif
             <!-- #Total Page Views ==================== -->
             <div class='col-md-3 col-6'>
                 <a href="/resources">
