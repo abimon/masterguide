@@ -4,7 +4,7 @@
 <div class="bd bgc-white">
     <div class="layers" id="members">
         <div class="layer w-100">
-            <div class="peer peer-greed">
+            <div class="peer peer-greed p-5">
                 <h5>{{date('F j, Y')}}</h5>
                 <p class="mB-0">Members Attendance</p>
             </div>
@@ -66,15 +66,17 @@
                     </thead>
                     <tbody>
                         @foreach($atts as $key=>$att)
+                        <tr>
                         @foreach($users as $user)
                         @if($att->user_id==$user->id)
-                        <tr>
+                        
                             <th scope="row">{{$key+1}}</th>
                             <td>{{$user->name}}</td>
                             <td>{{$user->institution}}</td>
-                        </tr>
                         @endif
                         @endforeach
+                        <td>{{date_format($att->created_at,''F jS, Y'')}}</td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
