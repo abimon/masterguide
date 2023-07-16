@@ -159,6 +159,22 @@ class viewsController extends Controller
         ];
         return view('attendance', $data);
     }
+    function reg_dated(){
+        if(Auth()->user()->role=='Coordinator'){
+            $users=User::all();
+        }
+        else{
+            $users=User::where(['institution'=>Auth()->user()->institution])->get();
+        }
+        $date=date_format(request()->todate,'F j, Y');
+        $atts = register::whereDate('created_at',request()->todate)->get();
+        $data=[
+            'users'=>$users,
+            'atts'=>$atts,
+            'date'=>$date
+        ];
+        return view('attendance', $data);
+    }
     function lesson(){
         $lessons=Lesson::all();
         $data=[
