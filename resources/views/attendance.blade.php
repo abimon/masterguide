@@ -3,9 +3,9 @@
 <!-- #Sales Report ==================== -->
 <div class="bd bgc-white">
     <div class="layers" id="members">
-        @error
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+        @foreach($errors as $error)
+        <div class="alert alert-danger">{{ $error }}</div>
+        @endforeach
         <div class="layer w-100">
             @if(Auth()->user())
             <div class="peer peer-greed p-5">
