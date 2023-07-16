@@ -166,7 +166,7 @@ class viewsController extends Controller
         else{
             $users=User::where(['institution'=>Auth()->user()->institution])->get();
         }
-        $date=date_format(request()->todate,'F j, Y');
+        $date=request()->todate;
         $atts = register::whereDate('created_at',request()->todate)->get();
         $data=[
             'users'=>$users,
