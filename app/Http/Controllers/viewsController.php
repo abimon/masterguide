@@ -13,6 +13,7 @@ use App\Models\Lesson;
 use App\Models\Like;
 use App\Models\Note;
 use App\Models\Post;
+use App\Models\register;
 use App\Models\Repository;
 use App\Models\testimonials;
 use App\Models\User;
@@ -149,8 +150,10 @@ class viewsController extends Controller
         else{
             $users=User::where(['institution'=>Auth()->user()->institution])->get();
         }
+        $atts = register::all();
         $data=[
             'users'=>$users,
+            'atts'=>$atts
         ];
         return view('attendance', $data);
     }
