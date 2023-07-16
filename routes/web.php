@@ -57,7 +57,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::get('/attendance', [viewsController::class, 'attendance']);
     Route::get('/dashboard', [viewsController::class, 'dashboard']);
     Route::get('/calendar', [viewsController::class, 'calendar']);
-    Route::get('/reg', [viewsController::class, 'reg_dated']);
+    Route::post('/reg', [viewsController::class, 'reg_dated']);
     Route::get('/lesson', [viewsController::class, 'lesson']);
 
 });
