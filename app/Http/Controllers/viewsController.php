@@ -153,7 +153,8 @@ class viewsController extends Controller
         $atts = register::all();
         $data=[
             'users'=>$users,
-            'atts'=>$atts
+            'atts'=>$atts,
+            'date'=>date('F j, Y')
         ];
         return view('attendance', $data);
     }
