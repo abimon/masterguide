@@ -46,13 +46,13 @@
                     </div>
                 </form>
             </div>
-            <div class="table-responsive p-20">
+            <div class="table-responsive p-5">
                 <div class="d-flex justify-content-between">
                     <div class="mt-2">{{$date}}</div>
                     <form class="d-flex" action='/reg' method='post'>
                         @csrf
                         <input class="form-control me-2" type="date" placeholder="Search" name="todate">
-                        <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btn btn-outline-success" type="submit"><i class="bi bi-lens"></i></button>
                     </form>
                 </div>
                 @if(($atts->count())>0)
