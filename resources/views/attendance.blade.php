@@ -75,7 +75,7 @@
                             <td>{{$user->institution}}</td>
                         @endif
                         @endforeach
-                        <td>{{date_format($att->created_at,'F jS, Y H:m')}}</td>
+                        <td>{{date_format($att->created_at,'F jS, Y H:i A')}}</td>
                         </tr>
                         @endforeach
                     </tbody>
