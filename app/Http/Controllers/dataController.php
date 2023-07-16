@@ -222,9 +222,16 @@ class dataController extends Controller
     }
     function markAttendance(){
         foreach((request()->user_id) as $id){
-            register::create([
-                'user_id'=>$id
-            ]);
+            $user=register::where('user_id',$id)->whereDate('created_at',date('Y/m/d'))->first();
+            if(!$user){
+                register::create([
+                    'user_id'=>$id
+                ]);
+                return redirect()->back();
+            }
+            else{
+                return redirect()->back()->withErrors(["messsage"=>"User already marked present"]);
+            }
         }
     }
     function addInstitution(){

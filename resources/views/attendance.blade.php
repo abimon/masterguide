@@ -3,7 +3,11 @@
 <!-- #Sales Report ==================== -->
 <div class="bd bgc-white">
     <div class="layers" id="members">
+        @error
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="layer w-100">
+            @if(Auth()->user())
             <div class="peer peer-greed p-5">
                 <h5>{{date('F j, Y')}}</h5>
                 <p class="mB-0">Members Attendance</p>
@@ -46,6 +50,7 @@
                     </div>
                 </form>
             </div>
+            @endif
             <div class="table-responsive p-5">
                 <div class="d-flex justify-content-between">
                     <div class="mt-2">{{$date}}</div>
