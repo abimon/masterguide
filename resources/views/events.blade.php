@@ -7,7 +7,7 @@
 	
     <div id="pricing-box" class="section wb">
         <div class="container">
-			<div class="row">
+			<div class="row d-flex justify-content-center">
                 @foreach($events as $event)
                 <div class="col-md-4 col-sm-6">
                     <div class="pricingTable">
