@@ -23,10 +23,7 @@
                             <tr>
                                 <th class=" bdwT-0">#</th>
                                 <th class=" bdwT-0">Name</th>
-                                <th class="bdwT-0">Phone No.</th>
-                                <th class="bdwT-0">Email</th>
                                 <th class=" bdwT-0">Institution</th>
-                                <th class=" bdwT-0">ID</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,10 +31,7 @@
                             <tr>
                                 <th>{{$key+1}}</th>
                                 <td>{{$user->attendee}}</td>
-                                <td>{{$user->contact}}</td>
-                                <td>{{$user->email}}</td>
                                 <td>{{$user->institution}}</td>
-                                <td>{{$user->idno}}</td>
                             </tr>
                             @endforeach
                         </tbody>
