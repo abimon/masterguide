@@ -111,7 +111,7 @@ class viewsController extends Controller
         return view('calendar', $data);
     }
     function events(){
-        $events=Event::where([['isPublic'=>1],['event_date','>',date('Y-m-d')]])->orderBy('event_date','asc')->get();
+        $events=Event::where(['isPublic'=>1])->where('event_date','>',date('Y-m-d'))->orderBy('event_date','asc')->get();
         $data = [
             'events'=>$events,
         ];
