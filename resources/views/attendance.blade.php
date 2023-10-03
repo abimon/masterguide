@@ -8,14 +8,7 @@
         @endforeach
         <div class="layer w-100">
             @if(Auth()->user()->role!="Member")
-            @if(Auth()->user()->role!="Director")
-            @foreach($clubs as $club)
-            <button type="submit" formaction="/memPrint/{{$club->institution}}" class="btn btn-outline-dark ms-2">Print {{$club->institution}}</button>
-            @endforeach
-            <button type="submit" formaction="/memPrint/All" class="btn btn-outline-dark ms-2">Print All</button>
-            @else
-            <button type="submit" formaction="/memPrint/{{Auth()->user()->institution}}" class="btn btn-outline-dark ms-2">Print {{Auth()->user()->institution}}</button>
-            @endif
+            
             <div class="peer peer-greed p-5">
                 <h5>{{date('F j, Y')}}</h5>
                 <p class="mB-0">Members Attendance</p>
@@ -23,6 +16,14 @@
             <div class="table-responsive p-20">
                 <form action="" method="post">
                     @csrf
+                    @if(Auth()->user()->role!="Director")
+            @foreach($clubs as $club)
+            <button type="submit" formaction="/memPrint/{{$club->institution}}" class="btn btn-outline-dark ms-2 mb-2">Print {{$club->institution}}</button>
+            @endforeach
+            <button type="submit" formaction="/memPrint/All" class="btn btn-outline-dark ms-2 mb-2">Print All</button>
+            @else
+            <button type="submit" formaction="/memPrint/{{Auth()->user()->institution}}" class="btn btn-outline-dark ms-2 mb-2">Print {{Auth()->user()->institution}}</button>
+            @endif
                     <table class="table">
                         <thead>
                             <tr>
