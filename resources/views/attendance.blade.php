@@ -7,7 +7,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @endforeach
         <div class="layer w-100">
-            @if(Auth()->user()->role!="Director")
+            @if(Auth()->user()->role!="Member")
             <div class="peer peer-greed p-5">
                 <h5>{{date('F j, Y')}}</h5>
                 <p class="mB-0">Members Attendance</p>

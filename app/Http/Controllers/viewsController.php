@@ -144,7 +144,7 @@ class viewsController extends Controller
         return view('blogpost', $data);
     }
     function attendance(){
-        if(Auth()->user()->role=='Coordinator'){
+        if((Auth()->user()->role=='Coordinator')||(Auth()->user()->role=='Secretary')||(Auth()->user()->role=='Training Coordinator')){
             $users=User::all();
         }
         else{
