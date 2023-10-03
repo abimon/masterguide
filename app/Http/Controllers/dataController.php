@@ -301,13 +301,10 @@ class dataController extends Controller
         return redirect('/');
     }
     function generatelist(){
-        $users=array();
-        foreach((request()->user_id) as $id){
-            $user=User::where(['id'=>$id])->first();
-            array_push($users,$user);
-        }
-        $data = ['users'=>$users];
-        // return view('users', $data);
+        $users=User::all();
+        $data=[
+            'users'=>$users
+        ];
         $pdf = FacadePdf::loadView('users', $data);
         return $pdf->download('Members.pdf');
     }
