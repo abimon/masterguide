@@ -155,7 +155,8 @@ class viewsController extends Controller
         $data=[
             'users'=>$users,
             'atts'=>$atts,
-            'date'=>$date
+            'date'=>$date,
+            'clubs'=>institution::all()
         ];
         return view('attendance', $data);
     }
