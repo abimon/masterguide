@@ -302,7 +302,7 @@ class dataController extends Controller
     }
     function generatelist(){
         $users=User::all();
-        $data=[
+        $data =[
             'users'=>$users
         ];
         $pdf = FacadePdf::loadView('users', $data);
