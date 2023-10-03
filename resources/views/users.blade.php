@@ -1,4 +1,4 @@
-@section('dashboard')
+@section('dashboard',['title'=>'Members'])
 <link rel="stylesheet" href="{{asset('storage/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('storage/css/adminator.css')}}">
 <div style="text-align: center;">
