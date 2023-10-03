@@ -14,7 +14,7 @@
                     <div class="peers ai-c jc-sb gap-40">
                         <div class="peer peer-greed">
                             <h5>{{date('F jS, Y')}}</h5>
-                            <p class="mB-0">Event Attendance</p>
+                            <p class="mB-0">Report</p>
                         </div>
                     </div>
                 </div>
