@@ -300,8 +300,13 @@ class dataController extends Controller
         ]);
         return redirect('/');
     }
-    function generatelist(){
-        $users=User::orderBy('institution','desc')->get();
+    function generatelist($inst){
+        if($inst != 'All'){
+            $users=User::where('institution',$inst)->orderBy('institution','desc')->get();
+        }
+        else{
+            $users=User::orderBy('institution','desc')->get();
+        }
         $data =[
             'users'=>$users
         ];

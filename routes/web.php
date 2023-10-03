@@ -44,7 +44,7 @@ Route::middleware(['checkSession'])->group(function(){
     Route::post('/testimony',[dataController::class, 'addtestimony']);
     Route::get('/deletetestimony/{id}',[dataController::class, 'deletetestimony']);
     Route::post('/updatetestimony/{id}',[dataController::class, 'updatetestimony']);
-    Route::post('/selectmem',[dataController::class, 'generatelist']);
+    Route::post('/memPrint/{inst}',[dataController::class, 'generatelist']);
     Route::post('/print/{title}',[dataController::class, 'eventatt']);
     Route::get('/bulk',[dataController::class, 'bulk']);
     Route::post('/changeprof',[dataController::class, 'changeprof']);
