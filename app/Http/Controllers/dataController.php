@@ -309,7 +309,7 @@ class dataController extends Controller
         return $pdf->download('Members.pdf');
     }
     function eventatt($title){
-        $users=activity::where(['event_title'=>$title])->orderBy('attendee','desc')->get();
+        $users=activity::where(['event_title'=>$title])->orderBy('attendee','desc')->select('attendee as name','contact','email','institution',)->get();
         $data =[
             'users'=>$users
         ];

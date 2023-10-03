@@ -34,7 +34,7 @@
                             @foreach($users as $key=>$user)
                             <tr>
                                 <th>{{$key+1}}</th>
-                                <td>{{$user->attendee}}</td>
+                                <td>{{$user->name}}</td>
                                 <td>{{$user->contact}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->institution}}</td>
