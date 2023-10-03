@@ -301,11 +301,11 @@ class dataController extends Controller
         return redirect('/');
     }
     function generatelist(){
-        $users=User::all();
+        $users=User::orderBy('institution','desc')->get();
         $data =[
             'users'=>$users
         ];
-        $pdf = FacadePdf::loadView('users', $data);
+        $pdf = FacadePdf::loadView('eventattend', $data);
         return $pdf->download('Members.pdf');
     }
     function eventatt($title){
