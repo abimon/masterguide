@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'fname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'contact' => ['required', 'string', 'max:10'],
+            'contact' => ['required', 'string', 'max:10','unique:users'],
             'institution' => ['required', 'string', 'max:255'],
             'avatar' => ['image'],
             'about' => ['string', 'max:255'],
@@ -72,13 +72,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //get just ext
         $extension = request()->file('avatar')->getClientOriginalExtension();
-        //file name only
         $filename = request()->fname;
-        //File name to store
         $filenametostore = $filename . '.' . $extension;
-        //upload
         request()->file('avatar')->storeAs('public/profile', $filenametostore);
 
         if (request()->isAssociate == 1) {
@@ -99,8 +95,7 @@ class RegisterController extends Controller
         } else {
             $contact = $code . $phone;
         }
-        $user = User::where('name', ($data['fname'] . ' ' . $data['lname']))->first();
-        if (!$user) {
+        
             return User::create([
                 'name' => $data['fname'] . ' ' . $data['lname'],
                 'email' => $data['email'],
@@ -115,9 +110,4 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]);
         }
-        else{
-            return redirect()->back()->withInput()
-            ->with('message', "The user with this name already exist. Please login.");
-        }
     }
-}
