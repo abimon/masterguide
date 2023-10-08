@@ -52,15 +52,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'fname'=> ['required', 'string', 'max:255'],
-            'lname'=> ['required', 'string', 'max:255'],
-            'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'contact'=> ['required', 'string', 'max:10'],
-            'institution'=> ['required', 'string', 'max:255'],
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'contact' => ['required', 'string', 'max:10'],
+            'institution' => ['required', 'string', 'max:255'],
             'avatar' => ['image'],
-            'about'=>['string', 'max:255'],
-            'birthday'=> ['required', 'date', 'max:255'],
-            'password'=> ['required', 'string', 'min:8', 'confirmed'],
+            'about' => ['string', 'max:255'],
+            'birthday' => ['required', 'date', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -80,41 +80,44 @@ class RegisterController extends Controller
         $filenametostore = $filename . '.' . $extension;
         //upload
         request()->file('avatar')->storeAs('public/profile', $filenametostore);
-        if(request()->isAssociate==1){
-            $ass=1;
+
+        if (request()->isAssociate == 1) {
+            $ass = 1;
+        } else {
+            $ass = 0;
+        }
+        if (request()->isInvested == 1) {
+            $inv = 1;
+        } else {
+            $inv = 0;
+        }
+        $phone = $data['contact'];
+        $code = '+254';
+        $first = substr($phone, 0, 1);
+        if ($first == '0') {
+            $contact = substr_replace($phone, $code, 0, 1);
+        } else {
+            $contact = $code . $phone;
+        }
+        $user = User::where('name', ($data['fname'] . ' ' . $data['lname']))->first();
+        if (!$user) {
+            return User::create([
+                'name' => $data['fname'] . ' ' . $data['lname'],
+                'email' => $data['email'],
+                'contact' => $contact,
+                'institution' => $data['institution'],
+                'isAssociate' => $ass,
+                'isInvested' => $inv,
+                'PPNo' => $data['PPNo'],
+                'about' => $data['about'],
+                'avatar' => $filenametostore,
+                'birthday' => $data['birthday'],
+                'password' => Hash::make($data['password']),
+            ]);
         }
         else{
-            $ass=0;
+            return redirect()->back()->withInput()
+            ->with('message', "The user with this name already exist. Please login.");
         }
-        if(request()->isInvested==1){
-            $inv=1;
-        }
-        else{
-            $inv=0;
-        }
-        $phone=$data['contact'];
-        $code='+254';
-        $first= substr($phone, 0, 1);
-        if($first=='0'){
-            $contact=substr_replace($phone, $code, 0, 1);
-        }
-        else{
-            $contact=$code.$phone;
-        }
-        return User::create([
-            'name'=>$data['fname'].' '.$data['lname'],
-            'email'=>$data['email'],
-            'contact'=>$contact,
-            'institution'=>$data['institution'],
-            'isAssociate'=>$ass,
-            'isInvested'=>$inv,
-            'PPNo'=>$data['PPNo'],
-            'about'=>$data['about'],
-            'avatar'=>$filenametostore,
-            'birthday'=>$data['birthday'],
-            'password' => Hash::make($data['password']),
-        ]);
-        
     }
-    
 }

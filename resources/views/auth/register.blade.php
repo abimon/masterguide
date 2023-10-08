@@ -5,6 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @if (session('message'))
+                <div class="alert alert-danger">{{ session('message') }}</div>
+                @endif
                 <div class="card-header text-center">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -99,7 +102,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="isInvested" id="remember" value="1" {{ old('isInvested') ? 'checked' : '' }} >
+                                    <input class="form-check-input" type="checkbox" name="isInvested" id="remember" value="1" {{ old('isInvested') ? 'checked' : '' }}>
                                     <label class="form-check-label" for="remember">
                                         {{ __('I am invested') }}
                                     </label>
