@@ -9,5 +9,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/users/index',[UserController::class,'index']);
-
 Route::get('/attendance/create/{id}',[attendanceController::class,'create']);
