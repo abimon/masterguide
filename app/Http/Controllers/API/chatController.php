@@ -28,7 +28,7 @@ class chatController extends Controller
                     'created_at'=>$message->created_at,
                     'updated_at'=>$message->updated_at,
                     'name'=>$user->name,
-                    'path'=>$user->profile
+                    'path'=>$user->avatar
                 ]);
             }
         }
