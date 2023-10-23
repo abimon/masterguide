@@ -13,10 +13,23 @@ class chatController extends Controller
     {
         $users = User::all();
         $messages = [];
+        $users=User::all();
+        $messages=[];
         foreach ($users as $user) {
-            $message = Conversation::join('users','users.id',$user->id)->where([['recepient_id', '=', $id], ['sender_id', '=', $user->id]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $user->id]])->latest()->take(1)->first();
-            if ($message) {
-                array_push($messages, $message);
+            $message = Conversation::where([['recepient_id', '=', $id], ['sender_id', '=', $user->id]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $user->id]])->latest()->take(1)->first();
+            if (!$message) {
+            } else {
+                array_push($messages, [
+                    'id'=>$message->id,
+                    'sender_id'=>$message->sender_id ,
+                    'recepient_id'=>$message->recepient_id ,
+                    'message'=>$message->message,
+                    'isRead'=>$message->isRead,
+                    'created_at'=>$message->created_at,
+                    'updated_at'=>$message->updated_at,
+                    'name'=>$user->name,
+                    'path'=>$user->profile
+                ]);
             }
         }
         return response()->json($messages, 200);
