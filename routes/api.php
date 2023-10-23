@@ -9,12 +9,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/users/index',[UserController::class,'index']);
-Route::get('/attendance/create/{id}',[attendanceController::class,'create']);
+//USER
+Route::controller(UserController::class)->group(function () {
+    Route::get('/users/index', 'index');
+    Route::post('/user/login','login');
+    Route::post('/user/create','create');
 
+});
+//Attendance
+Route::controller(attendanceController::class)->group(function(){
+    Route::get('/attendance/create/{id}', 'create');
+});
 //MESSAGES
-Route::controller(chatController::class)->group(function(){
-    Route::get('/chat/index/{id}','index');
-    Route::get('/chat/show/{id}/{userId}','show');
-    Route::post('/chat/create','create');
+Route::controller(chatController::class)->group(function () {
+    Route::get('/chat/index/{id}', 'index');
+    Route::get('/chat/show/{id}/{userId}', 'show');
+    Route::post('/chat/create', 'create');
 });
