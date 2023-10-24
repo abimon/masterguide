@@ -56,9 +56,9 @@ class chatController extends Controller
     {
         $user = User::find($userId);
         $messages = [];
-            $message = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $userId]])->latest()->take(1)->first();
-            if (!$message) {
-            } else {
+            $messages = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $userId]])->get();
+            if ($messages) {
+                foreach($messages as $message){
                 array_push($messages, [
                     'id'=>$message->id,
                     'sender_id'=>$message->sender_id ,
@@ -70,6 +70,8 @@ class chatController extends Controller
                     'name'=>$user->name,
                     'path'=>$user->avatar
                 ]);
+                }
+                Conversation::where([['recepient_id', '=', $id], ['id', '=', $message->id]])->update(['isReaad'=>1]);
             }
         
         return response()->json($messages, 200);
