@@ -55,11 +55,11 @@ class chatController extends Controller
     public function show($id,$userId)
     {
         $user = User::find($userId);
-        $messages = [];
+        $mess = [];
             $messages = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $userId]])->get();
             if ($messages) {
                 foreach($messages as $message){
-                array_push($messages, [
+                array_push($mess, [
                     'id'=>$message->id,
                     'sender_id'=>$message->sender_id ,
                     'recepient_id'=>$message->recepient_id ,
@@ -74,7 +74,7 @@ class chatController extends Controller
                 Conversation::where([['recepient_id', '=', $id], ['id', '=', $message->id]])->update(['isReaad'=>1]);
             }
         
-        return response()->json($messages, 200);
+        return response()->json($mess, 200);
     }
 
     public function edit($id)
