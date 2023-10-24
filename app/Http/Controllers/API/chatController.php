@@ -71,7 +71,7 @@ class chatController extends Controller
                     'path'=>$user->avatar
                 ]);
                 }
-                Conversation::where([['recepient_id', '=', $id], ['id', '=', $message->id]])->update(['isReaad'=>1]);
+                Conversation::where([['recepient_id', '=', $id], ['id', '=', $message->id]])->update(['isRead'=>1]);
             }
         
         return response()->json($mess, 200);
