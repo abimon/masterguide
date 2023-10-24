@@ -54,12 +54,25 @@ class chatController extends Controller
 
     public function show($id,$userId)
     {
-        $message=Conversation::where([['recepient_id', '=', $id],['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id],['recepient_id', '=', $userId]])->get();
-        foreach($message as $mess){
-            $mess->isRead=1;
-            $mess->update();
-        }
-        return response()->json($message,200);
+        $user = User::find($id);
+        $messages = [];
+            $message = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $userId]])->latest()->take(1)->first();
+            if (!$message) {
+            } else {
+                array_push($messages, [
+                    'id'=>$message->id,
+                    'sender_id'=>$message->sender_id ,
+                    'recepient_id'=>$message->recepient_id ,
+                    'message'=>$message->message,
+                    'isRead'=>$message->isRead,
+                    'created_at'=>$message->created_at,
+                    'updated_at'=>$message->updated_at,
+                    'name'=>$user->name,
+                    'path'=>$user->avatar
+                ]);
+            }
+        
+        return response()->json($messages, 200);
     }
 
     public function edit($id)
