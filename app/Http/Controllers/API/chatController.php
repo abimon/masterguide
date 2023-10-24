@@ -13,22 +13,22 @@ class chatController extends Controller
     {
         $users = User::all();
         $messages = [];
-        $users=User::all();
-        $messages=[];
+        $users = User::all();
+        $messages = [];
         foreach ($users as $user) {
-            $message = Conversation::orderBy('created_at','desc')->where([['recepient_id', '=', $id], ['sender_id', '=', $user->id]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $user->id]])->first();
+            $message = Conversation::orderBy('created_at', 'desc')->where([['recepient_id', '=', $id], ['sender_id', '=', $user->id]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $user->id]])->first();
             if (!$message) {
             } else {
                 array_push($messages, [
-                    'id'=>$message->id,
-                    'sender_id'=>$message->sender_id ,
-                    'recepient_id'=>$message->recepient_id ,
-                    'message'=>$message->message,
-                    'isRead'=>$message->isRead,
-                    'created_at'=>$message->created_at,
-                    'updated_at'=>$message->updated_at,
-                    'name'=>$user->name,
-                    'path'=>$user->avatar
+                    'id' => $message->id,
+                    'sender_id' => $message->sender_id,
+                    'recepient_id' => $message->recepient_id,
+                    'message' => $message->message,
+                    'isRead' => $message->isRead,
+                    'created_at' => $message->created_at,
+                    'updated_at' => $message->updated_at,
+                    'name' => $user->name,
+                    'path' => $user->avatar
                 ]);
             }
         }
@@ -38,13 +38,13 @@ class chatController extends Controller
     public function create()
     {
         Conversation::create([
-            'sender_id'=>request()->sender_id,
-            'recepient_id'=>request()->recepient_id,
-            'message'=>request()->message,
-            'isRead'=>0,
-            'isPrivate'=>request()->isPrivate
+            'sender_id' => request()->sender_id,
+            'recepient_id' => request()->recepient_id,
+            'message' => request()->message,
+            'isRead' => 0,
+            'isPrivate' => request()->isPrivate
         ]);
-        return response()->json('Success',200);
+        return response()->json('Success', 200);
     }
 
     public function store(Request $request)
@@ -52,28 +52,28 @@ class chatController extends Controller
         //
     }
 
-    public function show($id,$userId)
+    public function show($id, $userId)
     {
         $user = User::find($userId);
         $mess = [];
-            $messages = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $userId]])->get();
-            if ($messages) {
-                foreach($messages as $message){
+        $messages = Conversation::orderBy('created_at', 'asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $userId]])->get();
+        if ($messages) {
+            foreach ($messages as $message) {
                 array_push($mess, [
-                    'id'=>$message->id,
-                    'sender_id'=>$message->sender_id ,
-                    'recepient_id'=>$message->recepient_id ,
-                    'message'=>$message->message,
-                    'isRead'=>$message->isRead,
-                    'created_at'=>$message->created_at,
-                    'updated_at'=>$message->updated_at,
-                    'name'=>$user->name,
-                    'path'=>$user->avatar
+                    'id' => $message->id,
+                    'sender_id' => $message->sender_id,
+                    'recepient_id' => $message->recepient_id,
+                    'message' => $message->message,
+                    'isRead' => $message->isRead,
+                    'created_at' => $message->created_at,
+                    'updated_at' => $message->updated_at,
+                    'name' => $user->name,
+                    'path' => $user->avatar
                 ]);
-                }
-                Conversation::where([['recepient_id', '=', $id], ['id', '=', $message->id]])->update(['isRead'=>1]);
             }
-        
+            Conversation::where([['recepient_id', '=', $userId], ['id', '=', $message->id]])->update(['isRead' => 1]);
+        }
+
         return response()->json($mess, 200);
     }
 
@@ -91,13 +91,13 @@ class chatController extends Controller
     {
         //
     }
-    function sendMessage(){
-        
+    function sendMessage()
+    {
     }
-    function message($id){
-        
+    function message($id)
+    {
     }
-    function readMessage($id,$userId){
-        
+    function readMessage($id, $userId)
+    {
     }
 }
