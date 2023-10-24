@@ -54,7 +54,7 @@ class chatController extends Controller
 
     public function show($id,$userId)
     {
-        $user = User::find($id);
+        $user = User::find($userId);
         $messages = [];
             $message = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $userId]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $userId]])->latest()->take(1)->first();
             if (!$message) {
