@@ -16,7 +16,7 @@ class chatController extends Controller
         $users=User::all();
         $messages=[];
         foreach ($users as $user) {
-            $message = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $user->id]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $user->id]])->latest()->take(1)->first();
+            $message = Conversation::orderBy('created_at','asc')->where([['recepient_id', '=', $id], ['sender_id', '=', $user->id]])->orWhere([['sender_id', '=', $id], ['recepient_id', '=', $user->id]])->latest()->take(1);
             if (!$message) {
             } else {
                 array_push($messages, [
