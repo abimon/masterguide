@@ -81,7 +81,9 @@ Route::controller(PostContoller::class)->group(function () {
     Route::get('/blogpost/{title}','show');
     Route::post('/createPost', 'create');
     Route::get('/like/{id}','like');
-    Route::get('/togglePost/{id}', 'edit');
+    Route::get('/edit/{title}','edit');
+    Route::post('/update/{id}','update');
+    Route::get('/togglePost/{id}', 'pubToggle');
 
     Route::post('/comment/{id}', [dataController::class, 'comment']);
 });

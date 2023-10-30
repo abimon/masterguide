@@ -60,9 +60,13 @@ class PostContoller extends Controller
     /**
      * Store a newly created resource in storage.
      **/
-    public function store(Request $request)
+    public function edit($title)
     {
-        //
+        $post= Post::where(['title'=>$title])->first();
+        $data=[
+            'post'=>$post
+        ];
+        return view('edit', $data);
     }
 
     /**
@@ -89,7 +93,7 @@ class PostContoller extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function pubToggle($id)
     {
         $post= Post::where(['id'=>$id])->first();
         if($post->isPosted==1){
