@@ -3538,7 +3538,7 @@ blockquote.default {
 	height: 100%;
 	min-height: 100%;
 	overflow: hidden;
-	padding: 4px;
+	padding: 20px;
 	position: absolute;
 	text-align: center;
 	width: 25%;
@@ -3560,8 +3560,8 @@ blockquote.default {
     -moz-border-radius: 50%;
     margin-bottom: 20px;
     padding: 2px;
-    max-width: 100px;
-    max-height: 100px;
+    /* max-width: 100px;
+    max-height: 100px; */
 }
 .author-social {
     list-style: none outside none;
