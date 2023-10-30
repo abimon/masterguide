@@ -141,7 +141,7 @@ class PostContoller extends Controller
         if (request()->hasFile('photo')) {
             request()->file('photo')->storeAs('public/authors', $file);
         }
-        return redirect()->back();
+        return redirect('/dashboard');
     }
 
     /**
