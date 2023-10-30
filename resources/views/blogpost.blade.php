@@ -35,8 +35,8 @@
 							{{$post->bio}}
 						</p>
 					</div>
-					<div class="avatar">
-							<img src="{{asset('storage/authors/'.$post->path)}}">
+					<div class="author-desc">
+							<img src="{{asset('storage/authors/'.$post->path)}}"class="avatar" >
 						<!-- <ul class="author-social mb-1">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
