@@ -32,7 +32,7 @@
 						<h3 class="author_name"><a href="#">{{$post->author}}</a></h3>
 						<!-- <h5>{{$user->role}} from <a href="#">{{$user->institution}}</a></h5> -->
 						<p class="author_det">
-							{{$user->bio}}
+							{{$post->bio}}
 						</p>
 					</div>
 					<div class="author-desc">
