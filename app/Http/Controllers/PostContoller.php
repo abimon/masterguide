@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\post;
+use App\Models\Post;
 use App\Models\Like;
 use App\Models\Comment;
 use App\Models\User;
