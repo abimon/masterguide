@@ -37,11 +37,11 @@
 					</div>
 					<div class="author-desc">
 						<img src="{{asset('storage/authors/'.$post->path)}}" alt="about author" style="width:100%">
-						<!--<ul class="author-social mb-1">
+						<ul class="author-social mb-1">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-skype"></i></a></li>
-							</ul>-->
+							</ul>
 					</div>
 				</div>
 
