@@ -30,13 +30,15 @@
 				<div class="blog-author">
 					<div class="author-bio">
 						<h3 class="author_name"><a href="#">{{$post->author}}</a></h3>
-						
+
 						<p class="author_det">
 							{{$post->bio}}
 						</p>
 					</div>
 					<div class="author-desc">
-						<img src="{{asset('storage/authors/'.$post->path)}}"  style="width:100px; height:100px;">
+						<div style="width:100px; height:100px;">
+							<img src="{{asset('storage/authors/'.$post->path)}}" style="size: 100%;">
+						</div>
 						<!-- <ul class="author-social mb-1">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
