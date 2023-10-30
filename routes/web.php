@@ -82,7 +82,7 @@ Route::controller(PostContoller::class)->group(function () {
     Route::post('/createPost', 'create');
     Route::get('/like/{id}','like');
     Route::get('/edit/{title}','edit');
-    Route::post('/update/{id}','update');
+    Route::post('/updatePost/{id}','update');
     Route::get('/togglePost/{id}', 'pubToggle');
 
     Route::post('/comment/{id}', [dataController::class, 'comment']);
