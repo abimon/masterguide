@@ -203,9 +203,8 @@
                                 @foreach($posts as $id=>$post)
                                 <tr>
                                     <th class=" bdwT-0">{{$id+1}}</th>
-                                    <a href="/edit/{{$post->title}}"><td class="fw-600">{{$post->title}}</td></a>
-                                    <td>{{$post->author}}
-                                    </td>
+                                   <td class="fw-600"> <a href="/edit/{{$post->title}}">{{$post->title}}</a></td>
+                                    <td>{{$post->author}}</td>
                                     <td>{{date_format(($post->created_at),'F jS, Y')}}</td>
                                     <td>
                                         <span class="text-success">
