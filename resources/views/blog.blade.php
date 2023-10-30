@@ -21,7 +21,7 @@
 							<h2><a href="#" title="">{{$post->title}}</a></h2>
 						</div>
 						<div class="blog-desc">
-						<div style="overflow:hidden;height: 109px;"><?php echo html_entity_decode($post['post']);?></div>...
+						<div style="overflow:hidden;height: 110px;"><?php echo html_entity_decode($post['post']);?></div>...
 						</div>
 						<div class="blog-button">
 							<a class="hover-btn-new orange" href="/blogpost/{{$post->title}}"><span>Read More<span></a>
