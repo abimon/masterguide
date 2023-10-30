@@ -3551,9 +3551,16 @@ blockquote.default {
 .author-bio h5{
 	font-size: 16px;
 }
-
-
-
+/* .author-desc > img {
+    background: #FFFFFF;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    margin-bottom: 20px;
+    padding: 2px;
+    max-width: 100px;
+    max-height: 100px;
+} */
 .author-social {
     list-style: none outside none;
     margin: 0 auto;
