@@ -18,13 +18,13 @@ class PostContoller extends Controller
      */
     public function index()
     {
-        $posts= Post::where(['isPosted'=>1])->get();
-        $comments= Comment::all();
-        $likes=Like::all();
-        $data=[
-            'posts'=>$posts,
-            'comments'=>$comments,
-            'likes'=>$likes,
+        $posts = Post::where(['isPosted' => 1])->get();
+        $comments = Comment::all();
+        $likes = Like::all();
+        $data = [
+            'posts' => $posts,
+            'comments' => $comments,
+            'likes' => $likes,
         ];
         return view('blog', $data);
     }
@@ -34,26 +34,25 @@ class PostContoller extends Controller
      */
     public function create()
     {
-        $user=Auth()->user();
-        if(($user->role)=='Member'){
-            $post=0;
-        }
-        else {
+        $user = Auth()->user();
+        if (($user->role) == 'Member') {
+            $post = 0;
+        } else {
             $post = 1;
         }
-        $extension = request()->file('avatar')->getClientOriginalExtension();
+        $extension = request()->file('photo')->getClientOriginalExtension();
         $filename = time();
         $file = $filename . '.' . $extension;
         Post::create([
-            'author'=>request()->author ,
-            'theme'=>request()->theme,
-            'title'=>request()->title,
-            'post'=>request()->post,
-            'bio'=>request()->bio,
-            'path'=>$file,
-            'isPosted'=>$post,
+            'author' => request()->author,
+            'theme' => request()->theme,
+            'title' => request()->title,
+            'post' => request()->post,
+            'bio' => request()->bio,
+            'path' => $file,
+            'isPosted' => $post,
         ]);
-        request()->file('avatar')->storeAs('public/authors', $file);
+        request()->file('photo')->storeAs('public/authors', $file);
         return redirect()->back();
     }
 
@@ -62,9 +61,9 @@ class PostContoller extends Controller
      **/
     public function edit($title)
     {
-        $post= Post::where(['title'=>$title])->first();
-        $data=[
-            'post'=>$post
+        $post = Post::where(['title' => $title])->first();
+        $data = [
+            'post' => $post
         ];
         return view('edit', $data);
     }
@@ -74,15 +73,15 @@ class PostContoller extends Controller
      */
     public function show($title)
     {
-        $post= Post::where(['title'=>$title])->first();
-        $users= User::all();
-        $comments= Comment::where(['post_id'=>$post->id])->get();
-        $likes=Like::where(['post_id'=>$post->id])->get();
-        $data=[
-            'post'=>$post,
-            'users'=>$users,
-            'comments'=>$comments,
-            'likes'=>$likes,
+        $post = Post::where(['title' => $title])->first();
+        $users = User::all();
+        $comments = Comment::where(['post_id' => $post->id])->get();
+        $likes = Like::where(['post_id' => $post->id])->get();
+        $data = [
+            'post' => $post,
+            'users' => $users,
+            'comments' => $comments,
+            'likes' => $likes,
         ];
         return view('blogpost', $data);
     }
@@ -95,15 +94,14 @@ class PostContoller extends Controller
      */
     public function pubToggle($id)
     {
-        $post= Post::where(['id'=>$id])->first();
-        if($post->isPosted==1){
+        $post = Post::where(['id' => $id])->first();
+        if ($post->isPosted == 1) {
             $value = 0;
-        }
-        else{
+        } else {
             $value = 1;
         }
         $post->update([
-            'isPosted'=>$value,
+            'isPosted' => $value,
         ]);
         return redirect()->back();
     }
@@ -117,22 +115,32 @@ class PostContoller extends Controller
      */
     public function update($id)
     {
-        $user=Auth()->user();
-        if(($user->role)=='Member'){
-            $post=0;
-        }
-        else {
+        $user = Auth()->user();
+        if (($user->role) == 'Member') {
+            $post = 0;
+        } else {
             $post = 1;
         }
-        
-        Post::where('id',$id)->update([
-            'author'=>request()->author ,
-            'theme'=>request()->theme,
-            'title'=>request()->title,
-            'post'=>request()->post,
-            'bio'=>request()->bio,
-            'isPosted'=>$post,
+        if (request()->hasFile('photo')) {
+            $extension = request()->file('photo')->getClientOriginalExtension();
+            $filename = time();
+            $file = $filename . '.' . $extension;
+        } else {
+            $file = (Post::where('id', $id)->first())->path;
+        }
+
+        Post::where('id', $id)->update([
+            'author' => request()->author,
+            'theme' => request()->theme,
+            'title' => request()->title,
+            'post' => request()->post,
+            'bio' => request()->bio,
+            'path' => $file,
+            'isPosted' => $post,
         ]);
+        if (request()->hasFile('photo')) {
+            request()->file('photo')->storeAs('public/authors', $file);
+        }
         return redirect()->back();
     }
 
@@ -142,7 +150,7 @@ class PostContoller extends Controller
     public function destroy($id)
     {
         post::destroy($id);
-        Like::where('post_id',$id)->delete();
+        Like::where('post_id', $id)->delete();
         Comment::where('post_id', $id)->delete();
         return redirect()->back();
     }
