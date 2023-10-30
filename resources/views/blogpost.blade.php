@@ -36,7 +36,7 @@
 						</p>
 					</div>
 					<div class="author-desc">
-						<img src="{{asset('storage/authors/'.$post->path)}}"  style="width:100%">
+						<img src="{{asset('storage/authors/'.$post->path)}}"  style="width:100px; height:100px;">
 						<!-- <ul class="author-social mb-1">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
