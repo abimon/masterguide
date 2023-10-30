@@ -25,7 +25,7 @@
               <input type="text" class='form-control' name='author' value="{{$post->author}}">
             </div>
             <div class="form-group">
-              <textarea class="form-control" name='bio' maxlength="160" value="{{$post->bio}}" rows='5'></textarea>
+              <textarea class="form-control" name='bio' maxlength="160" rows='5'>{{$post->bio}}</textarea>
             </div>
           </div>
           <div id="compose-area"></div>
