@@ -141,35 +141,10 @@ class dataController extends Controller
         return redirect()->back();
     }
     function createPost(){
-        $user=Auth()->user();
-        if(($user->role)=='Member'){
-            $post=0;
-        }
-        else {
-            $post = 1;
-        }
-        Post::create([
-            'user_id'=> Auth()->user()->id,
-            'category_id'=>request()->category_id,
-            'title'=>request()->title,
-            'post'=>request()->post,
-            'exerpt'=>request()->exerpt,
-            'isPosted'=>$post,
-        ]);
-        return redirect()->back();
+        
     }
     function togglePost($id){
-        $post= Post::where(['id'=>$id])->first();
-        if($post->isPosted==1){
-            $value = 0;
-        }
-        else{
-            $value = 1;
-        }
-        $post->update([
-            'isPosted'=>$value,
-        ]);
-        return redirect()->back();
+        
     }
     function addPublicEvent(){
         Event::create([
@@ -378,7 +353,6 @@ class dataController extends Controller
         Note::destroy($id);
         return redirect()->back();
     }
-
     function createCategory(){
         Category::create([
             'category_name'=>request()->category

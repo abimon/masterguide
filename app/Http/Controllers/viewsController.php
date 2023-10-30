@@ -117,31 +117,9 @@ class viewsController extends Controller
         ];
         return view('events',$data);
     }
-    function blog(){
-        $posts= Post::where(['isPosted'=>1])->get();
-        $comments= Comment::all();
-        $likes=Like::all();
-        $data=[
-            'posts'=>$posts,
-            'comments'=>$comments,
-            'likes'=>$likes,
-        ];
-        return view('blog', $data);
-    }
+    
     function blogpost($title){
-        $post= Post::where(['title'=>$title])->first();
-        $user=User::where(['id'=>$post->user_id])->first();
-        $users= User::all();
-        $comments= Comment::where(['post_id'=>$post->id])->get();
-        $likes=Like::where(['post_id'=>$post->id])->get();
-        $data=[
-            'post'=>$post,
-            'user'=>$user,
-            'users'=>$users,
-            'comments'=>$comments,
-            'likes'=>$likes,
-        ];
-        return view('blogpost', $data);
+        
     }
     function attendance(){
         if((Auth()->user()->role=='Coordinator')||(Auth()->user()->role=='Secretary')||(Auth()->user()->role=='Training Coordinator')){
