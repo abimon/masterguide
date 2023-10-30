@@ -144,7 +144,7 @@
                     </div>
                 </a>
             </div>
-            <!-- #Bounce Rate ==================== -->
+            <!-- #Birthdays ==================== -->
             <div class='col-md-3 col-6'>
                 <a href="#birthday">
                     <div class="layers bd bgc-white p-20">
@@ -170,7 +170,7 @@
     </div>
     @if(Auth()->user()->role!='Member')
     <div class="col-md-12 mt-2 w-100">
-        <!-- #posts Report ==================== -->
+        <!-- #posts ==================== -->
         <div class="bd bgc-white">
             <div class="layers" id="members">
                 <div class="layer w-100 p-20">
@@ -204,9 +204,7 @@
                                 <tr>
                                     <th class=" bdwT-0">{{$id+1}}</th>
                                     <td class="fw-600">{{$post->title}}</td>
-                                    @foreach($users->where('id', $post->user_id) as $user)
-                                    <td>{{$user->name}}
-                                        @endforeach
+                                    <td>{{$post->author}}
                                     </td>
                                     <td>{{date_format(($post->created_at),'F jS, Y')}}</td>
                                     <td>
