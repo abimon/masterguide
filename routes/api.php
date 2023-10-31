@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\attendanceController;
 use App\Http\Controllers\API\chatController;
+use App\Http\Controllers\API\PostContoller;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,9 @@ Route::controller(chatController::class)->group(function () {
     Route::get('/chat/index/{id}', 'index');
     Route::get('/chat/show/{id}/{userId}', 'show');
     Route::post('/chat/create', 'create');
+});
+
+//POSTS
+Route::controller(PostContoller::class)->group(function(){
+    Route::get('/posts/index','index');
 });
