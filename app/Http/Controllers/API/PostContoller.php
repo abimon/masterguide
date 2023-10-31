@@ -18,13 +18,22 @@ class PostContoller extends Controller
     public function index()
     {
         $posts = Post::where(['isPosted' => 1])->get();
-        $comments = Comment::all();
-        $likes = Like::all();
-        $data = [
-            'posts' => $posts,
-            'comments' => $comments,
-            'likes' => $likes,
-        ];
+        $data = [];
+        
+        foreach($posts as $post){
+            $comments=Comment::where('post_id',$post->id)->get();
+            $likes=Like::where('post_id',$post->id)->get();
+            array_push($data,[
+                'post'=>$post->post,
+                'title'=>$post->title,
+                'theme'=>$post->theme,
+                'author'=>$post->author,
+                'bio'=>$post->bio,
+                'path'=>$post->path,
+                'comments'=>$comments,
+                'likes'=>$likes
+            ]);
+        }
         return $data;
     }
 
@@ -55,9 +64,17 @@ class PostContoller extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(post $post)
+    public function show($title)
     {
-        //
+        $post = Post::where(['title' => $title])->first();
+        $comments = Comment::where(['post_id' => $post->id])->join('users','users.id','='.'comments.user_id')->select('comments.*','users.name','users.avatar')->get();
+        $likes = Like::where(['post_id' => $post->id])->get();
+        $data = [
+            'post' => $post,
+            'comments' => $comments,
+            'likes' => $likes,
+        ];
+        return view('blogpost', $data);
     }
 
     /**

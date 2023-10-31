@@ -31,4 +31,5 @@ Route::controller(chatController::class)->group(function () {
 //POSTS
 Route::controller(PostContoller::class)->group(function(){
     Route::get('/posts/index','index');
+    Route::get('/posts/show/{title}');
 });
