@@ -17,12 +17,12 @@
 						<span><i class="fa fa-thumbs-up"></i> <a href="#">{{$likes->where('post_id',$post->id)->count()}}</a> </span>
 						<span><i class="fa fa-comments"></i> <a href="#">{{$comments->where('post_id',$post->id)->count()}} Comments</a></span>
 					</div>
-					<div style="height: max-content;">
+					<div style="height: 300px;">
 						<div class="blog-title">
 							<h2 class="text-transform:uppercase;">{{$post->title}}</h2>
 						</div>
 						<div class="blog-desc">
-							<div style="overflow:ellipsis;max-height: 100px;">{{$post->bio}}</div>
+							<div >{{$post->bio}}</div>
 						</div>
 					</div>
 					<div class="blog-button">
