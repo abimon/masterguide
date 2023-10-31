@@ -22,7 +22,7 @@
 							<h4 class="text-uppercase">{{$post->title}}</h2>
 						</div>
 						<div class="blog-desc">
-							<div >{{$post->post}}</div>
+							<div ><?php echo html_entity_decode($post['post'])?></div>
 						</div>
 					</div>
 					<div class="blog-button">
