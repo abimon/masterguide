@@ -21,7 +21,7 @@ class PostContoller extends Controller
         $data = [];
         
         foreach($posts as $post){
-            $comments=Comment::where('post_id',$post->id)->get();
+            $comments=Comment::where('post_id',$post->id)->join('users','users.id','=','comments.user_id')->select('comments.*','users.name','users.path')->get();
             $likes=Like::where('post_id',$post->id)->get();
             array_push($data,[
                 'post'=>$post->post,
