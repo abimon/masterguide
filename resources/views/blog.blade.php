@@ -17,7 +17,7 @@
 						<span><i class="fa fa-thumbs-up"></i> <a href="#">{{$likes->where('post_id',$post->id)->count()}}</a> </span>
 						<span><i class="fa fa-comments"></i> <a href="#">{{$comments->where('post_id',$post->id)->count()}} Comments</a></span>
 					</div>
-					<div style="height: 300px; overflow:hidden;">
+					<div style="height: 298px; overflow:hidden;">
 						<div class="blog-title">
 							<h4 class="text-uppercase">{{$post->title}}</h2>
 						</div>
