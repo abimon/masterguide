@@ -25,7 +25,8 @@
               <input type="text" class='form-control' name='author' placeholder="Author Name">
             </div>
             <div class="form-group">
-              <textarea class="form-control" name='bio' maxlength="160" placeholder="Author biography" rows='5'></textarea>
+              <textarea class="form-control" name='bio' maxlength="250" placeholder="Author biography" rows='5'></textarea>
+              <div id='words'></div>
             </div>
           </div>
           <div id="compose-area"></div>

@@ -30,7 +30,6 @@
 				<div class="blog-author">
 					<div class="author-bio">
 						<h3 class="author_name"><a href="#">{{$post->author}}</a></h3>
-
 						<p class="author_det">
 							{{$post->bio}}
 						</p>
