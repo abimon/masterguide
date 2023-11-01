@@ -54,9 +54,14 @@ class PostContoller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        Comment::create([
+            'user_id'=>request()->user_id,
+            'post_id'=>request()->post_id,
+            'comment'=>request()->comment
+        ]);
+        return response()->json('Success',200);
     }
 
     /**
