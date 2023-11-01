@@ -24,6 +24,7 @@ class PostContoller extends Controller
             $comments=Comment::where('post_id',$post->id)->join('users','users.id','=','comments.user_id')->select('comments.*','users.name','users.avatar')->get();
             $likes=Like::where('post_id',$post->id)->get();
             array_push($data,[
+                'id'=>$post->id,
                 'post'=>$post->post,
                 'title'=>$post->title,
                 'theme'=>$post->theme,
