@@ -56,6 +56,9 @@ class PostContoller extends Controller
      */
     public function store()
     {
+        if(request()->user_id==null){
+
+        }
         Comment::create([
             'user_id'=>request()->user_id,
             'post_id'=>request()->post_id,
@@ -73,14 +76,20 @@ class PostContoller extends Controller
     public function show($title)
     {
         $post = Post::where(['title' => $title])->first();
-        $comments = Comment::where(['post_id' => $post->id])->join('users','users.id','='.'comments.user_id')->select('comments.*','users.name','users.avatar')->get();
-        $likes = Like::where(['post_id' => $post->id])->get();
-        $data = [
-            'post' => $post,
-            'comments' => $comments,
-            'likes' => $likes,
-        ];
-        return view('blogpost', $data);
+        $comments=Comment::where('post_id',$post->id)->join('users','users.id','=','comments.user_id')->select('comments.*','users.name','users.avatar')->get();
+            $likes=Like::where('post_id',$post->id)->get();
+            array_push($data,[
+                'id'=>$post->id,
+                'post'=>$post->post,
+                'title'=>$post->title,
+                'theme'=>$post->theme,
+                'author'=>$post->author,
+                'bio'=>$post->bio,
+                'path'=>$post->path,
+                'comments'=>$comments,
+                'likes'=>$likes->count()
+            ]);
+        return $data;
     }
 
     /**
