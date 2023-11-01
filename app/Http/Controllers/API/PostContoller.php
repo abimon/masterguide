@@ -31,7 +31,7 @@ class PostContoller extends Controller
                 'bio'=>$post->bio,
                 'path'=>$post->path,
                 'comments'=>$comments,
-                'likes'=>$likes
+                'likes'=>$likes->count()
             ]);
         }
         return $data;
