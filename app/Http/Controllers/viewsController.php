@@ -117,6 +117,7 @@ class viewsController extends Controller
         ];
         return view('events',$data);
     }
+    
     function attendance(){
         if((Auth()->user()->role=='Coordinator')||(Auth()->user()->role=='Secretary')||(Auth()->user()->role=='Training Coordinator')){
             $users=User::all();
@@ -172,5 +173,9 @@ class viewsController extends Controller
             'users'=>$users
         ];
         return view('attendee',$data);
+    }
+    function compose(){
+        $data=[];
+        return view('compose',$data);
     }
 }
