@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\API\attendanceController;
 use App\Http\Controllers\API\chatController;
+use App\Http\Controllers\API\eventController;
+use App\Http\Controllers\API\LessonController;
 use App\Http\Controllers\API\PostContoller;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
@@ -33,4 +35,19 @@ Route::controller(PostContoller::class)->group(function(){
     Route::get('/posts/index','index');
     Route::get('/posts/show/{title}','show');
     Route::post('/post/comment','store');
+});
+
+//EVENTS
+Route::controller(eventController::class)->group(function(){
+    Route::get('/events/index','index');
+    Route::post('/events/create','create');
+    Route::get('/events/show/{title}','show');
+});
+
+//LESSONS
+//->where('event_date','>',date('Y-m-d'))
+Route::controller(LessonController::class)->group(function(){
+    Route::get('/lesson/index','index');
+    Route::post('/lesson/create','create');
+    Route::get('/lesson/show/{title}','show');
 });
