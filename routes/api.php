@@ -45,7 +45,6 @@ Route::controller(eventController::class)->group(function(){
 });
 
 //LESSONS
-//->where('event_date','>',date('Y-m-d'))
 Route::controller(LessonController::class)->group(function(){
     Route::get('/lesson/index','index');
     Route::post('/lesson/create','create');

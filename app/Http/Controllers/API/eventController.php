@@ -10,7 +10,7 @@ class eventController extends Controller
 {
     public function index()
     {
-        $events=Event::where(['isPublic'=>1])->orderBy('event_date','asc')->get();
+        $events=Event::where(['isPublic'=>1])->where('event_date','>',date('Y-m-d'))->orderBy('event_date','asc')->get();
         return $events;
 
     }
