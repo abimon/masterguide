@@ -33,7 +33,15 @@
 	<script src="{{asset('storage/js/modernizer.js')}}"></script>
 
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VD7DHLDJ99"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-VD7DHLDJ99');
+</script>
 <body class="bg-info fs-sm-5">
 	<div class="bg-light" style="width: 85.7%; float:left;">
 		<!-- Start header -->
