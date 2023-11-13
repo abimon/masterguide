@@ -31,7 +31,8 @@
 
 	<!-- Modernizer for Portfolio -->
 	<script src="{{asset('storage/js/modernizer.js')}}"></script>
-
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2256037842124040"
+     crossorigin="anonymous"></script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD7DHLDJ99"></script>
