@@ -168,7 +168,7 @@
                     Certificate of
                     Attendance</p>
                 <p class="s2" style="padding-left: 14pt;text-indent: 0pt;line-height: 23pt;text-align: center; ">This acknowledges that</p>
-                <h2 style="text-indent: 0pt;text-align: center; text-transform: uppercase;text-decoration: underline;font-size: 46; color: rgb(0, 119, 255); font-family:'Times New Roman', Times, serif" ;>{{$user}}</h2>
+                <h2 style="text-indent: 0pt;text-align: center; text-transform: uppercase;text-decoration: underline;font-size: 32; color: rgb(0, 119, 255); font-family:'Times New Roman', Times, serif" ;>{{$user}}</h2>
                 <p class="s2" style="padding-left: 26pt;text-indent: 0pt;line-height: 22pt;text-align: center;">
                     Successfully attended the <b>University Region </b>campout held on</p>
                 <h2 style="padding-left: 26pt;text-indent: 0pt;line-height: 22pt;text-align: center;">29<span class="h4">th
