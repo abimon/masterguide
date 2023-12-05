@@ -210,12 +210,12 @@
                 </ol>
 
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <div style=" text-align:center;padding-top: 30pt;">
+                <div style=" text-align:center;padding-top: 25pt;">
                     <h3>CONFERENCE YOUTH DIRECTOR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;REGION COORDINATOR</h3>
                 </div>
                 <div style=" text-align:center;padding-top: 0pt;">
-                    <h3>Pr. Charles Mutugi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h3>Pr. Charles Mutugi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;Bro. Edimon Ombati</h3>
                 </div>
             </div>
