@@ -176,36 +176,10 @@
                 <p style="padding-top: 6pt;padding-left: 11pt;text-indent: 0pt;text-align: center;">Lessons covered
                     include:-
                 </p>
-                <ol id="l1" style="display: inline-block;columns: 2;-webkit-columns: 2;-moz-columns: 2;">
-                    <li>
-                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 19pt;text-align: left;">Fire
-                            Building</p>
-                    </li>
-                    <li>
-                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 22pt;text-align: left;">Basic Water
-                            Safety
-                        </p>
-                    </li>
-                    <li>
-                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 19pt;text-align: left;">Nutrition
-                        </p>
-                    </li>
-                    <li>
-                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 22pt;text-align: left;">Camp Safety
-                        </p>
-                    </li>
-                    <li>
-                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 19pt;text-align: left;">Pathfinder
-                            Story
-                        </p>
-                    </li>
-                    <li>
-                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 22pt;text-align: left;">Effective
-                            Master
+                
+                        1. Fire Building&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2. Basic Water <br> 3. Nutrition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4. Camp Safety <br>5. Pathfinder Story &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6. Effective Master
                             Guide
-                        </p>
-                    </li>
-                </ol>
+                        
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
                 <div style=" text-align:center;padding-top: 120pt;">
                     <h3>CONFERENCE YOUTH DIRECTOR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
