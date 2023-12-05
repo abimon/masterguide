@@ -140,19 +140,21 @@
 
 <body>
     <?php $users = [
-        'Sarah Kemunto',
-        'Bonface Ochanda',
-        'Clayrene Mugun',
-        'Fidel Hemdel',
-        'Ontita Swanya',
-        'Sarah Thoya',
-        'Lester Ogachi',
-        'Sharon Moraa',
-        'Mark Onyango',
-        'Jane Okemwa',
-        'Javan Kiprotich',
-        'Christine James',
-        'Edimon Ombati'
+        'Joylin Jebet ',
+        'Lukio .O. Onyango ',
+        'Samuel Oketch',
+        'Annette Nyaboke ',
+        'James Omondi Omondi ',
+        'Amon Kipkoech - ',
+        'Meshack Okari ',
+        'Florence Kemunto',
+        'Dickens Omwoyo',
+        'Denis Nduati ',
+        'Alvin Ayub.',
+        'Felix Meitamei',
+        'Ruth Mamai ',
+        'George Kevin Wise.',
+        'Dianah Mayioro.'
     ];
     ?>
     @foreach($users as $user)
