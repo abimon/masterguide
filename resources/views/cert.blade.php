@@ -140,19 +140,19 @@
 
 <body>
     <?php $users = [
-'Sarah Kemunto',
-'Bonface Ochanda',
-'Clayrene Mugun',
-'Fidel Hemdel',
-'Ontita Swanya',
-'Sarah Thoya',
-'Lester Ogachi',
-'Sharon Moraa',
-'Mark Onyango',
-'Jane Okemwa',
-'Javan Kiprotich',
-'Christine James',
-'Edimon Ombati'
+        'Sarah Kemunto',
+        'Bonface Ochanda',
+        'Clayrene Mugun',
+        'Fidel Hemdel',
+        'Ontita Swanya',
+        'Sarah Thoya',
+        'Lester Ogachi',
+        'Sharon Moraa',
+        'Mark Onyango',
+        'Jane Okemwa',
+        'Javan Kiprotich',
+        'Christine James',
+        'Edimon Ombati'
     ];
     ?>
     @foreach($users as $user)
@@ -176,12 +176,25 @@
                 <p style="padding-top: 6pt;padding-left: 11pt;text-indent: 0pt;text-align: center;">Lessons covered
                     include:-
                 </p>
-                
-                        1. Fire Building&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2. Basic Water <br> 3. Nutrition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4. Camp Safety <br>5. Pathfinder Story &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6. Effective Master
-                            Guide
-                        
+                <ol>
+                    <table>
+                        <tr>
+                            <td>
+                                <li>Fire Building</li>
+                                <li>Basic Water</li>
+                                <li>Nutrition</li>
+                            </td>
+                            <td>
+                                <li>Camp Safety</li>
+                                <li>Pathfinder Story</li>
+                                <li>Effective Master Guide</li>
+                            </td>
+                        </tr>
+                    </table>
+                </ol>
+
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <div style=" text-align:center;padding-top: 120pt;">
+                <div style=" text-align:center;padding-top: 100pt;">
                     <h3>CONFERENCE YOUTH DIRECTOR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;REGION COORDINATOR</h3>
                 </div>
@@ -191,4 +204,5 @@
     <div style="page-break-before: always;"></div>
     @endforeach
 </body>
+
 </html>
