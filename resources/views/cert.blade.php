@@ -214,6 +214,10 @@
                     <h3>CONFERENCE YOUTH DIRECTOR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;REGION COORDINATOR</h3>
                 </div>
+                <div style=" text-align:center;padding-top: 5pt;">
+                    <h3>Pr. Charles Mutugi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp;Bro. Edimon Ombati</h3>
+                </div>
             </div>
         </div>
     </div>
