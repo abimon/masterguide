@@ -156,7 +156,7 @@
     ];
     ?>
     @foreach($users as $user)
-    <div class="container">
+    <div class="container" style="page-break-after: always;">
         <img src="{{asset('Certificate.jpg')}}" alt="Snow" style="width:100%;">
         <div class="centered" style="width: 100%;">
             <div>
@@ -208,14 +208,13 @@
                 </ol>
 
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <div style=" text-align:center;padding-top: 50pt;">
+                <div style=" text-align:center;padding-top: 30pt;">
                     <h3>CONFERENCE YOUTH DIRECTOR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;REGION COORDINATOR</h3>
                 </div>
             </div>
         </div>
     </div>
-    <div style="page-break-after: always;"></div>
     @endforeach
 </body>
 
