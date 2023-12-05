@@ -208,7 +208,7 @@
                 </ol>
 
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <div style=" text-align:center;padding-top: 100pt;">
+                <div style=" text-align:center;padding-top: 0pt;">
                     <h3>CONFERENCE YOUTH DIRECTOR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;REGION COORDINATOR</h3>
                 </div>
