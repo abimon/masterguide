@@ -176,21 +176,35 @@
                 <p style="padding-top: 6pt;padding-left: 11pt;text-indent: 0pt;text-align: center;">Lessons covered
                     include:-
                 </p>
-                <ol>
-                    <table>
-                        <tr>
-                            <td>
-                                <li>Fire Building</li>
-                                <li>Basic Water</li>
-                                <li>Nutrition</li>
-                            </td>
-                            <td>
-                                <li>Camp Safety</li>
-                                <li>Pathfinder Story</li>
-                                <li>Effective Master Guide</li>
-                            </td>
-                        </tr>
-                    </table>
+                <ol id="l1" style="display: inline-block; columns: 2;-webkit-columns: 2;-moz-columns: 2;">
+                    <li>
+                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 19pt;text-align: left;">Fire
+                            Building</p>
+                    </li>
+                    <li>
+                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 22pt;text-align: left;">Basic Water
+                            Safety
+                        </p>
+                    </li>
+                    <li>
+                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 19pt;text-align: left;">Nutrition
+                        </p>
+                    </li>
+                    <li>
+                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 22pt;text-align: left;">Camp Safety
+                        </p>
+                    </li>
+                    <li>
+                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 19pt;text-align: left;">Pathfinder
+                            Story
+                        </p>
+                    </li>
+                    <li>
+                        <p style="padding-left: 32pt;text-indent: -27pt;line-height: 22pt;text-align: left;">Effective
+                            Master
+                            Guide
+                        </p>
+                    </li>
                 </ol>
 
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
