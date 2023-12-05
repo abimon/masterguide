@@ -156,7 +156,7 @@
     ];
     ?>
     @foreach($users as $user)
-    <div class="container" style="page-break-after: always;">
+    <div class="container">
         <img src="{{asset('Certificate.jpg')}}" alt="Snow" style="width:100%;">
         <div class="centered" style="width: 100%;">
             <div>
