@@ -72,6 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         $extension = request()->file('avatar')->getClientOriginalExtension();
         $filename = request()->fname;
         $filenametostore = $filename . '.' . $extension;

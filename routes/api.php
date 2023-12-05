@@ -49,4 +49,6 @@ Route::controller(LessonController::class)->group(function(){
     Route::get('/lesson/index','index');
     Route::post('/lesson/create','create');
     Route::get('/lesson/show/{title}','show');
+    Route::get('/lesson/update/{id}','update');
 });
+
