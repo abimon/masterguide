@@ -139,7 +139,7 @@
 </style>
 
 <body>
-    <?php $user = [
+    <?php $users = [
         'Joylin Jebet',
         'Lukio .O Onyango',
         'Samuel Oketch',
@@ -172,7 +172,7 @@
         'Christine James',
         'Edimon Ombati'
     ];
-    $users=['Christine James'];
+    // $users=['Christine James'];
     ?>
     @foreach($users as $user)
     <div class="container">
