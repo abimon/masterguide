@@ -227,7 +227,7 @@
                 </ol>
 
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <div style=" text-align:center;padding-top: 35pt;">
+                <div style=" text-align:center;padding-top: 25pt;">
                     <h3>CONFERENCE YOUTH DIRECTOR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;REGION COORDINATOR</h3>
                 </div>
