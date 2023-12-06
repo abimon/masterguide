@@ -176,7 +176,7 @@
     ?>
     @foreach($users as $user)
     <div class="container">
-        <img src="{{asset('Certificate.jpg')}}" alt="Snow" style="width:100%;">
+        <img src="{{asset('Certificate.png')}}" alt="Snow" style="width:100%;">
         <div class="centered" style="width: 100%;">
             <div>
                 <h1 style="padding-left: 13pt;text-indent: 0pt;line-height: 30pt;text-align: center; "><a>CENTRAL KENYA
