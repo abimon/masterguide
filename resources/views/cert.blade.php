@@ -139,21 +139,21 @@
 </style>
 
 <body>
-    <?php $users = [
-        'Joylin Jebet ',
-        'Lukio .O. Onyango ',
+    <?php $user = [
+        'Joylin Jebet',
+        'Lukio .O Onyango',
         'Samuel Oketch',
-        'Annette Nyaboke ',
-        'James Omondi Omondi ',
-        'Amon Kipkoech - ',
-        'Meshack Okari ',
+        'Annette Nyaboke',
+        'James Omondi Omondi',
+        'Amon Kipkoech',
+        'Meshack Okari',
         'Florence Kemunto',
         'Dickens Omwoyo',
-        'Denis Nduati ',
-        'Alvin Ayub.',
+        'Denis Nduati',
+        'Alvin Ayub',
         'Felix Meitamei',
-        'Ruth Mamai ',
-        'George Kevin Wise.',
+        'Ruth Mamai',
+        'George Kevin Wise',
         'Dianah Mayioro',
         'Tracy Akoth',
         'Elizabeth Makori',
@@ -161,10 +161,10 @@
         'Philip Mboya',
         'Sarah Kemunto',
         'Bonface Ochanda',
-        'OKEMWA JANE NYANCHAMA',
-        'Fidel Hemdel',
+        'OKemwa Jane Nyanchama',
+        'Fidel Oyugi',
         'Cynthia Marion Kerubo',
-        'Arori Josiah .M.',
+        'Arori Josiah .M',
         'Sarah Thoya',
         'Sharon Moraa',
         'Mark Onyango',
@@ -172,6 +172,7 @@
         'Christine James',
         'Edimon Ombati'
     ];
+    $users=['Christine James'];
     ?>
     @foreach($users as $user)
     <div class="container">
