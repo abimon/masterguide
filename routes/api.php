@@ -17,6 +17,9 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/users/index', 'index');
     Route::post('/user/login','login');
     Route::post('/user/create','create');
+    Route::post('/user/update/{id}','update');
+    Route::post('/user/destroy/{id}','destroy');
+    Route::post('/user/show/{id}','show');
 
 });
 //Attendance

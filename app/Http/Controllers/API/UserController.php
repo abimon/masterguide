@@ -25,6 +25,15 @@ class UserController extends Controller
         } else {
             $contact = $code . $phone;
         }
+        if(request()->hasFile('avatar')){
+            $extension = request()->file('avatar')->getClientOriginalExtension();
+            $filename = request()->fname;
+            $filenametostore = $filename . '.' . $extension;
+            request()->file('avatar')->storeAs('public/profile', $filenametostore);
+        }
+        else{
+            $filenametostore = 'noimage.png';
+        }
         User::create([
             'name' => request()->name,
             'email' => request()->email,
@@ -34,7 +43,7 @@ class UserController extends Controller
             'isInvested' => request()->inv,
             'PPNo' => request()->pno,
             'about' => request()->abt,
-            'avatar' => 'noimage.png',
+            'avatar' => $filenametostore,
             'birthday' => request()->btd,
             'password' => Hash::make(request()->password),
         ]);
@@ -55,9 +64,50 @@ class UserController extends Controller
     {
         
     }
-    public function update()
+    public function update($id)
     {
-        //
+        $user = User::findOrFail($id);
+        if(request()->has('name')){
+            $user->name=request()->name;
+        }
+        if(request()->has('email')){
+            $user->email=request()->email;
+        }
+        if(request()->has('contact')){
+            $user->contact=request()->contact;
+        }
+        if(request()->has('institution')){
+            $user->institution=request()->institution;
+        }
+        if(request()->has('isAssociate')){
+            $user->isAssociate=request()->isAssociate;
+        }
+        if(request()->has('isInvested')){
+            $user->isInvested=request()->isInvested;
+        }
+        if(request()->has('PPNo')){
+            $user->PPNo=request()->PPNo;
+        }
+        if(request()->has('about')){
+            $user->about=request()->about;
+        }
+        if(request()->has('avatar')){
+            $user->avatar=request()->avatar;
+        }
+        if(request()->has('birthday')){
+            $user->birthday=request()->birthday;
+        }
+        if(request()->has('password')){
+            $user->password=Hash::make(request()->password);
+        }
+        if(request()->hasFile('avatar')){
+            $extension = request()->file('avatar')->getClientOriginalExtension();
+            $filename = time().($user->avatar);
+            request()->file('avatar')->storeAs('public/profile', $filename);
+            $user->avatar=$filename;
+        }
+        $user->update();
+        return response()->json($user,200);
     }
     public function destroy($id)
     {
